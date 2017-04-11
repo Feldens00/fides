@@ -1,28 +1,31 @@
+
+
 <?php foreach ($teams as $tm) { 
   $id_team = $tm->id_team;
   $name_team = $tm->name_team;
-}?>
+}
+   if ($formerror) {
+      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+    }
+ 
+?>
 
 <div class="row">
-    <div class="col-sm-10 text-center div-barra">
+    <div class="col-sm-10 text-center">
      
-        <div class="col-sm-10" >
+        <div class="col-sm-10 div-barra" >
             <h2>
                 <font color="#d9d9d9">Equipe <?= $name_team;?> 
                 </font>
            </h2> 
     </div>
+
       <div class="col-sm-5 div-mold" style="margin-top:50px;">
         <div class="col-sm-12">
            <h4><font color="#d9d9d9">Pessoas</font</h4>
         </div>
          
        
-      <?php 
-         if ($formerror) {
-                echo "<p><font color='#d9d9d9'>".$formerror."</font></p>";
-        }
-      ?>    
         <div class="col-sm-12">
           <form action="<?= base_url('delete-team-people/'.$id_team)?>" method="POST">
             <div class="table-responsive">
@@ -38,7 +41,7 @@
                  <?php foreach ($peoples as $p) { ?> 
                   <tr>
                     <td><font color="#d9d9d9"><?= $p->id_people;?></font></td>
-                    <td><font color="#d9d9d9"><?= $p->name_people;?></font></td>
+                    <td ><font color="#d9d9d9"><?= $p->name_people;?></font></td>
                      <td align="center" width="70">
                             <input type="checkbox" name="selecao[]" value="<?=$p->id_people;?>"/>
                     </td>
@@ -56,7 +59,7 @@
 
          <div class="col-sm-5 div-mold" style="margin-top:50px;">
            <div class="col-sm-12">
-             <h4><font color="#d9d9d9">Equipes</font</h4>
+             <h4><font color="#d9d9d9">Eventos</font</h4>
           </div>
          
           <div class="col-sm-12">

@@ -39,6 +39,14 @@
       -webkit-border-radius:7px;
     }
     
+    .div-mold2{
+      background:#333;
+      margin:10px;  
+      
+      padding:10px;
+      -moz-border-radius:7px;
+      -webkit-border-radius:7px;
+    }
     .div-barra {
       
       border-bottom-width: 2px; 
@@ -47,6 +55,14 @@
       padding-bottom:20px;
     }
     
+    .div-barra2 {
+      
+      border-bottom-width: 2px; 
+      border-bottom-style: solid; 
+      border-bottom-color:#333;
+      padding-bottom:20px;
+    }
+
     .background-dark{
        background-color: #333;
     }

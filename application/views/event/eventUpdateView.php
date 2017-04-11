@@ -1,11 +1,13 @@
+
+
+<?php 
+      if ($formerror) {
+      echo ("<div class=' col-sm-3 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+    }
+    ?>    
 <div class="row">
   <div class="col-sm-10">
-      <h2><font color="#d9d9d9">Alterar Evento</font></h2>
-    <?php 
-      if ($formerror) {
-        echo "<p><font color='#d9d9d9'>".$formerror."</font></p>";
-      }
-    ?>    
+     <h2><font color="#d9d9d9">Alterar Evento</font></h2>
     <form action="<?= base_url('update-event');?>" method="POST">
       
       <?php
@@ -14,6 +16,7 @@
           
       <input type="hidden" class="form-control" name="updateEventId" value="<?= $ev->id_event; ?>">
       <div class="form-group">
+
         <label for="name"><font color="#d9d9d9">* Nome:</font></label>
         <input type="text" class="form-control" name="updateEventName" 
         placeholder="Digite o nome do evento" value="<?= $ev->name_event; ?>">

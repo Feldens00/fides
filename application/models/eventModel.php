@@ -31,40 +31,7 @@ class eventModel extends CI_Model {
 		
 	}
 
-	public function getSchedule($event){
-		
-		$this->db->select('*');    
-		$this->db->join('events', 'schedule.id_event = events.id_event','inner');
-		$this->db->where('schedule.id_event', $event);
-		$this->db->limit(1);
-	    $schedule = $this->db->get('schedule')->result();
-		
-		foreach ($schedule as $sc) {
-			$id_schedule = $sc->id_schedule;
-			$id_event = $sc->id_event;
-		}
-
-		$sArray = array(
-				'id_schedule' => $id_schedule,
-				'id_event' => $id_event
-				);
-
-
-		if (empty($schedule) ) {
-			
-			$this->db->insert('schedule', $event);
-		}else{
-			$this->db->where('id_event', $event);
-			$this->db->update('schedule', $sArray);
-		}
-
-		$this->db->select('*');    
-		$this->db->join('events', 'schedule.id_event = events.id_event','inner');
-		$this->db->where('schedule.id_event', $event);
-		$this->db->limit(1);
-	    return $this->db->get('schedule');
-	}
-
+	
 	public function get(){
 		$this->db->order_by('name_entitie','asc');
 		return $this->db->get($this->table)->result_array();
@@ -106,7 +73,6 @@ class eventModel extends CI_Model {
 
 
 
-
 	public function create_eventPeople($id_event,$peopleArray){
 	for ( $i = 0, $total = count( $peopleArray ); $i < $total; $i++ )
 		{
@@ -118,6 +84,11 @@ class eventModel extends CI_Model {
 					
 		}
 	}
+
+
+	
+
+
 
 	public function delete_eventPeople($id_event,$peopleArray){
 	for ( $i = 0, $total = count( $peopleArray ); $i < $total; $i++ )

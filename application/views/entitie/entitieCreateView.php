@@ -3,8 +3,8 @@
   <div class="col-sm-10">
     <h2><font color="#d9d9d9">Adicionar Entidade</font></h2> 
   <?php 
-    if ($formerror) {
-      echo "<p>".$formerror."</p>";
+   if ($formerror) {
+      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
     }
   ?>    
   <form action="create-entitie" method="POST">

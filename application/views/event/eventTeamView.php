@@ -1,7 +1,13 @@
  <?php foreach ($events as $ev) { 
     $name_event = $ev->name_event;
     $id_event = $ev->id_event;
-  }?>
+  }
+
+  if ($formerror) {
+      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+    }
+
+  ?>
     
   <div class="row">
     <div class="col-sm-10 text-center div-barra">
@@ -15,11 +21,7 @@
 
     </div>
       <div class="col-sm-10 div-mold" style="margin-top:50px;">
-      <?php 
-         if ($formerror) {
-                echo "<p><font color='#d9d9d9'>".$formerror."</font></p>";
-        }
-      ?>    
+     
        <form action="<?= base_url('delete-event-team/'.$id_event)?>" method="POST">
           <div class="table-responsive">
              <table class="table table-condesed">

@@ -1,7 +1,13 @@
 <?php foreach ($teams as $tm) { 
   $id_team = $tm->id_team;
   $name_team = $tm->name_team;
-}?> 
+}
+
+   if ($formerror) {
+      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+    }
+
+?> 
 
   <div class="row">
     <div class="col-sm-10 text-center div-barra">
@@ -13,11 +19,7 @@
 
     </div>
       <div class="col-sm-10 div-mold" style="margin-top:50px;">
-      <?php 
-         if ($formerror) {
-                echo "<p><font color='#d9d9d9'>".$formerror."</font></p>";
-        }
-      ?>    
+        
        <form action="<?= base_url('create-team-people/'.$id_team)?>" method="POST">
           <div class="table-responsive">
              <table class="table table-condesed">

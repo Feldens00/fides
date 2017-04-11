@@ -17,14 +17,14 @@
             <div id=divPeoples class="col-md-3 div-mold"> 
               <h2><font color="#d9d9d9"><?= $pp->name_people; ?></font></h2>
 
-               <a href="<?= base_url('update-people-form/'.$pp->id_people)?>">
-            <button type="button" class="btn btn-default">
-                  <span class="glyphicon glyphicon-pencil">
-            </button>
-          </a>
-        <button type="button" class="btn btn-primary delPeople" data-id="<?php echo $pp->id_people; ?>" >  
-           <span class="glyphicon glyphicon-trash">
-        </button>
+                     <a href="<?= base_url('update-people-form/'.$pp->id_people)?>">
+                          <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-pencil">
+                          </button>
+                      </a>
+                    <button type="button" class="btn btn-primary delPeople" data-id="<?php echo $pp->id_people; ?>" >  
+                       <span class="glyphicon glyphicon-trash">
+                    </button>
             </div>
         <?php } ?>  
       </div>

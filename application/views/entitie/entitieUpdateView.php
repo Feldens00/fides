@@ -3,8 +3,8 @@
   <div class="col-sm-10">
     <h2><font color="#d9d9d9">Alterar Entidade</font></h2> 
   <?php 
-    if ($formerror) {
-      echo "<p><font color='#d9d9d9'>".$formerror."</font></p>";
+  if ($formerror) {
+      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
     }
   ?>    
   <form action="<?= base_url('update-entitie');?>" method="POST">

@@ -10,6 +10,7 @@ class eventController extends CI_Controller {
 		$this->load->model('peopleModel');
 		$this->load->model('entitieModel');
 		$this->load->model('teamModel');
+		$this->load->model('activitieModel');
 	}
 
 	public function index()
@@ -108,7 +109,7 @@ class eventController extends CI_Controller {
 		if($this->form_validation->run()==FALSE){
 				$dados['formerror']=validation_errors();
 			 	$id=$this->input->post('updateEventId');
-				$dados['events'] = $this->db->getOne($id)->result();
+				$dados['events'] = $this->eventModel->getOne($id)->result();
 			    $this->template->load('template/templateHeader', 'event/eventUpdateView', $dados);
 
 			
@@ -329,22 +330,12 @@ class eventController extends CI_Controller {
 		
 	}
 
-	//cronograma 
+	//cronogramas e atividades
 
-	public function call_eventScheduleCreateView($id_event){
-
-		$dados['formerror']= NULL;
-		
-		$dados['events'] = $this->eventModel->getOne($id_event)->result();
-
-		$this->db->select('*');
-		$dados['activities'] = $this->db->get('activities')->result();
-
-		$dados['schedule']= $this->eventModel->getSchedule($id_event)->result();
-
-
-
-		$this->template->load('template/templateHeader', 'event/eventScheduleCreateView',$dados);
-	}
 	
-}
+	
+	
+
+	
+
+}	

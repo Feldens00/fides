@@ -1,12 +1,12 @@
-
+ <?php 
+   if ($formerror) {
+      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+    }
+  ?>     
   <div class="row">
     <div class="col-sm-10">
         <h2><font color="#d9d9d9">Adicionar Equipe</font></h2>
-        <?php 
-          if ($formerror) {
-            echo "<p><font color='#d9d9d9'>".$formerror."</font></p>";
-          }
-        ?>    
+     
         <form action="create-team" method="POST">
           <div class="form-group">
             <label for="name"><font color="#d9d9d9">* Nome:</font></label>
