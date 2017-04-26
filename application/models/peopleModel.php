@@ -30,8 +30,11 @@ class peopleModel extends CI_Model {
 	}
 
 	public function get(){
+		$this->db->select('');    
+		$this->db->join('states', 'peoples.id_state = states.id_state','inner');
+		$this->db->join('cities', 'peoples.id_city = cities.id_city','inner');
 		$this->db->order_by('name_people','asc');
-		return $this->db->get($this->table)->result_array();
+		return $this->db->get($this->table);
 	}
 
 	function getEstados() {
@@ -53,7 +56,7 @@ class peopleModel extends CI_Model {
 
 	function getNotEv($id_event) {
 
-	$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_events where events_id_event = '".$id_event."')"; 
+	$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_events where events_id_event = '".$id_event."')  and id_people not in (select peoples_id_people from peoples_teams )"; 
 			
 			return $this->db->query($sql)->result();
 
@@ -62,7 +65,7 @@ class peopleModel extends CI_Model {
 	
 	function getNotTm($id_team) {
 
-	$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_teams where teams_id_team = '".$id_team."')"; 
+	$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_teams where teams_id_team = '".$id_team."') and id_people not in (select peoples_id_people from peoples_teams ) "; 
 			
 			return $this->db->query($sql)->result();
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Fides</title>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css');?>">
@@ -18,23 +18,26 @@
   </style>
 </head>
 <body>
-<div class="container">
 	<div class="col-sm-12">
-		 <?php foreach ($events as $ev) { ?> 
-		<h2>Cronograma do Evento <?= $ev->name_event;?></h2>
-		<?php } ?>
+		<h2>Atividades</h2>
 	</div>
-	
-	<div class="col-sm-12">
-	<h3>Atividades</h3>
-	<?php foreach ($all as $al) { ?> 
-		<div class="col-sm-8 div-barra" >
-			<div class="col-sm-12"><h4>Nome: <?= $al->name_activitie;?></h4></div>
-			<div class="col-sm-12"><h4>Descrição: <?= $al->description;?></h4></div>
-			<div class="col-sm-12"><h4>Horario: <?= $al->horary;?></h4></div>
-		</div>
+	 <?php foreach ($all as $act) { ?>
+		
+		 <table class=" table table-bordered">
+		    <tbody>
+		      <tr>
+		        <td><h6>Nome: <?= $act->name_activitie;?></h6></td>
+		        <td>Descrição: <?= $act->description;?></td>
+			  </tr>
+		
+		      <tr>
+		        <td><h6>Horário: <?= $act->horary;?></h6></td>
+		      </tr>
+		    </tbody>
+		  </table>
+		
+
+	</div>
 	<?php } ?>
-	</div>
-</div>
 </body>
 </html>

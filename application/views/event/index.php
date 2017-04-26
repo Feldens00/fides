@@ -75,6 +75,9 @@ function mostrar(id){
                         </div>
 
                          
+                        <div style="margin-top:10px;" class="col-sm-6 text-center">
+                           <a  href="<?= base_url('print-quadrante/'.$ev->id_event)?>"> <i class="material-icons">print</i>Quadrante</a>
+                        </div>
                    
                   <?php echo('</div>'); ?>
             </div>

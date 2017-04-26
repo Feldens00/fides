@@ -38,17 +38,21 @@ class activitieController extends CI_Controller {
 
 
 
-		$this->template->load('template/templateHeader', 'event/eventScheduleCreateView',$dados);
+		$this->template->load('template/templateHeader', 'activitie/scheduleCreateView',$dados);
 	}
 
-	public function create_scheduleActivitie($id_schedule,$id_event){
+	public function create_scheduleActivitie(){
 
-		$this->form_validation->set_rules('selecao[]', 'Atividades', 'required');
-		$activitieArray = $this->input->post('selecao');
+		$id_event = $this->input->post('activitieEvent');
+	
+		$this->form_validation->set_rules('activitieHorary','Hora','required');
+
+		$horary = $this->input->post('activitieHorary');
+		$horary = $horary.':00';
 
 		if($this->form_validation->run()==FALSE){
 
-				$dados['formerror']= ' Selecione uma atividade na area "Atividades em nosso banco de dados" para adicionar ao cronograma';
+				$dados['formerror']= validation_errors();
 		
 				$dados['events'] = $this->eventModel->getOne($id_event)->result();
 
@@ -61,13 +65,19 @@ class activitieController extends CI_Controller {
 
 
 
-				$this->template->load('template/templateHeader', 'event/eventScheduleCreateView',$dados);
+				$this->template->load('template/templateHeader', 'activitie/scheduleCreateView',$dados);
 			
 		}else{	
-				
-				
 
-			$this->activitieModel->create_scheduleActivitie($id_schedule,$activitieArray);
+			$schedule = array(
+				
+					'schedule_id_schedule' => $this->input->post('activitieSchedule'),
+					'activities_id_activitie' => $this->input->post('activitieId'),
+					'horary' => $horary
+			
+					);
+
+			$this->activitieModel->create_scheduleActivitie($schedule);
 		
 			redirect('form-event-schedule/'.$id_event);
 		
@@ -83,7 +93,7 @@ class activitieController extends CI_Controller {
 				
 					'name_activitie' => $this->input->post('activitieName'),
 					'description' => $this->input->post('activitieDescription'),
-					'horary' => $this->input->post('activitieHorary')
+					
 			
 					);
 
@@ -113,7 +123,7 @@ class activitieController extends CI_Controller {
 
 
 
-				$this->template->load('template/templateHeader', 'event/eventScheduleCreateView',$dados);
+				$this->template->load('template/templateHeader', 'activitie/scheduleCreateView',$dados);
 			
 		}else{	
 				
@@ -144,37 +154,11 @@ class activitieController extends CI_Controller {
 		public function update_form($schedule){
 		$dados['formerror']=NULL;
 		$dados['activities']=$this->activitieModel->getOne($schedule)->result();
-		$this->template->load('template/templateHeader', 'event/activitieUpdateView', $dados);
+		$this->template->load('template/templateHeader', 'activitie/activitieUpdateView', $dados);
 		
 	}
 
-	public function printView($schedule,$event){
-	$dados['events']=$this->eventModel->getOne($event)->result();
-	$dados['all']=$this->activitieModel->getAll($schedule)->result();
-	$this->load->view('event/printView',$dados);
-
-
-	// Instancia a classe mPDF
-	$mpdf = new mPDF();
-	// Ao invés de imprimir a view 'welcome_message' na tela, passa o código
-	// HTML dela para a variável $html
-	$html = $this->load->view('event/printView',$dados,true);
-	// Define um Cabeçalho para o arquivo PDF
-	$mpdf->SetHeader('Cronograma');
-	// Define um rodapé para o arquivo PDF, nesse caso inserindo o número da
-	// página através da pseudo-variável PAGENO
-	$mpdf->SetFooter('{PAGENO}');
-	// Insere o conteúdo da variável $html no arquivo PDF
-	$mpdf->writeHTML($html);
-	// Cria uma nova página no arquivo
-	//$mpdf->AddPage();
-	// Insere o conteúdo na nova página do arquivo PDF
-	//$mpdf->WriteHTML('<p><b>Minha nova página no arquivo PDF</b></p>');
-	// Gera o arquivo PDF
-	$mpdf->Output();
-
-	}
-
+	
 	public function update(){
 	
 
@@ -186,7 +170,7 @@ class activitieController extends CI_Controller {
 				$dados['formerror']=validation_errors();
 			 	$id=$this->input->post('updateActivitieId');
 				$dados['activities']=$this->activitieModel->getOne($id)->result();
-		$this->template->load('template/templateHeader', 'event/activitieUpdateView', $dados);
+		$this->template->load('template/templateHeader', 'activitie/activitieUpdateView', $dados);
 
 			
 		}else{
@@ -205,5 +189,35 @@ class activitieController extends CI_Controller {
 					redirect('event');
 		}
 	}
+
+	public function printView($schedule,$event){
+	$return = $this->eventModel->getOne($event)->result();
+	$dados['all']=$this->activitieModel->getAll($schedule)->result();
+	foreach ($return as $ev) {
+		$name_event = $ev->name_event;
+	}
+
+
+	// Instancia a classe mPDF
+	$mpdf = new mPDF();
+	// Ao invés de imprimir a view 'welcome_message' na tela, passa o código
+	// HTML dela para a variável $html
+	$html = $this->load->view('event/printView',$dados,true);
+	// Define um Cabeçalho para o arquivo PDF
+	$mpdf->SetHeader('Cronograma do Evento '.$name_event);
+	// Define um rodapé para o arquivo PDF, nesse caso inserindo o número da
+	// página através da pseudo-variável PAGENO
+	$mpdf->SetFooter('{PAGENO}');
+	// Insere o conteúdo da variável $html no arquivo PDF
+	$mpdf->writeHTML($html);
+	// Cria uma nova página no arquivo
+	//$mpdf->AddPage();
+	// Insere o conteúdo na nova página do arquivo PDF
+	//$mpdf->WriteHTML('<p><b>Minha nova página no arquivo PDF</b></p>');
+	// Gera o arquivo PDF
+	$mpdf->Output();
+
+	}
+
 
 }	

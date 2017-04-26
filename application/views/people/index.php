@@ -1,4 +1,14 @@
+<script type="text/javascript"> 
 
+//função do toggle 
+function mostrar(id){
+ 
+    
+        $("#a"+id).toggle();
+    
+}
+
+</script>
 
   <div class="row">
     <div class="col-sm-10 text-center div-barra">
@@ -25,6 +35,44 @@
                     <button type="button" class="btn btn-primary delPeople" data-id="<?php echo $pp->id_people; ?>" >  
                        <span class="glyphicon glyphicon-trash">
                     </button>
+
+
+                   <?php 
+ 
+                    echo (" <div class='col-sm-12 text-center'><i class='material-icons'  id='b".$pp->id_people."'  onclick='mostrar(".$pp->id_people.")' >keyboard_arrow_down</i></div>");
+                    echo (" <div class='col-sm-12' id='a".$pp->id_people."' style='display: none; margin-top:5px;'>");
+                    ?>
+                 
+                        <div class="col-sm-6">
+                          <h6><font color="#d9d9d9">Data de Nascimento: <?= $pp->birth; ?></font></h6>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <h6><font color="#d9d9d9">Endereço: <?= $pp->adress; ?></font></h6>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <h6><font color="#d9d9d9">CEP: <?= $pp->cep; ?></font></h6>
+                        </div>
+
+                         
+                        <div class="col-sm-6">
+                          <h6><font color="#d9d9d9">Telefone: <?= $pp->phone; ?></font></h6>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <h6><font color="#d9d9d9">Bairro: <?= $pp->neighborhood; ?></font></h6>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <h6><font color="#d9d9d9">Cidade: <?= $pp->name_city; ?></font></h6>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <h6><font color="#d9d9d9">Estado: <?= $pp->name_state; ?></font></h6>
+                        </div>
+                   
+                    <?php echo('</div>'); ?>
             </div>
         <?php } ?>  
       </div>

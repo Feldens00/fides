@@ -167,7 +167,7 @@ class eventController extends CI_Controller {
 		
 		$dados['events'] = $this->eventModel->getOne($id_event)->result();
 
-		$this->db->select('*');
+		
 		$dados['peoples'] = $this->peopleModel->getNotEv($id_event);
 
 		 $this->template->load('template/templateHeader', 'event/eventPeopleCreateView',$dados);
@@ -330,8 +330,37 @@ class eventController extends CI_Controller {
 		
 	}
 
-	//cronogramas e atividades
+	public function print_quadrante($event){
 
+	$dados['teams']=$this->eventModel->getTE($event)->result();
+	$return = $this->eventModel->getOne($event)->result();
+	$dados['peoplesEvents']=$this->eventModel->getPE($event)->result();
+	$dados['peoplesTeams']=$this->eventModel->getPT($event)->result();
+
+	foreach ($return as $ev) {
+		$name_event = $ev->name_event;
+	}
+
+	// Instancia a classe mPDF
+	$mpdf = new mPDF();
+	// Ao invés de imprimir a view 'welcome_message' na tela, passa o código
+	// HTML dela para a variável $html
+	$html = $this->load->view('event/printQuadranteView',$dados,true);
+	// Define um Cabeçalho para o arquivo PDF
+	$mpdf->SetHeader('Quadrante do Evento '.$name_event);
+	// Define um rodapé para o arquivo PDF, nesse caso inserindo o número da
+	// página através da pseudo-variável PAGENO
+	$mpdf->SetFooter('{PAGENO}');
+	// Insere o conteúdo da variável $html no arquivo PDF
+	$mpdf->writeHTML($html);
+	// Cria uma nova página no arquivo
+	//$mpdf->AddPage();
+	// Insere o conteúdo na nova página do arquivo PDF
+	//$mpdf->WriteHTML('<p><b>Minha nova página no arquivo PDF</b></p>');
+	// Gera o arquivo PDF
+	$mpdf->Output();
+
+	}
 	
 	
 	

@@ -73,6 +73,7 @@ $route['delete-event-people/(:num)'] = 'eventController/delete_eventPeople/$1';
 $route['create-event-team/(:num)'] = 'eventController/create_eventTeam/$1';
 $route['event-team/(:num)'] = 'eventController/call_eventTeam/$1';
 $route['delete-event-team/(:num)'] = 'eventController/delete_eventTeam/$1';
+$route['print-quadrante/(:num)'] = 'eventController/print_quadrante/$1';
 
 
 
@@ -82,7 +83,7 @@ $route['delete-event-team/(:num)'] = 'eventController/delete_eventTeam/$1';
 $route['form-event-schedule/(:num)'] = 'activitieController/call_eventScheduleCreateView/$1';
 $route['create-activitie/(:num)'] = 'activitieController/create_activitie/$1';
 $route['event-schedule/(:num)'] = 'activitieController/call_eventSchedule/$1';
-$route['create-schedule-activitie/(:num)/(:any)'] = 'activitieController/create_scheduleActivitie/$1/$2';
+$route['create-schedule-activitie'] = 'activitieController/create_scheduleActivitie';
 $route['delete-schedule-activitie/(:num)/(:any)'] = 'activitieController/delete_scheduleActivitie/$1/$2';
 $route['update-activitie-form/(:num)'] = 'activitieController/update_form/$1';
 $route['update-activitie'] = 'activitieController/update';

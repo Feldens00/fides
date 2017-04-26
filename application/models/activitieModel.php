@@ -28,13 +28,24 @@ class activitieModel extends CI_Model
 	}
 
 	public function getSchedule($event){
-		
+	
 		$this->db->select('*');    
 		$this->db->join('events', 'schedule.id_event = events.id_event','inner');
 		$this->db->where('schedule.id_event', $event);
 		$this->db->limit(1);
 	    $schedule = $this->db->get('schedule')->result();
 		
+
+		if (empty($schedule) ) {
+			$sArray = array(
+				
+				'id_event' => $event
+				);
+
+			$this->db->insert('schedule',$sArray);
+		}else{
+
+
 		foreach ($schedule as $sc) {
 			$id_schedule = $sc->id_schedule;
 			$id_event = $sc->id_event;
@@ -45,18 +56,13 @@ class activitieModel extends CI_Model
 				'id_event' => $id_event
 				);
 
-
-		if (empty($schedule) ) {
-			
-			$this->db->insert('schedule', $event);
-		}else{
 			$this->db->where('id_event', $event);
 			$this->db->update('schedule', $sArray);
 		}
 
 		$this->db->select('*');    
 		$this->db->join('events', 'schedule.id_event = events.id_event','inner');
-		$this->db->where('schedule.id_event', $event);
+		$this->db->where('schedule.id_event',$event);
 		$this->db->limit(1);
 	    return $this->db->get('schedule');
 	}
@@ -76,16 +82,37 @@ class activitieModel extends CI_Model
 	return $this->db->insert('activities', $activitie);
 	}
 
-	public function create_scheduleActivitie($id_schedule,$activitieArray){
-	for ( $i = 0, $total = count( $activitieArray ); $i < $total; $i++ )
-		{
-			$sql = "INSERT INTO  activities_schedule (schedule_id_schedule, activities_id_activitie ) VALUES (".$id_schedule.",'".$activitieArray[$i]."') ON DUPLICATE KEY UPDATE activities_id_activitie= ".$activitieArray[$i]."; "; 
-			
-			$this->db->query($sql);
+	public function create_scheduleActivitie($schedule){
 
-						
-					
+		$where = "schedule_id_schedule=".$schedule['schedule_id_schedule']." AND activities_id_activitie = ".$schedule['activities_id_activitie']." ";
+
+		$this->db->select('*');   
+		$this->db->from('activities_schedule');  
+		$this->db->where($where);
+		$this->db->limit(1);
+	   	$retorno = $this->db->get()->result();
+		
+		if (empty($retorno)){
+			return $this->db->insert('activities_schedule', $schedule);
+			
+		}else{
+			
+			foreach ($retorno as $r) {
+			$id_schedule = $r->schedule_id_schedule;
+			$id_activitie = $r->activities_id_activitie;
+			$horary = $r->horary;
+			}
+
+			if (($schedule['schedule_id_schedule'] == $id_schedule) AND ($schedule['activities_id_activitie'] == $id_activitie) AND
+			 ($schedule['horary'] != $horary)) {
+
+
+				$this->db->where($where);
+				return $this->db->update('activities_schedule', $schedule);
+			}
 		}
+
+	
 	}
 
 	public function delete_scheduleActivitie($id_schedule,$activitieArray){
