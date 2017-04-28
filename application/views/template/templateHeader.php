@@ -29,7 +29,14 @@
 
       height: 100%;
     }
-
+    .painel-event{
+      margin-top: 20px;
+      background:white;
+      
+      padding:10px;
+      -moz-border-radius:7px;
+      -webkit-border-radius:7px;
+    }
     .div-mold{
       background:#555;
       margin:10px;  
@@ -95,8 +102,20 @@
           </h4>
         </i>
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="<?= base_url(''); ?>"><i class="material-icons">account_balance</i> Entidades</a></li>
-          <li><a href="<?= base_url('event'); ?>"> <i class="material-icons">event</i> Eventos</a></li>
+          <li class="active"><a href="<?= base_url('event'); ?>"><i class="material-icons">account_balance</i> Entidades</a></li>
+          <li></li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown"> 
+                <i class="material-icons">event</i> 
+                Eventos  <span class="caret"></span>
+              </a> 
+                        
+            <ul class="dropdown-menu">
+              <li> <a  href="<?= base_url('event'); ?>">Home Eventos</a></li>
+              <li><a href="<?= base_url('activitie'); ?>">Atividades</a></li>
+              <li><a href="<?= base_url('product'); ?>">Produtos</a></li>
+            </ul>
+          </li>
           <li><a href="<?= base_url('team'); ?>"> <i class="material-icons">group</i> Equipes</a></li>
           <li><a href="<?= base_url('people'); ?>"> <i class="material-icons">person</i> Pessoas</a></li>
         </ul><br>

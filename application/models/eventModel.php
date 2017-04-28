@@ -68,8 +68,12 @@ class eventModel extends CI_Model {
 	}
 	
 	public function get(){
-		$this->db->order_by('name_entitie','asc');
-		return $this->db->get($this->table)->result_array();
+		$this->db->select('*');   
+		$this->db->join('states', 'events.id_state = states.id_state','inner');
+		$this->db->join('cities', 'events.id_city = cities.id_city','inner'); 
+		$this->db->join('entities', 'events.id_entitie = entities.id_entitie','inner');
+		$this->db->order_by('name_event','asc');
+		return $this->db->get($this->table);
 	}
 
 	function getEstados() {

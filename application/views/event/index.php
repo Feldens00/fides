@@ -1,12 +1,113 @@
 
 <script type="text/javascript"> 
 
+$(document).ready( function() {
+ jQuery(function($){
+      $("#fone").mask("(99) 99999-9999");
+       $("#cep").mask("99999-999");
+       $("#money").mask("99,99");
+    });
+  });
+
+  
+$(document).ready(function(){
+   var idEvent;
+     $('.delEvent').click(function(){
+      idEvent = $(this).data('id');
+       $('#deleteEvent').modal('show');
+      });
+
+      $("#delete_event").on("click", function(){
+        $.ajax({
+          url: "<?php echo site_url('/eventController/delete'); ?>",
+          type: "POST",
+          data: {id_event: idEvent},
+          success: function(data){
+            window.location.reload();
+            if(!data){
+             console.log(data);
+             
+             
+            }else{
+              console.log(data);
+
+            }
+          },
+          error: function(data){
+            console.log(data);
+           
+          }
+        });
+      }); 
+ }); 
+
 //função do toggle 
-function mostrar(id){
- 
-    
-        $("#a"+id).toggle();
-    
+function mostrarA(id){
+        div_a ="div_a"+id;
+        div_icone_a ="div_icone_a"+id;
+        div_icone_b ="div_icone_b"+id;
+        div_icone_c ="div_icone_c"+id;
+      
+    if ((document.getElementById(div_a).style.display = "none")&&(  document.getElementById(div_icone_b).style.display == "block")&&(  document.getElementById(div_icone_c).style.display == "block")){
+            
+            document.getElementById(div_a).style.display = "block";
+            document.getElementById(div_icone_b).style.display = "none";
+            document.getElementById(div_icone_c).style.display = "none";
+            document.getElementById(div_icone_a).className = 'col-sm-12 text-center';
+
+    }else if((document.getElementById(div_a).style.display = "block")&&( document.getElementById(div_icone_b).style.display == "none")&&( document.getElementById(div_icone_c).style.display == "none")) {
+
+             document.getElementById(div_a).style.display = "none";
+             document.getElementById(div_icone_b).style.display = "block";
+             document.getElementById(div_icone_c).style.display = "block";
+             document.getElementById(div_icone_a).className = 'col-sm-4 text-center';
+       }
+}
+
+function mostrarB(id){
+        div_b ="div_b"+id;
+        div_icone_b ="div_icone_b"+id;
+        div_icone_c ="div_icone_c"+id;
+        div_icone_a ="div_icone_a"+id;
+        
+      
+    if ((document.getElementById(div_b).style.display = "none")&&(  document.getElementById(div_icone_a).style.display == "block")&&(  document.getElementById(div_icone_c).style.display == "block")){
+
+            document.getElementById(div_b).style.display = "block";
+            document.getElementById(div_icone_a).style.display = "none";
+            document.getElementById(div_icone_c).style.display = "none";
+            document.getElementById(div_icone_b).className = 'col-sm-12 text-center';
+
+
+    }else if((document.getElementById(div_b).style.display = "block")&&( document.getElementById(div_icone_a).style.display == "none")&&(  document.getElementById(div_icone_c).style.display == "none")) {
+              
+             document.getElementById(div_b).style.display = "none";
+             document.getElementById(div_icone_a).style.display = "block";
+             document.getElementById(div_icone_c).style.display = "block";
+             document.getElementById(div_icone_b).className = 'col-sm-4 text-center';
+        } 
+}
+
+function mostrarC(id){
+        div_c ="div_c"+id;
+        div_icone_c ="div_icone_c"+id;
+        div_icone_a ="div_icone_a"+id;
+        div_icone_b ="div_icone_b"+id;
+      
+    if ((document.getElementById(div_c).style.display = "none")&&(  document.getElementById(div_icone_a).style.display == "block")&&(  document.getElementById(div_icone_b).style.display == "block")){
+
+            document.getElementById(div_c).style.display = "block";
+            document.getElementById(div_icone_a).style.display = "none";
+            document.getElementById(div_icone_b).style.display = "none";
+            document.getElementById(div_icone_c).className = 'col-sm-12 text-center';
+
+    }else if((document.getElementById(div_c).style.display = "block")&&( document.getElementById(div_icone_a).style.display == "none")&&(  document.getElementById(div_icone_b).style.display == "none")) {
+
+             document.getElementById(div_c).style.display = "none";
+             document.getElementById(div_icone_a).style.display = "block";
+             document.getElementById(div_icone_b).style.display = "block";
+             document.getElementById(div_icone_c).className = 'col-sm-4 text-center';
+       }
 }
 
 </script>
@@ -55,31 +156,110 @@ function mostrar(id){
                     </a>
                   </div>  
 
-
+                  <div class="col-sm-12 painel-event" >
                    <?php 
  
-                    echo (" <div class='col-sm-12 text-center'><i class='material-icons'  id='b".$ev->id_event."'  onclick='mostrar(".$ev->id_event.")' >keyboard_arrow_down</i></div>");
-                    echo (" <div class='col-sm-12 text-center' id='a".$ev->id_event."' style='display: none; margin-top:5px;'>");
+                    
+                    echo (" <div id='div_icone_a".$ev->id_event."' onclick='mostrarA(".$ev->id_event.")' class='col-sm-4 text-center' style='display: block; background:#555;' ><font color='white'><i class='material-icons' style='margin-top:5px;'>keyboard_arrow_down</i></font></div>");
+                    echo (" <div class='col-sm-12 text-center'id='div_a".$ev->id_event."'  style='display: none; margin-top:5px;'>");
                     ?>
                  
-                        <div class="col-sm-6 text-center">
+                        <div style="margin-top:10px;" class="col-sm-6">
                            <a  href="<?= base_url('event-team/'.$ev->id_event)?>"> <i class="material-icons">group</i> Visualizar Equipes</a>
                         </div>
 
-                        <div class="col-sm-6 text-center">
+                        <div  style="margin-top:10px;" class="col-sm-6">
                            <a  href="<?= base_url('event-people/'.$ev->id_event)?>"> <i class="material-icons">person</i> Visualizar Pessoas</a>
                         </div>
 
-                        <div style="margin-top:10px;" class="col-sm-6 text-center">
+                        <div style="margin-top:10px;" class="col-sm-6">
                            <a  href="<?= base_url('form-event-schedule/'.$ev->id_event)?>"> <i class="material-icons">schedule</i> Cronograma</a>
                         </div>
 
                          
-                        <div style="margin-top:10px;" class="col-sm-6 text-center">
-                           <a  href="<?= base_url('print-quadrante/'.$ev->id_event)?>"> <i class="material-icons">print</i>Quadrante</a>
-                        </div>
+                      <div style="margin-top:10px;" class="col-sm-6">
+                           <a  href="<?= base_url('form-list-product/'.$ev->id_event)?>"><i class="material-icons">shopping_cart</i> Lista de produtos</a>
+                        </div>  
+                      
                    
                   <?php echo('</div>'); ?>
+
+                   <?php 
+ 
+                    echo (" <div id='div_icone_b".$ev->id_event."' onclick='mostrarB(".$ev->id_event.")' class='col-sm-4 text-center' style='display: block;'><i class='material-icons'  style='margin-top:5px;'>print</i></div>");
+                    echo (" <div class='col-sm-12 text-center'id='div_b".$ev->id_event."'  style='display: none; margin-top:5px;'>");
+                    ?>
+                                                           
+                        <div style="margin-top:10px;" class="col-sm-6">
+                           <a  href="<?= base_url('print-quadrante/'.$ev->id_event)?>"><i class="material-icons">description</i>Quadrante</a>
+                        </div>
+
+                        <div style="margin-top:10px;" class="col-sm-6">
+                              <a href="<?= base_url('print/'.$ev->id_event);?>" ><i class="material-icons">description</i>Cronograma</a>
+                        </div>
+                        
+                        <div style="margin-top:10px;" class="col-sm-12">
+                              <a href="<?= base_url('print-list/'.$ev->id_event);?>" ><i class="material-icons">description</i>Lista de Produtos</a>
+                        </div>
+                  <?php echo('</div>'); ?>
+
+                    <?php 
+ 
+                    echo (" <div id='div_icone_c".$ev->id_event."' onclick='mostrarC(".$ev->id_event.")' class='col-sm-4 text-center' style='display: block; background:#428bca;'><font color='white'><i class='material-icons' style='margin-top:5px;'>info_outline</i></font></div>");
+                    echo (" <div class='col-sm-12 text-center'id='div_c".$ev->id_event."'  style='display: none; margin-top:5px;'>");
+                    ?>
+                 
+                        <div class="col-sm-12">
+                          <div class="col-sm-6">
+                            <h6>Data de Inicio: <?= $ev->start_date; ?></h6>
+                          </div>
+
+                          <div class="col-sm-6">
+                            <h6>Data de Encerramento: <?= $ev->end_date; ?></h6>
+                          </div>
+                        </div>
+                        
+                        <div class="col-sm-12">
+                          <div class="col-sm-6">
+                            <h6>Endereço: <?= $ev->adress; ?></h6>
+                          </div>
+
+                          <div class="col-sm-6">
+                            <h6>CEP: <?= $ev->cep; ?></h6>
+                          </div>
+                        </div>
+                        
+                        <div class="col-sm-12">
+                          <div class="col-sm-6">
+                            <h6>Telefone: <?= $ev->phone; ?></h6>
+                          </div>
+
+                          <div class="col-sm-6">
+                            <h6>Bairro: <?= $ev->neighborhood; ?></h6>
+                          </div>
+                        </div>
+                       
+                        <div class="col-sm-12">
+                          <div class="col-sm-4">
+                            <h6>Cidade: <?= $ev->name_city; ?></h6>
+                          </div>
+
+                          <div class="col-sm-4">
+                            <h6>Estado: <?= $ev->name_state; ?></h6>
+                          </div>
+
+                          <div class="col-sm-4">
+                            <h6>Entidade: <?= $ev->name_entitie; ?></h6>
+                          </div>
+                        </div>
+                        
+                      
+                        
+
+                  <?php echo('</div>'); ?>
+
+
+                  </div>
             </div>
         <?php } ?>  
       </div>
@@ -112,34 +292,6 @@ function mostrar(id){
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
 <script type="text/javascript">
-  var idEvent;
-   $('.delEvent').click(function(){
-    idEvent = $(this).data('id');
-     $('#deleteEvent').modal('show');
-    });
-
-    $("#delete_event").on("click", function(){
-      $.ajax({
-        url: "<?php echo site_url('/eventController/delete'); ?>",
-        type: "POST",
-        data: {id_event: idEvent},
-        success: function(data){
-          window.location.reload();
-          if(!data){
-           console.log(data);
-           
-           
-          }else{
-            console.log(data);
-
-          }
-        },
-        error: function(data){
-          console.log(data);
-         
-        }
-      });
-    }); 
-
+ 
    
 </script>

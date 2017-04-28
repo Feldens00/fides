@@ -15,14 +15,22 @@ class activitieModel extends CI_Model
 		
 	}
 
-	public function getAll($schedule){
+	public function get(){
+		
+		$this->db->select('*');
+		$this->db->order_by("name_activitie", "asc");    
+	  	return $this->db->get('activities');
+		
+	}
+
+	public function getAll($id_event){
 		
 		$this->db->select('*'); 
-		$this->db->from('schedule s'); 
-		$this->db->join('activities_schedule as', 'as.schedule_id_schedule = s.id_schedule','inner');
-		$this->db->join('activities ac', 'ac.id_activitie = as.activities_id_activitie','inner');
+		$this->db->from('events ev'); 
+		$this->db->join('schedule s', 'ev.id_event = s.events_id_event','inner');
+		$this->db->join('activities ac', 'ac.id_activitie = s.activities_id_activitie','inner');
 		$this->db->order_by("horary", "asc");
-		$this->db->where('s.id_schedule', $schedule);
+		$this->db->where('ev.id_event', $id_event);
 	   return $this->db->get();
 		
 	}
@@ -71,11 +79,10 @@ class activitieModel extends CI_Model
 	 public function listAE($id_event) {
 
        	$this->db->select('');    
-		$this->db->join('schedule', 'events.id_event = schedule.id_event','inner');
-		$this->db->join('activities_schedule', 'schedule.id_schedule= activities_schedule.schedule_id_schedule','inner');
-		$this->db->join('activities', 'activities_schedule.activities_id_activitie = activities.id_activitie','inner');
+		$this->db->join('schedule', 'activities.id_activitie= schedule.activities_id_activitie','inner');
+		$this->db->join('events', 'schedule.events_id_event = events.id_event','inner');
 		$this->db->where('events.id_event', $id_event);
-	   	return $this->db->get('events');
+	   	return $this->db->get('activities');
     }
 
     public function create_actvitie($activitie){
@@ -84,41 +91,40 @@ class activitieModel extends CI_Model
 
 	public function create_scheduleActivitie($schedule){
 
-		$where = "schedule_id_schedule=".$schedule['schedule_id_schedule']." AND activities_id_activitie = ".$schedule['activities_id_activitie']." ";
+
+		$where = "events_id_event=".$schedule['events_id_event']." AND activities_id_activitie = ".$schedule['activities_id_activitie']." ";
 
 		$this->db->select('*');   
-		$this->db->from('activities_schedule');  
+		$this->db->from('schedule');  
 		$this->db->where($where);
 		$this->db->limit(1);
 	   	$retorno = $this->db->get()->result();
 		
 		if (empty($retorno)){
-			return $this->db->insert('activities_schedule', $schedule);
+			return $this->db->insert('schedule', $schedule);
 			
 		}else{
 			
 			foreach ($retorno as $r) {
-			$id_schedule = $r->schedule_id_schedule;
+			$id_event = $r->events_id_event;
 			$id_activitie = $r->activities_id_activitie;
 			$horary = $r->horary;
 			}
 
-			if (($schedule['schedule_id_schedule'] == $id_schedule) AND ($schedule['activities_id_activitie'] == $id_activitie) AND
+			if (($schedule['events_id_event'] == $id_event) AND ($schedule['activities_id_activitie'] == $id_activitie) AND
 			 ($schedule['horary'] != $horary)) {
 
 
 				$this->db->where($where);
-				return $this->db->update('activities_schedule', $schedule);
+				return $this->db->update('schedule', $schedule);
 			}
 		}
-
-	
 	}
 
-	public function delete_scheduleActivitie($id_schedule,$activitieArray){
+	public function delete_scheduleActivitie($id_event,$activitieArray){
 	for ( $i = 0, $total = count( $activitieArray ); $i < $total; $i++  )
 		{
-			$sql = "DELETE FROM activities_schedule WHERE schedule_id_schedule = ".$id_schedule." AND activities_id_activitie ='".$activitieArray[$i]."'	; "; 
+			$sql = "DELETE FROM schedule WHERE events_id_event = ".$id_event." AND activities_id_activitie ='".$activitieArray[$i]."'	; "; 
 			
 			$this->db->query($sql);
 

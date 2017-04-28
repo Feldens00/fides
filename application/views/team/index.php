@@ -57,7 +57,7 @@ function mostrar(id){
                   </div>  
                    <?php 
  
-                    echo (" <div class='col-sm-12 text-center'><i class='material-icons'  id='b".$tm->id_team."'  onclick='mostrar(".$tm->id_team.")' >keyboard_arrow_down</i></div>");
+                    echo (" <div class='col-sm-12 text-center'><i class='material-icons' onclick='mostrar(".$tm->id_team.")' >keyboard_arrow_down</i></div>");
                     echo (" <div class='col-sm-12 text-center' id='a".$tm->id_team."' style='display: none; margin-top:5px;'>");
                     ?>
                  

@@ -80,14 +80,27 @@ $route['print-quadrante/(:num)'] = 'eventController/print_quadrante/$1';
 
 
 //rotas das Atividades e cronogramas 
-$route['form-event-schedule/(:num)'] = 'activitieController/call_eventScheduleCreateView/$1';
-$route['create-activitie/(:num)'] = 'activitieController/create_activitie/$1';
+$route['activitie'] = 'activitieController';
+$route['form-event-schedule/(:num)'] = 'activitieController/call_ScheduleCreateView/$1';
+$route['create-activitie'] = 'activitieController/create_activitie';
 $route['event-schedule/(:num)'] = 'activitieController/call_eventSchedule/$1';
-$route['create-schedule-activitie'] = 'activitieController/create_scheduleActivitie';
-$route['delete-schedule-activitie/(:num)/(:any)'] = 'activitieController/delete_scheduleActivitie/$1/$2';
+$route['create-schedule-activitie/(:num)'] = 'activitieController/create_scheduleActivitie/$1';
+$route['delete-schedule-activitie/(:num)'] = 'activitieController/delete_scheduleActivitie/$1';
 $route['update-activitie-form/(:num)'] = 'activitieController/update_form/$1';
 $route['update-activitie'] = 'activitieController/update';
-$route['print/(:num)/(:any)'] = 'activitieController/printView/$1/$2';
+$route['print/(:num)'] = 'activitieController/print_schedule/$1';
+
+
+//rotas das Produtos 
+$route['product'] = 'productController';
+$route['form-list-product/(:num)'] = 'productController/call_listCreateView/$1';
+$route['create-product'] = 'productController/create_product';
+$route['event-list-product/(:num)'] = 'productController/call_eventList/$1';
+$route['create-list-product/(:num)'] = 'productController/create_listProduct/$1';
+$route['delete-list-product/(:num)'] = 'productController/delete_listProduct/$1';
+$route['update-product-form/(:num)'] = 'productController/update_form/$1';
+$route['update-product'] = 'productController/update';
+$route['print-list/(:num)'] = 'productController/print_list/$1';
 
 //rotas das Equipes
 $route['create-team-form'] = 'teamController/call_createView';

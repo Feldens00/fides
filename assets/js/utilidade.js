@@ -1,10 +1,11 @@
 // funcao para as mascaras dos inputs
-$(document).ready( function() {
+
  jQuery(function($){
       $("#fone").mask("(99) 99999-9999");
        $("#cep").mask("99999-999");
+       $("#money").mask("99,99");
     });
-  });
+ 
 
 // funcao para retornar as cidades conforme o combo dos estados
 

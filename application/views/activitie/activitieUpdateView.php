@@ -15,7 +15,7 @@
       ?>
           
       <input type="hidden" class="form-control" name="updateActivitieId" value="<?= $ac->id_activitie; ?>">
-      <div class="form-group">
+  
 
       <div class="form-group">
         <label for="name">* Nome:</label>

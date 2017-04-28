@@ -7,23 +7,38 @@ class activitieController extends CI_Controller {
 		parent:: __construct();
 		$this->load->library('form_validation');
 		$this->load->model('eventModel');
-		$this->load->model('peopleModel');
-		$this->load->model('entitieModel');
-		$this->load->model('teamModel');
 		$this->load->model('activitieModel');
 	}
 
 	public function index()
 	{	
-
+		$dados['formerror']= NULL;
 		
+		$dados['activities'] = $this->activitieModel->get()->result();
 		
+		$this->template->load('template/templateHeader', 'activitie/index',$dados);
 	}
 
+	public function create_activitie(){
+
+				
+					$activitie = array(
+				
+					'name_activitie' => $this->input->post('activitieName'),
+					'description' => $this->input->post('activitieDescription'),
+					
+			
+					);
+
+					$this->activitieModel->create_actvitie($activitie);
+				
+					redirect('activitie');
+						 
+	}	
 	
 	//cronogramas e atividades
 
-	public function call_eventScheduleCreateView($id_event){
+	public function call_scheduleCreateView($id_event){
 
 		$dados['formerror']= NULL;
 		
@@ -31,20 +46,15 @@ class activitieController extends CI_Controller {
 
 		$dados['acEvents'] = $this->activitieModel->listAE($id_event)->result();
 
-		$this->db->select('*');
-		$dados['activities'] = $this->db->get('activities')->result();
-
-		$dados['schedule']= $this->activitieModel->getSchedule($id_event)->result();
-
+		$dados['activities'] = $this->activitieModel->get()->result();
 
 
 		$this->template->load('template/templateHeader', 'activitie/scheduleCreateView',$dados);
 	}
 
-	public function create_scheduleActivitie(){
+	public function create_scheduleActivitie($id_event){
 
-		$id_event = $this->input->post('activitieEvent');
-	
+		$this->form_validation->set_rules('activitieId','Atividade','required');
 		$this->form_validation->set_rules('activitieHorary','Hora','required');
 
 		$horary = $this->input->post('activitieHorary');
@@ -58,12 +68,7 @@ class activitieController extends CI_Controller {
 
 				$dados['acEvents'] = $this->activitieModel->listAE($id_event)->result();
 
-				$this->db->select('*');
-				$dados['activities'] = $this->db->get('activities')->result();
-
-				$dados['schedule']= $this->activitieModel->getSchedule($id_event)->result();
-
-
+				$dados['activities'] = $this->activitieModel->get()->result();
 
 				$this->template->load('template/templateHeader', 'activitie/scheduleCreateView',$dados);
 			
@@ -71,12 +76,13 @@ class activitieController extends CI_Controller {
 
 			$schedule = array(
 				
-					'schedule_id_schedule' => $this->input->post('activitieSchedule'),
 					'activities_id_activitie' => $this->input->post('activitieId'),
+					'events_id_event' => $id_event,
 					'horary' => $horary
 			
 					);
 
+			
 			$this->activitieModel->create_scheduleActivitie($schedule);
 		
 			redirect('form-event-schedule/'.$id_event);
@@ -86,42 +92,23 @@ class activitieController extends CI_Controller {
 		 
 	}	
 	
-	public function create_activitie($id_event){
+	
 
-				
-					$activitie = array(
-				
-					'name_activitie' => $this->input->post('activitieName'),
-					'description' => $this->input->post('activitieDescription'),
-					
-			
-					);
-
-					$this->activitieModel->create_actvitie($activitie);
-				
-					redirect('form-event-schedule/'.$id_event);
-						 
-	}	
-
-	public function delete_scheduleActivitie($id_schedule,$id_event){
+	public function delete_scheduleActivitie($id_event){
 			$this->form_validation->set_rules('selecao[]', 'Atividades', 'required');
 			$activitieArray = $this->input->post('selecao');
 
 		if($this->form_validation->run()==FALSE){
 
-				$dados['formerror']= ' Selecione uma atividade na area "Atividades do Cronograma do Evento ..." para remover do cronograma';
+				$dados['formerror']= ' Selecione uma atividade para remover do cronograma';
 				
 				
 				$dados['events'] = $this->eventModel->getOne($id_event)->result();
 
 				$dados['acEvents'] = $this->activitieModel->listAE($id_event)->result();
 
-				$this->db->select('*');
-				$dados['activities'] = $this->db->get('activities')->result();
-
-				$dados['schedule']= $this->activitieModel->getSchedule($id_event)->result();
-
-
+				
+				$dados['activities'] = $this->activitieModel->get()->result();
 
 				$this->template->load('template/templateHeader', 'activitie/scheduleCreateView',$dados);
 			
@@ -129,9 +116,9 @@ class activitieController extends CI_Controller {
 				
 				
 
-			$this->activitieModel->delete_scheduleActivitie($id_schedule,$activitieArray);
+			$this->activitieModel->delete_listProduct($id_event,$activitieArray);
 		
-			redirect('form-event-schedule/'.$id_event);
+			redirect('form-list-product/'.$id_event);
 		
 		}
 		
@@ -148,10 +135,10 @@ class activitieController extends CI_Controller {
 				echo 'Ocorreu algum erro. Tente novamente'; 
 			}
 			
-		}
+	}
 
 
-		public function update_form($schedule){
+	public function update_form($schedule){
 		$dados['formerror']=NULL;
 		$dados['activities']=$this->activitieModel->getOne($schedule)->result();
 		$this->template->load('template/templateHeader', 'activitie/activitieUpdateView', $dados);
@@ -163,7 +150,7 @@ class activitieController extends CI_Controller {
 	
 
    		$this->form_validation->set_rules('updateActivitieName','Nome','required');
-   		$this->form_validation->set_rules('updateActivitieHorary','Hora','required');
+   		
 
 
 		if($this->form_validation->run()==FALSE){
@@ -180,19 +167,18 @@ class activitieController extends CI_Controller {
 					'id_activitie'  =>$this->input->post('updateActivitieId'),
 					'name_activitie' => $this->input->post('updateActivitieName'),
 					'description' => $this->input->post('updateActivitieDescription'),
-					'horary' => $this->input->post('updateActivitieHorary')
 			
 					);
 
 					$this->activitieModel->update($activitie);
 				
-					redirect('event');
+					redirect('activitie');
 		}
 	}
 
-	public function printView($schedule,$event){
-	$return = $this->eventModel->getOne($event)->result();
-	$dados['all']=$this->activitieModel->getAll($schedule)->result();
+	public function print_schedule($id_event){
+	$return = $this->eventModel->getOne($id_event)->result();
+	$dados['all']=$this->activitieModel->getAll($id_event)->result();
 	foreach ($return as $ev) {
 		$name_event = $ev->name_event;
 	}

@@ -16,8 +16,8 @@ class eventController extends CI_Controller {
 	public function index()
 	{	
 
-		$this->db->select('*');
-		$dados['events'] = $this->db->get('events')->result();
+		
+		$dados['events'] = $this->eventModel->get()->result();
 
 		
 		$this->template->load('template/templateHeader','event/index',$dados);

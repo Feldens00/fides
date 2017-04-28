@@ -39,7 +39,7 @@ function mostrar(id){
 
                    <?php 
  
-                    echo (" <div class='col-sm-12 text-center'><i class='material-icons'  id='b".$pp->id_people."'  onclick='mostrar(".$pp->id_people.")' >keyboard_arrow_down</i></div>");
+                    echo (" <div class='col-sm-12 text-center'><i class='material-icons'   onclick='mostrar(".$pp->id_people.")' >keyboard_arrow_down</i></div>");
                     echo (" <div class='col-sm-12' id='a".$pp->id_people."' style='display: none; margin-top:5px;'>");
                     ?>
                  
