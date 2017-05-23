@@ -23,6 +23,14 @@ class productModel extends CI_Model
 		
 	}
 
+	public function getMax($event){
+		
+		$this->db->select('sum(amount) as total');
+		$this->db->join('list_products', 'events.id_event = list_products.events_id_event','inner');
+		$this->db->where('id_event', $event);
+	   return $this->db->get('events');
+		
+	}
 	public function getAll($id_event){
 		
 		$this->db->select('*'); 
@@ -90,9 +98,9 @@ class productModel extends CI_Model
 	}
 
 	public function create_listProduct($product){
+		return $this->db->insert('list_products', $product);
 
-
-		$where = "events_id_event=".$product['events_id_event']." AND products_id_product = ".$product['products_id_product']." ";
+		/*$where = "events_id_event=".$product['events_id_event']." AND products_id_product = ".$product['products_id_product']." ";
 
 		$this->db->select('*');   
 		$this->db->from('list_products');  
@@ -123,7 +131,7 @@ class productModel extends CI_Model
 					}
 
 			}
-		}
+		}*/
 	}
 
 	public function delete_listProduct($id_event,$productArray){

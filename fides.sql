@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 17-Set-2016 às 11:25
--- Versão do servidor: 5.7.11
--- PHP Version: 5.6.19
+-- Generation Time: 08-Maio-2017 às 23:49
+-- Versão do servidor: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,6 +23,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `activities`
+--
+
+CREATE TABLE `activities` (
+  `id_activitie` int(11) NOT NULL,
+  `name_activitie` varchar(45) NOT NULL,
+  `description` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `activities`
+--
+
+INSERT INTO `activities` (`id_activitie`, `name_activitie`, `description`) VALUES
+(6, 'almoço ', 'cozinhar e servir'),
+(10, 'eass', NULL),
+(11, 'tfssgggs', NULL),
+(12, 'kkdkfh', NULL),
+(13, 'teste time ', 'agora vai  ierrrejeuehueh \r\n'),
+(16, 'hora de brincadeiras ', 'exercitar'),
+(17, 'cozinhar', 'comer um pão');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `cities`
 --
 
@@ -36,7 +61,6 @@ CREATE TABLE `cities` (
 --
 -- Extraindo dados da tabela `cities`
 --
-
 
 INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (1, 1, 'AC', 'Acrelandia'),
@@ -163,10 +187,10 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (122, 2, 'AL', 'Murici'),
 (123, 2, 'AL', 'Novo Lino'),
 (124, 2, 'AL', 'Olho D Agua Grande'),
-(125, 2, 'AL', 'Olho D''agua Das Flores'),
-(126, 2, 'AL', 'Olho D''agua De Cima'),
-(127, 2, 'AL', 'Olho D''agua Do Casado'),
-(128, 2, 'AL', 'Olho D''agua Dos Dandanhas'),
+(125, 2, 'AL', 'Olho D\'agua Das Flores'),
+(126, 2, 'AL', 'Olho D\'agua De Cima'),
+(127, 2, 'AL', 'Olho D\'agua Do Casado'),
+(128, 2, 'AL', 'Olho D\'agua Dos Dandanhas'),
 (129, 2, 'AL', 'Olivenca'),
 (130, 2, 'AL', 'Ouro Branco'),
 (131, 2, 'AL', 'Palestina'),
@@ -176,7 +200,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (135, 2, 'AL', 'Pariconha'),
 (136, 2, 'AL', 'Paripueira'),
 (137, 2, 'AL', 'Passo de Camaragibe'),
-(138, 2, 'AL', 'Pau D''arco'),
+(138, 2, 'AL', 'Pau D\'arco'),
 (139, 2, 'AL', 'Pau Ferro'),
 (140, 2, 'AL', 'Paulo Jacinto'),
 (141, 2, 'AL', 'Penedo'),
@@ -216,7 +240,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (175, 2, 'AL', 'Serra do Sao Jose'),
 (176, 2, 'AL', 'Taboleiro do Pinto'),
 (177, 2, 'AL', 'Taboquinha'),
-(178, 2, 'AL', 'Tanque D''arca'),
+(178, 2, 'AL', 'Tanque D\'arca'),
 (179, 2, 'AL', 'Taquarana'),
 (180, 2, 'AL', 'Tatuamunha'),
 (181, 2, 'AL', 'Teotonio Vilela'),
@@ -914,8 +938,8 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (873, 5, 'BA', 'Novo Triunfo'),
 (874, 5, 'BA', 'Nucleo Residencial Pilar'),
 (875, 5, 'BA', 'Nuguacu'),
-(876, 5, 'BA', 'Olhos D''agua Do Seco'),
-(877, 5, 'BA', 'Olhos D''agua Do Serafim'),
+(876, 5, 'BA', 'Olhos D\'agua Do Seco'),
+(877, 5, 'BA', 'Olhos D\'agua Do Serafim'),
 (878, 5, 'BA', 'Olindina'),
 (879, 5, 'BA', 'Oliveira dos Brejinhos'),
 (880, 5, 'BA', 'Olivenca'),
@@ -1558,8 +1582,8 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (1517, 6, 'CE', 'Novo Oriente'),
 (1518, 6, 'CE', 'Ocara'),
 (1519, 6, 'CE', 'Oiticica'),
-(1520, 6, 'CE', 'Olho-d''agua'),
-(1521, 6, 'CE', 'Olho-d''agua Da Bica'),
+(1520, 6, 'CE', 'Olho-d\'agua'),
+(1521, 6, 'CE', 'Olho-d\'agua Da Bica'),
 (1522, 6, 'CE', 'Oliveiras'),
 (1523, 6, 'CE', 'Oros'),
 (1524, 6, 'CE', 'Pacajus'),
@@ -2246,7 +2270,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (2204, 9, 'GO', 'Novo Gama'),
 (2205, 9, 'GO', 'Novo Planalto'),
 (2206, 9, 'GO', 'Olaria do Angico'),
-(2207, 9, 'GO', 'Olhos D''agua'),
+(2207, 9, 'GO', 'Olhos D\'agua'),
 (2208, 9, 'GO', 'Orizona'),
 (2209, 9, 'GO', 'Ouro Verde de Goias'),
 (2210, 9, 'GO', 'Ouroana'),
@@ -2276,7 +2300,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (2234, 9, 'GO', 'Porteirao'),
 (2235, 9, 'GO', 'Portelandia'),
 (2236, 9, 'GO', 'Posse'),
-(2237, 9, 'GO', 'Posse D''abadia'),
+(2237, 9, 'GO', 'Posse D\'abadia'),
 (2238, 9, 'GO', 'Professor Jamil'),
 (2239, 9, 'GO', 'Quirinopolis'),
 (2240, 9, 'GO', 'Registro do Araguaia'),
@@ -2309,7 +2333,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (2267, 9, 'GO', 'Sao Francisco de Goias'),
 (2268, 9, 'GO', 'Sao Gabriel de Goias'),
 (2269, 9, 'GO', 'Sao Joao'),
-(2270, 9, 'GO', 'Sao Joao D''alianca'),
+(2270, 9, 'GO', 'Sao Joao D\'alianca'),
 (2271, 9, 'GO', 'Sao Joao da Parauna'),
 (2272, 9, 'GO', 'Sao Luis de Montes Belos'),
 (2273, 9, 'GO', 'Sao Luiz do Norte'),
@@ -2326,7 +2350,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (2284, 9, 'GO', 'Serranopolis'),
 (2285, 9, 'GO', 'Silvania'),
 (2286, 9, 'GO', 'Simolandia'),
-(2287, 9, 'GO', 'Sitio D''abadia'),
+(2287, 9, 'GO', 'Sitio D\'abadia'),
 (2288, 9, 'GO', 'Sousania'),
 (2289, 9, 'GO', 'Taquaral de Goias'),
 (2290, 9, 'GO', 'Taveira'),
@@ -2505,7 +2529,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (2463, 10, 'MA', 'Nova Colinas'),
 (2464, 10, 'MA', 'Nova Iorque'),
 (2465, 10, 'MA', 'Nova Olinda do Maranhao'),
-(2466, 10, 'MA', 'Olho D''agua Das Cunhas'),
+(2466, 10, 'MA', 'Olho D\'agua Das Cunhas'),
 (2467, 10, 'MA', 'Olinda Nova do Maranhao'),
 (2468, 10, 'MA', 'Paco do Lumiar'),
 (2469, 10, 'MA', 'Palmeirandia'),
@@ -3329,7 +3353,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (3287, 11, 'MG', 'Levinopolis'),
 (3288, 11, 'MG', 'Liberdade'),
 (3289, 11, 'MG', 'Lima Duarte'),
-(3290, 11, 'MG', 'Limeira D''oeste'),
+(3290, 11, 'MG', 'Limeira D\'oeste'),
 (3291, 11, 'MG', 'Limeira de Mantena'),
 (3292, 11, 'MG', 'Lobo Leite'),
 (3293, 11, 'MG', 'Lontra'),
@@ -3478,8 +3502,8 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (3435, 11, 'MG', 'Ocidente'),
 (3436, 11, 'MG', 'Olaria'),
 (3437, 11, 'MG', 'Olegario Maciel'),
-(3438, 11, 'MG', 'Olhos D''agua Do Oeste'),
-(3439, 11, 'MG', 'Olhos-d''agua'),
+(3438, 11, 'MG', 'Olhos D\'agua Do Oeste'),
+(3439, 11, 'MG', 'Olhos-d\'agua'),
 (3440, 11, 'MG', 'Olimpio Campos'),
 (3441, 11, 'MG', 'Olimpio Noronha'),
 (3442, 11, 'MG', 'Oliveira'),
@@ -3586,7 +3610,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (3543, 11, 'MG', 'Pilar'),
 (3544, 11, 'MG', 'Pimenta'),
 (3545, 11, 'MG', 'Pindaibas'),
-(3546, 11, 'MG', 'Pingo-d''agua'),
+(3546, 11, 'MG', 'Pingo-d\'agua'),
 (3547, 11, 'MG', 'Pinheirinhos'),
 (3548, 11, 'MG', 'Pinheiros Altos'),
 (3549, 11, 'MG', 'Pinhotiba'),
@@ -4341,7 +4365,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (4298, 13, 'MT', 'Fontanilhas'),
 (4299, 13, 'MT', 'Gaucha do Norte'),
 (4300, 13, 'MT', 'General Carneiro'),
-(4301, 13, 'MT', 'Gloria D''oeste'),
+(4301, 13, 'MT', 'Gloria D\'oeste'),
 (4302, 13, 'MT', 'Guaranta do Norte'),
 (4303, 13, 'MT', 'Guarita'),
 (4304, 13, 'MT', 'Guiratinga'),
@@ -4362,7 +4386,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (4319, 13, 'MT', 'Juina'),
 (4320, 13, 'MT', 'Juruena'),
 (4321, 13, 'MT', 'Juscimeira'),
-(4322, 13, 'MT', 'Lambari D''oeste'),
+(4322, 13, 'MT', 'Lambari D\'oeste'),
 (4323, 13, 'MT', 'Lavouras'),
 (4324, 13, 'MT', 'Lucas do Rio Verde'),
 (4325, 13, 'MT', 'Lucialva'),
@@ -4373,7 +4397,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (4330, 13, 'MT', 'Mata Dentro'),
 (4331, 13, 'MT', 'Matupa'),
 (4332, 13, 'MT', 'Mimoso'),
-(4333, 13, 'MT', 'Mirassol D''oeste'),
+(4333, 13, 'MT', 'Mirassol D\'oeste'),
 (4334, 13, 'MT', 'Nobres'),
 (4335, 13, 'MT', 'Nonoai do Norte'),
 (4336, 13, 'MT', 'Nortelandia'),
@@ -4704,7 +4728,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (4661, 14, 'PA', 'Paragominas'),
 (4662, 14, 'PA', 'Paratins'),
 (4663, 14, 'PA', 'Parauapebas'),
-(4664, 14, 'PA', 'Pau D''arco'),
+(4664, 14, 'PA', 'Pau D\'arco'),
 (4665, 14, 'PA', 'Pedreira'),
 (4666, 14, 'PA', 'Peixe-boi'),
 (4667, 14, 'PA', 'Penhalonga'),
@@ -4950,7 +4974,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (4906, 15, 'PB', 'Livramento'),
 (4907, 15, 'PB', 'Logradouro'),
 (4908, 15, 'PB', 'Lucena'),
-(4909, 15, 'PB', 'Mae D''agua'),
+(4909, 15, 'PB', 'Mae D\'agua'),
 (4910, 15, 'PB', 'Maia'),
 (4911, 15, 'PB', 'Malta'),
 (4912, 15, 'PB', 'Mamanguape'),
@@ -4983,7 +5007,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (4939, 15, 'PB', 'Nucleo N Null'),
 (4940, 15, 'PB', 'Nucleo N Null'),
 (4941, 15, 'PB', 'Odilandia'),
-(4942, 15, 'PB', 'Olho D''agua'),
+(4942, 15, 'PB', 'Olho D\'agua'),
 (4943, 15, 'PB', 'Olivedos'),
 (4944, 15, 'PB', 'Ouro Velho'),
 (4945, 15, 'PB', 'Parari'),
@@ -5202,7 +5226,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (5158, 16, 'PE', 'Condado'),
 (5159, 16, 'PE', 'Correntes'),
 (5160, 16, 'PE', 'Cortes'),
-(5161, 16, 'PE', 'Couro D''antas'),
+(5161, 16, 'PE', 'Couro D\'antas'),
 (5162, 16, 'PE', 'Cristalia'),
 (5163, 16, 'PE', 'Cruanji'),
 (5164, 16, 'PE', 'Cruzes'),
@@ -5329,7 +5353,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (5285, 16, 'PE', 'Nossa Senhora do Carmo'),
 (5286, 16, 'PE', 'Nossa Senhora do O'),
 (5287, 16, 'PE', 'Nova Cruz'),
-(5288, 16, 'PE', 'Olho D''agua De Dentro'),
+(5288, 16, 'PE', 'Olho D\'agua De Dentro'),
 (5289, 16, 'PE', 'Olinda'),
 (5290, 16, 'PE', 'Oratorio'),
 (5291, 16, 'PE', 'Ori'),
@@ -5492,7 +5516,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (5448, 17, 'PI', 'Assuncao do Piaui'),
 (5449, 17, 'PI', 'Avelino Lopes'),
 (5450, 17, 'PI', 'Baixa Grande do Ribeiro'),
-(5451, 17, 'PI', 'Barra D''alcantara'),
+(5451, 17, 'PI', 'Barra D\'alcantara'),
 (5452, 17, 'PI', 'Barras'),
 (5453, 17, 'PI', 'Barreiras do Piaui'),
 (5454, 17, 'PI', 'Barro Duro'),
@@ -5617,7 +5641,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (5573, 17, 'PI', 'Novo Oriente do Piaui'),
 (5574, 17, 'PI', 'Novo Santo Antonio'),
 (5575, 17, 'PI', 'Oeiras'),
-(5576, 17, 'PI', 'Olho D''agua Do Piaui'),
+(5576, 17, 'PI', 'Olho D\'agua Do Piaui'),
 (5577, 17, 'PI', 'Padre Marcos'),
 (5578, 17, 'PI', 'Paes Landim'),
 (5579, 17, 'PI', 'Pajeu do Piaui'),
@@ -5771,7 +5795,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (5727, 18, 'PR', 'Bairro Limoeiro'),
 (5728, 18, 'PR', 'Balsa Nova'),
 (5729, 18, 'PR', 'Bandeirantes'),
-(5730, 18, 'PR', 'Bandeirantes D''oeste'),
+(5730, 18, 'PR', 'Bandeirantes D\'oeste'),
 (5731, 18, 'PR', 'Banhado'),
 (5732, 18, 'PR', 'Barao de Lucena'),
 (5733, 18, 'PR', 'Barbosa Ferraz'),
@@ -5964,7 +5988,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (5920, 18, 'PR', 'Despraiado'),
 (5921, 18, 'PR', 'Dez de Maio'),
 (5922, 18, 'PR', 'Diamante'),
-(5923, 18, 'PR', 'Diamante D''oeste'),
+(5923, 18, 'PR', 'Diamante D\'oeste'),
 (5924, 18, 'PR', 'Diamante do Norte'),
 (5925, 18, 'PR', 'Diamante do Sul'),
 (5926, 18, 'PR', 'Doce Grande'),
@@ -5982,7 +6006,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (5938, 18, 'PR', 'Eduardo Xavier da Silva'),
 (5939, 18, 'PR', 'Emboguacu'),
 (5940, 18, 'PR', 'Emboque'),
-(5941, 18, 'PR', 'Encantado D''oeste'),
+(5941, 18, 'PR', 'Encantado D\'oeste'),
 (5942, 18, 'PR', 'Encruzilhada'),
 (5943, 18, 'PR', 'Eneas Marques'),
 (5944, 18, 'PR', 'Engenheiro Beltrao'),
@@ -6120,7 +6144,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (6076, 18, 'PR', 'Itambe'),
 (6077, 18, 'PR', 'Itapanhacanga'),
 (6078, 18, 'PR', 'Itapara'),
-(6079, 18, 'PR', 'Itapejara D''oeste'),
+(6079, 18, 'PR', 'Itapejara D\'oeste'),
 (6080, 18, 'PR', 'Itaperucu'),
 (6081, 18, 'PR', 'Itaqui'),
 (6082, 18, 'PR', 'Itauna do Sul'),
@@ -6306,7 +6330,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (6262, 18, 'PR', 'Novo Tres Passos'),
 (6263, 18, 'PR', 'Olaria'),
 (6264, 18, 'PR', 'Olho Agudo'),
-(6265, 18, 'PR', 'Olho D''agua'),
+(6265, 18, 'PR', 'Olho D\'agua'),
 (6266, 18, 'PR', 'Oroite'),
 (6267, 18, 'PR', 'Ortigueira'),
 (6268, 18, 'PR', 'Ourilandia'),
@@ -6330,7 +6354,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (6286, 18, 'PR', 'Pangare'),
 (6287, 18, 'PR', 'Papagaios Novos'),
 (6288, 18, 'PR', 'Paraiso do Norte'),
-(6289, 18, 'PR', 'Parana D''oeste'),
+(6289, 18, 'PR', 'Parana D\'oeste'),
 (6290, 18, 'PR', 'Paranacity'),
 (6291, 18, 'PR', 'Paranagi'),
 (6292, 18, 'PR', 'Paranagua'),
@@ -6344,7 +6368,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (6300, 18, 'PR', 'Pato Bragado'),
 (6301, 18, 'PR', 'Pato Branco'),
 (6302, 18, 'PR', 'Patos Velhos'),
-(6303, 18, 'PR', 'Pau D''alho Do Sul'),
+(6303, 18, 'PR', 'Pau D\'alho Do Sul'),
 (6304, 18, 'PR', 'Paula Freitas'),
 (6305, 18, 'PR', 'Paulistania'),
 (6306, 18, 'PR', 'Paulo Frontin'),
@@ -6422,7 +6446,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (6378, 18, 'PR', 'Quitandinha'),
 (6379, 18, 'PR', 'Ramilandia'),
 (6380, 18, 'PR', 'Rancho Alegre'),
-(6381, 18, 'PR', 'Rancho Alegre D''oeste'),
+(6381, 18, 'PR', 'Rancho Alegre D\'oeste'),
 (6382, 18, 'PR', 'Realeza'),
 (6383, 18, 'PR', 'Reboucas'),
 (6384, 18, 'PR', 'Regiao dos Valos'),
@@ -6530,7 +6554,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (6485, 18, 'PR', 'Sao Gotardo'),
 (6486, 18, 'PR', 'Sao Jeronimo da Serra'),
 (6487, 18, 'PR', 'Sao Joao'),
-(6488, 18, 'PR', 'Sao Joao D''oeste'),
+(6488, 18, 'PR', 'Sao Joao D\'oeste'),
 (6489, 18, 'PR', 'Sao Joao da Boa Vista'),
 (6490, 18, 'PR', 'Sao Joao do Caiua'),
 (6491, 18, 'PR', 'Sao Joao do Ivai'),
@@ -6538,7 +6562,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (6493, 18, 'PR', 'Sao Joao do Triunfo'),
 (6494, 18, 'PR', 'Sao Joaquim'),
 (6495, 18, 'PR', 'Sao Joaquim do Pontal'),
-(6496, 18, 'PR', 'Sao Jorge D''oeste'),
+(6496, 18, 'PR', 'Sao Jorge D\'oeste'),
 (6497, 18, 'PR', 'Sao Jorge do Ivai'),
 (6498, 18, 'PR', 'Sao Jorge do Patrocinio'),
 (6499, 18, 'PR', 'Sao Jose'),
@@ -6583,7 +6607,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (6538, 18, 'PR', 'Saudade do Iguacu'),
 (6539, 18, 'PR', 'Sede Alvorada'),
 (6540, 18, 'PR', 'Sede Chaparral'),
-(6541, 18, 'PR', 'Sede Nova Sant''ana'),
+(6541, 18, 'PR', 'Sede Nova Sant\'ana'),
 (6542, 18, 'PR', 'Sede Progresso'),
 (6543, 18, 'PR', 'Selva'),
 (6544, 18, 'PR', 'Senges'),
@@ -7059,7 +7083,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (7014, 20, 'RN', 'Jose da Penha'),
 (7015, 20, 'RN', 'Jucurutu'),
 (7016, 20, 'RN', 'Jundia de Cima'),
-(7017, 20, 'RN', 'Lagoa D''anta'),
+(7017, 20, 'RN', 'Lagoa D\'anta'),
 (7018, 20, 'RN', 'Lagoa de Pedras'),
 (7019, 20, 'RN', 'Lagoa de Velhos'),
 (7020, 20, 'RN', 'Lagoa Nova'),
@@ -7084,7 +7108,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (7039, 20, 'RN', 'Natal'),
 (7040, 20, 'RN', 'Nisia Floresta'),
 (7041, 20, 'RN', 'Nova Cruz'),
-(7042, 20, 'RN', 'Olho-d''agua Do Borges'),
+(7042, 20, 'RN', 'Olho-d\'agua Do Borges'),
 (7043, 20, 'RN', 'Ouro Branco'),
 (7044, 20, 'RN', 'Parana'),
 (7045, 20, 'RN', 'Parazinho'),
@@ -7190,19 +7214,19 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (7145, 21, 'RO', 'Corumbiara'),
 (7146, 21, 'RO', 'Costa Marques'),
 (7147, 21, 'RO', 'Cujubim'),
-(7148, 21, 'RO', 'Espigao D''oeste'),
+(7148, 21, 'RO', 'Espigao D\'oeste'),
 (7149, 21, 'RO', 'Governador Jorge Teixeira'),
 (7150, 21, 'RO', 'Guajara-mirim'),
 (7151, 21, 'RO', 'Jaci Parana'),
 (7152, 21, 'RO', 'Jamari'),
 (7153, 21, 'RO', 'Jaru'),
 (7154, 21, 'RO', 'Ji-parana'),
-(7155, 21, 'RO', 'Machadinho D''oeste'),
+(7155, 21, 'RO', 'Machadinho D\'oeste'),
 (7156, 21, 'RO', 'Marco Rondon'),
 (7157, 21, 'RO', 'Ministro Andreazza'),
 (7158, 21, 'RO', 'Mirante da Serra'),
 (7159, 21, 'RO', 'Monte Negro'),
-(7160, 21, 'RO', 'Nova Brasilandia D''oeste'),
+(7160, 21, 'RO', 'Nova Brasilandia D\'oeste'),
 (7161, 21, 'RO', 'Nova Mamore'),
 (7162, 21, 'RO', 'Nova Uniao'),
 (7163, 21, 'RO', 'Nova Vida'),
@@ -7220,7 +7244,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (7175, 21, 'RO', 'Riozinho'),
 (7176, 21, 'RO', 'Rolim de Moura'),
 (7177, 21, 'RO', 'Santa Luzia do Oeste'),
-(7178, 21, 'RO', 'Sao Felipe D''oeste'),
+(7178, 21, 'RO', 'Sao Felipe D\'oeste'),
 (7179, 21, 'RO', 'Sao Francisco do Guapore'),
 (7180, 21, 'RO', 'Sao Miguel do Guapore'),
 (7181, 21, 'RO', 'Seringueiras'),
@@ -8282,7 +8306,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (8236, 24, 'SC', 'Guatambu'),
 (8237, 24, 'SC', 'Hercilio Luz'),
 (8238, 24, 'SC', 'Herciliopolis'),
-(8239, 24, 'SC', 'Herval D''oeste'),
+(8239, 24, 'SC', 'Herval D\'oeste'),
 (8240, 24, 'SC', 'Ibiam'),
 (8241, 24, 'SC', 'Ibicare'),
 (8242, 24, 'SC', 'Ibicui'),
@@ -8446,7 +8470,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (8400, 24, 'SC', 'Ribeirao Pequeno'),
 (8401, 24, 'SC', 'Rio Antinha'),
 (8402, 24, 'SC', 'Rio Bonito'),
-(8403, 24, 'SC', 'Rio D''una'),
+(8403, 24, 'SC', 'Rio D\'una'),
 (8404, 24, 'SC', 'Rio da Anta'),
 (8405, 24, 'SC', 'Rio da Luz'),
 (8406, 24, 'SC', 'Rio das Antas'),
@@ -8509,7 +8533,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (8463, 24, 'SC', 'Sao Lourenco do Oeste'),
 (8464, 24, 'SC', 'Sao Ludgero'),
 (8465, 24, 'SC', 'Sao Martinho'),
-(8466, 24, 'SC', 'Sao Miguel D''oeste'),
+(8466, 24, 'SC', 'Sao Miguel D\'oeste'),
 (8467, 24, 'SC', 'Sao Miguel da Boa Vista'),
 (8468, 24, 'SC', 'Sao Miguel da Serra'),
 (8469, 24, 'SC', 'Sao Pedro de Alcantara'),
@@ -8599,7 +8623,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (8553, 25, 'SE', 'Itabaiana'),
 (8554, 25, 'SE', 'Itabaianinha'),
 (8555, 25, 'SE', 'Itabi'),
-(8556, 25, 'SE', 'Itaporanga D''ajuda'),
+(8556, 25, 'SE', 'Itaporanga D\'ajuda'),
 (8557, 25, 'SE', 'Japaratuba'),
 (8558, 25, 'SE', 'Japoata'),
 (8559, 25, 'SE', 'Lagarto'),
@@ -8696,7 +8720,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (8650, 26, 'SP', 'Anhembi'),
 (8651, 26, 'SP', 'Anhumas'),
 (8652, 26, 'SP', 'Aparecida'),
-(8653, 26, 'SP', 'Aparecida D''oeste'),
+(8653, 26, 'SP', 'Aparecida D\'oeste'),
 (8654, 26, 'SP', 'Aparecida de Monte Alto'),
 (8655, 26, 'SP', 'Aparecida de Sao Manuel'),
 (8656, 26, 'SP', 'Aparecida do Bonito'),
@@ -8742,7 +8766,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (8696, 26, 'SP', 'Balbinos'),
 (8697, 26, 'SP', 'Balsamo'),
 (8698, 26, 'SP', 'Bananal'),
-(8699, 26, 'SP', 'Bandeirantes D''oeste'),
+(8699, 26, 'SP', 'Bandeirantes D\'oeste'),
 (8700, 26, 'SP', 'Barao Ataliba Nogueira'),
 (8701, 26, 'SP', 'Barao de Antonina'),
 (8702, 26, 'SP', 'Barao de Geraldo'),
@@ -8920,12 +8944,12 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (8874, 26, 'SP', 'Engenheiro Maia'),
 (8875, 26, 'SP', 'Engenheiro Schmidt'),
 (8876, 26, 'SP', 'Esmeralda'),
-(8877, 26, 'SP', 'Esperanca D''oeste'),
+(8877, 26, 'SP', 'Esperanca D\'oeste'),
 (8878, 26, 'SP', 'Espigao'),
 (8879, 26, 'SP', 'Espirito Santo do Pinhal'),
 (8880, 26, 'SP', 'Espirito Santo do Turvo'),
 (8881, 26, 'SP', 'Estiva Gerbi'),
-(8882, 26, 'SP', 'Estrela D''oeste'),
+(8882, 26, 'SP', 'Estrela D\'oeste'),
 (8883, 26, 'SP', 'Estrela do Norte'),
 (8884, 26, 'SP', 'Euclides da Cunha Paulista'),
 (8885, 26, 'SP', 'Eugenio de Melo'),
@@ -8968,8 +8992,8 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (8922, 26, 'SP', 'Guara'),
 (8923, 26, 'SP', 'Guaracai'),
 (8924, 26, 'SP', 'Guaraci'),
-(8925, 26, 'SP', 'Guaraciaba D''oeste'),
-(8926, 26, 'SP', 'Guarani D''oeste'),
+(8925, 26, 'SP', 'Guaraciaba D\'oeste'),
+(8926, 26, 'SP', 'Guarani D\'oeste'),
 (8927, 26, 'SP', 'Guaranta'),
 (8928, 26, 'SP', 'Guarapiranga'),
 (8929, 26, 'SP', 'Guarapua'),
@@ -9241,7 +9265,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (9195, 26, 'SP', 'Padre Nobrega'),
 (9196, 26, 'SP', 'Palestina'),
 (9197, 26, 'SP', 'Palmares Paulista'),
-(9198, 26, 'SP', 'Palmeira D''oeste'),
+(9198, 26, 'SP', 'Palmeira D\'oeste'),
 (9199, 26, 'SP', 'Palmeiras de Sao Paulo'),
 (9200, 26, 'SP', 'Palmital'),
 (9201, 26, 'SP', 'Panorama'),
@@ -9392,9 +9416,9 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (9346, 26, 'SP', 'Santa Adelia'),
 (9347, 26, 'SP', 'Santa Albertina'),
 (9348, 26, 'SP', 'Santa America'),
-(9349, 26, 'SP', 'Santa Barbara D''oeste'),
+(9349, 26, 'SP', 'Santa Barbara D\'oeste'),
 (9350, 26, 'SP', 'Santa Branca'),
-(9351, 26, 'SP', 'Santa Clara D''oeste'),
+(9351, 26, 'SP', 'Santa Clara D\'oeste'),
 (9352, 26, 'SP', 'Santa Cruz da Conceicao'),
 (9353, 26, 'SP', 'Santa Cruz da Esperanca'),
 (9354, 26, 'SP', 'Santa Cruz da Estrela'),
@@ -9412,7 +9436,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (9366, 26, 'SP', 'Santa Maria da Serra'),
 (9367, 26, 'SP', 'Santa Maria do Gurupa'),
 (9368, 26, 'SP', 'Santa Mercedes'),
-(9369, 26, 'SP', 'Santa Rita D''oeste'),
+(9369, 26, 'SP', 'Santa Rita D\'oeste'),
 (9370, 26, 'SP', 'Santa Rita do Passa Quatro'),
 (9371, 26, 'SP', 'Santa Rita do Ribeira'),
 (9372, 26, 'SP', 'Santa Rosa de Viterbo'),
@@ -9449,7 +9473,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (9403, 26, 'SP', 'Sao Joao de Iracema'),
 (9404, 26, 'SP', 'Sao Joao de Itaguacu'),
 (9405, 26, 'SP', 'Sao Joao do Marinheiro'),
-(9406, 26, 'SP', 'Sao Joao Do Pau D''alho'),
+(9406, 26, 'SP', 'Sao Joao Do Pau D\'alho'),
 (9407, 26, 'SP', 'Sao Joao Novo'),
 (9408, 26, 'SP', 'Sao Joaquim da Barra'),
 (9409, 26, 'SP', 'Sao Jose da Bela Vista'),
@@ -9463,7 +9487,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (9417, 26, 'SP', 'Sao Luis do Paraitinga'),
 (9418, 26, 'SP', 'Sao Luiz do Guaricanga'),
 (9419, 26, 'SP', 'Sao Manuel'),
-(9420, 26, 'SP', 'Sao Martinho D''oeste'),
+(9420, 26, 'SP', 'Sao Martinho D\'oeste'),
 (9421, 26, 'SP', 'Sao Miguel Arcanjo'),
 (9422, 26, 'SP', 'Sao Paulo'),
 (9423, 26, 'SP', 'Sao Pedro'),
@@ -9528,7 +9552,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (9482, 26, 'SP', 'Tejupa'),
 (9483, 26, 'SP', 'Teodoro Sampaio'),
 (9484, 26, 'SP', 'Termas de Ibira'),
-(9485, 26, 'SP', 'Terra Nova D''oeste'),
+(9485, 26, 'SP', 'Terra Nova D\'oeste'),
 (9486, 26, 'SP', 'Terra Roxa'),
 (9487, 26, 'SP', 'Tibirica'),
 (9488, 26, 'SP', 'Tibirica do Paranapanema'),
@@ -9702,7 +9726,7 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (9655, 27, 'TO', 'Palmeiropolis'),
 (9656, 27, 'TO', 'Paraiso do Tocantins'),
 (9657, 27, 'TO', 'Parana'),
-(9658, 27, 'TO', 'Pau D''arco'),
+(9658, 27, 'TO', 'Pau D\'arco'),
 (9659, 27, 'TO', 'Pe da Serra'),
 (9660, 27, 'TO', 'Pedro Afonso'),
 (9661, 27, 'TO', 'Pedro Ludovico'),
@@ -9760,7 +9784,6 @@ INSERT INTO `cities` (`id_city`, `id_state`, `uf`, `name_city`) VALUES
 (9713, 27, 'TO', 'Wanderlandia'),
 (9714, 27, 'TO', 'Xambioa');
 
-
 -- --------------------------------------------------------
 
 --
@@ -9778,9 +9801,7 @@ CREATE TABLE `entities` (
 --
 
 INSERT INTO `entities` (`id_entitie`, `name_entitie`, `phone`) VALUES
-(1, 'aeeeeeee', ''),
-(2, 'vaiiiiiiiiiii', '(51) 8115-8062'),
-(3, 'vai agora', '');
+(6, 'Documentação teste ', '(51) 98115-8062');
 
 -- --------------------------------------------------------
 
@@ -9807,8 +9828,63 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id_event`, `name_event`, `start_date`, `end_date`, `adress`, `cep`, `phone`, `neighborhood`, `id_city`, `id_state`, `id_entitie`) VALUES
-(1, 'teste 6', '0000-00-00', '0000-00-00', 'Rua f', '95566-000', '(53) 8202-2002', '', 4466, 14, 2),
-(2, 'boraaaaaaaa', '2016-09-08', '2016-09-20', 'rua d', '95545-000', '(51) 8103-2003', 'caasa', 4793, 15, 3);
+(28, 'Festa São Jorge', '0000-00-00', '0000-00-00', '', '', '(51) 98115-8062', '', 277, 4, 6),
+(30, 'Baile', '0001-11-09', '2017-04-12', '', '', '', '', 1750, 8, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `events_schedule`
+--
+
+CREATE TABLE `events_schedule` (
+  `events_id_event` int(11) NOT NULL,
+  `schedule_id_schedule` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `events_teams`
+--
+
+CREATE TABLE `events_teams` (
+  `events_id_event` int(11) NOT NULL,
+  `teams_id_team` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `events_teams`
+--
+
+INSERT INTO `events_teams` (`events_id_event`, `teams_id_team`) VALUES
+(28, 8),
+(30, 8),
+(28, 11),
+(30, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `list_products`
+--
+
+CREATE TABLE `list_products` (
+  `events_id_event` int(11) NOT NULL,
+  `products_id_product` int(11) NOT NULL,
+  `amount` decimal(18,2) NOT NULL,
+  `unitary_value` decimal(18,2) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `list_products`
+--
+
+INSERT INTO `list_products` (`events_id_event`, `products_id_product`, `amount`, `unitary_value`, `quantity`) VALUES
+(28, 1, '792.00', '88.00', 9),
+(28, 4, '36.00', '4.00', 9),
+(28, 7, '3267.00', '33.00', 99);
 
 -- --------------------------------------------------------
 
@@ -9826,13 +9902,104 @@ CREATE TABLE `peoples` (
   `email` varchar(45) DEFAULT NULL,
   `neighborhood` varchar(45) DEFAULT NULL,
   `id_city` int(11) NOT NULL,
-  `id_state` int(11) NOT NULL,
-  `id_team` int(11) NOT NULL,
-  `t_id_event` int(11) NOT NULL,
-  `t_id_city` int(11) NOT NULL,
-  `t_id_state` int(11) NOT NULL,
-  `t_id_entitie` int(11) NOT NULL
+  `id_state` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `peoples`
+--
+
+INSERT INTO `peoples` (`id_people`, `name_people`, `birth`, `adress`, `cep`, `phone`, `email`, `neighborhood`, `id_city`, `id_state`) VALUES
+(1, 'Talysson', '1995-07-11', 'rua a', '', '(51) 98115-8062', NULL, 'centro', 1117, 6),
+(2, 'teste pessoa ', '0000-00-00', '', '', '', NULL, '', 5065, 16),
+(3, 'Cassio ', '0000-00-00', '', '', '', NULL, '', 1115, 6),
+(4, 'João da Silva ', '0000-00-00', '', '', '', NULL, '', 2323, 10),
+(5, 'Aline ', '0000-00-00', '', '', '', NULL, '', 1750, 8),
+(6, 'Artur', '0002-02-12', '', '', '', NULL, '', 4787, 15);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `peoples_events`
+--
+
+CREATE TABLE `peoples_events` (
+  `peoples_id_people` int(11) NOT NULL,
+  `events_id_event` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `peoples_events`
+--
+
+INSERT INTO `peoples_events` (`peoples_id_people`, `events_id_event`) VALUES
+(6, 30);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `peoples_teams`
+--
+
+CREATE TABLE `peoples_teams` (
+  `teams_id_team` int(11) NOT NULL,
+  `peoples_id_people` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `peoples_teams`
+--
+
+INSERT INTO `peoples_teams` (`teams_id_team`, `peoples_id_people`) VALUES
+(11, 2),
+(11, 3),
+(8, 4),
+(8, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `products`
+--
+
+CREATE TABLE `products` (
+  `id_product` int(11) NOT NULL,
+  `name_product` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `products`
+--
+
+INSERT INTO `products` (`id_product`, `name_product`, `type`) VALUES
+(1, 'Produto Teste 2', 'Carne'),
+(4, 'Bombril', 'limpeza cozinha'),
+(6, 'Vassoura', 'limpeza'),
+(7, 'Massa', 'Alimenticio');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `activities_id_activitie` int(11) NOT NULL,
+  `events_id_event` int(11) NOT NULL,
+  `horary` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `schedule`
+--
+
+INSERT INTO `schedule` (`activities_id_activitie`, `events_id_event`, `horary`) VALUES
+(6, 28, '12:30:00'),
+(10, 30, '03:33:00'),
+(13, 28, '09:39:00'),
+(16, 28, '13:00:00'),
+(16, 30, '09:59:00');
 
 -- --------------------------------------------------------
 
@@ -9887,23 +10054,26 @@ INSERT INTO `states` (`id_state`, `uf`, `name_state`) VALUES
 
 CREATE TABLE `teams` (
   `id_team` int(11) NOT NULL,
-  `name_team` varchar(45) NOT NULL,
-  `id_event` int(11) NOT NULL,
-  `ev_id_city` int(11) NOT NULL,
-  `ev_id_state` int(11) NOT NULL,
-  `id_entitie` int(11) NOT NULL
+  `name_team` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `teams`
 --
 
-INSERT INTO `teams` (`id_team`, `name_team`, `id_event`, `ev_id_city`, `ev_id_state`, `id_entitie`) VALUES
-(1, 'aaaaaaaa', 1, 4466, 14, 2);
+INSERT INTO `teams` (`id_team`, `name_team`) VALUES
+(8, 'cozinha'),
+(11, 'limpeza');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `activities`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`id_activitie`);
 
 --
 -- Indexes for table `cities`
@@ -9927,12 +10097,64 @@ ALTER TABLE `events`
   ADD KEY `fk_events_entities1_idx` (`id_entitie`);
 
 --
+-- Indexes for table `events_schedule`
+--
+ALTER TABLE `events_schedule`
+  ADD PRIMARY KEY (`events_id_event`,`schedule_id_schedule`),
+  ADD KEY `fk_events_has_schedule_events1_idx` (`events_id_event`);
+
+--
+-- Indexes for table `events_teams`
+--
+ALTER TABLE `events_teams`
+  ADD PRIMARY KEY (`events_id_event`,`teams_id_team`),
+  ADD KEY `fk_events_has_teams_teams1_idx` (`teams_id_team`),
+  ADD KEY `fk_events_has_teams_events1_idx` (`events_id_event`);
+
+--
+-- Indexes for table `list_products`
+--
+ALTER TABLE `list_products`
+  ADD PRIMARY KEY (`events_id_event`,`products_id_product`),
+  ADD KEY `fk_events_has_products_products1_idx` (`products_id_product`),
+  ADD KEY `fk_events_has_products_events1_idx` (`events_id_event`);
+
+--
 -- Indexes for table `peoples`
 --
 ALTER TABLE `peoples`
-  ADD PRIMARY KEY (`id_people`,`id_city`,`id_state`,`id_team`,`t_id_event`,`t_id_city`,`t_id_state`,`t_id_entitie`),
-  ADD KEY `fk_peoples_cities1_idx` (`id_city`,`id_state`),
-  ADD KEY `fk_peoples_teams1_idx` (`id_team`,`t_id_event`,`t_id_city`,`t_id_state`,`t_id_entitie`);
+  ADD PRIMARY KEY (`id_people`,`id_city`,`id_state`),
+  ADD KEY `fk_peoples_cities1_idx` (`id_city`,`id_state`);
+
+--
+-- Indexes for table `peoples_events`
+--
+ALTER TABLE `peoples_events`
+  ADD PRIMARY KEY (`peoples_id_people`,`events_id_event`),
+  ADD KEY `fk_peoples_has_events_events1_idx` (`events_id_event`),
+  ADD KEY `fk_peoples_has_events_peoples1_idx` (`peoples_id_people`);
+
+--
+-- Indexes for table `peoples_teams`
+--
+ALTER TABLE `peoples_teams`
+  ADD PRIMARY KEY (`teams_id_team`,`peoples_id_people`),
+  ADD KEY `fk_teams_has_peoples_peoples1_idx` (`peoples_id_people`),
+  ADD KEY `fk_teams_has_peoples_teams1_idx` (`teams_id_team`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id_product`);
+
+--
+-- Indexes for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`activities_id_activitie`,`events_id_event`),
+  ADD KEY `fk_activities_has_events_events1_idx` (`events_id_event`),
+  ADD KEY `fk_activities_has_events_activities1_idx` (`activities_id_activitie`);
 
 --
 -- Indexes for table `states`
@@ -9944,13 +10166,17 @@ ALTER TABLE `states`
 -- Indexes for table `teams`
 --
 ALTER TABLE `teams`
-  ADD PRIMARY KEY (`id_team`,`id_event`,`ev_id_city`,`ev_id_state`,`id_entitie`),
-  ADD KEY `fk_teams_events1_idx` (`id_event`,`ev_id_city`,`ev_id_state`,`id_entitie`);
+  ADD PRIMARY KEY (`id_team`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `activities`
+--
+ALTER TABLE `activities`
+  MODIFY `id_activitie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `cities`
 --
@@ -9960,22 +10186,27 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `entities`
 --
 ALTER TABLE `entities`
-  MODIFY `id_entitie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_entitie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `peoples`
 --
 ALTER TABLE `peoples`
-  MODIFY `id_people` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_people` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id_team` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_team` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --
@@ -9991,20 +10222,54 @@ ALTER TABLE `cities`
 --
 ALTER TABLE `events`
   ADD CONSTRAINT `fk_events_cities1` FOREIGN KEY (`id_city`,`id_state`) REFERENCES `cities` (`id_city`, `id_state`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_events_entities1` FOREIGN KEY (`id_entitie`) REFERENCES `entities` (`id_entitie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_events_entities1` FOREIGN KEY (`id_entitie`) REFERENCES `entities` (`id_entitie`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `events_schedule`
+--
+ALTER TABLE `events_schedule`
+  ADD CONSTRAINT `fk_events_has_schedule_events1` FOREIGN KEY (`events_id_event`) REFERENCES `events` (`id_event`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `events_teams`
+--
+ALTER TABLE `events_teams`
+  ADD CONSTRAINT `fk_events_has_teams_events1` FOREIGN KEY (`events_id_event`) REFERENCES `events` (`id_event`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_events_has_teams_teams1` FOREIGN KEY (`teams_id_team`) REFERENCES `teams` (`id_team`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `list_products`
+--
+ALTER TABLE `list_products`
+  ADD CONSTRAINT `fk_events_has_products_events1` FOREIGN KEY (`events_id_event`) REFERENCES `events` (`id_event`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_events_has_products_products1` FOREIGN KEY (`products_id_product`) REFERENCES `products` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `peoples`
 --
 ALTER TABLE `peoples`
-  ADD CONSTRAINT `fk_peoples_cities1` FOREIGN KEY (`id_city`,`id_state`) REFERENCES `cities` (`id_city`, `id_state`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_peoples_teams1` FOREIGN KEY (`id_team`,`t_id_event`,`t_id_city`,`t_id_state`,`t_id_entitie`) REFERENCES `teams` (`id_team`, `id_event`, `ev_id_city`, `ev_id_state`, `id_entitie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_peoples_cities1` FOREIGN KEY (`id_city`,`id_state`) REFERENCES `cities` (`id_city`, `id_state`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `teams`
+-- Limitadores para a tabela `peoples_events`
 --
-ALTER TABLE `teams`
-  ADD CONSTRAINT `fk_teams_events1` FOREIGN KEY (`id_event`,`ev_id_city`,`ev_id_state`,`id_entitie`) REFERENCES `events` (`id_event`, `id_city`, `id_state`, `id_entitie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `peoples_events`
+  ADD CONSTRAINT `fk_peoples_has_events_events1` FOREIGN KEY (`events_id_event`) REFERENCES `events` (`id_event`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_peoples_has_events_peoples1` FOREIGN KEY (`peoples_id_people`) REFERENCES `peoples` (`id_people`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `peoples_teams`
+--
+ALTER TABLE `peoples_teams`
+  ADD CONSTRAINT `fk_teams_has_peoples_peoples1` FOREIGN KEY (`peoples_id_people`) REFERENCES `peoples` (`id_people`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_teams_has_peoples_teams1` FOREIGN KEY (`teams_id_team`) REFERENCES `teams` (`id_team`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `schedule`
+--
+ALTER TABLE `schedule`
+  ADD CONSTRAINT `fk_activities_has_events_activities1` FOREIGN KEY (`activities_id_activitie`) REFERENCES `activities` (`id_activitie`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_activities_has_events_events1` FOREIGN KEY (`events_id_event`) REFERENCES `events` (`id_event`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

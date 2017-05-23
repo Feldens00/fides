@@ -20,38 +20,46 @@
 </head>
 <body>
 
-	 <?php foreach ($peoplesTeams as $pt) { ?>
+	
+		 <table class=" table table-bordered">
+		  <?php foreach ($peoplesTeams as $pt) { ?>
 
-	 <div class="col-sm-12">
 
 		<?php
 		 	$name_team;
 
 		 	if ($name_team != $pt->name_team) {
 		 		$name_team = $pt->name_team;
-		 		echo("<h2>Equipe ".$name_team."</h2>");
+		 		echo("<thead>
+		 					<tr>
+		 						<td style='padding-bottom: 5px; padding-top: 5px;' align=center colspan='4' >
+		 							<h2>".$name_team."</h2>
+		 						</td>
+		 					</tr>
+		 					
+		 					<tr>
+		 						<td><b>Nome</b></td>
+		 						<td><b>Email</b></td>
+		 						<td><b>Cidade</b></td>
+		 						<td><b>Estado</b></td>
+		 					</tr>
+		 			   </thead>");
 		 	}
 		 ?> 
-	</div>
-	
-	
-		 <table class=" table table-bordered">
 		    <tbody>
 		      <tr>
-		        <td><h6>Nome: <?= $pt->name_people;?></h6></td>
-		        <td>Email: <?= $pt->email;?></td>
-			  </tr>
-		
-		      <tr>
-		        <td><h6>Cidade: <?=$pt->name_city;?></h6></td>
-		        <td><h6>Estado: <?=$pt->name_state;?></h6></td>
+		        <td><?= $pt->name_people;?></td>
+		        <td><?= $pt->email;?></td>
+		        <td><?=$pt->name_city;?></td>
+		        <td><?=$pt->name_state;?></td>
 		      </tr>
 		    </tbody>
+		    <?php } ?>
 		  </table>
 		
 
 	</div>
-	<?php } ?>
+	
 
 	<?php foreach ($peoplesEvents as $pe) { ?>
 	<div class="col-sm-12">
@@ -59,16 +67,22 @@
 	</div>
 
 		 <table class=" table table-bordered">
+		 	<thead>
+		 					
+		 					<tr>
+		 						<td><b>Nome</b></td>
+		 						<td><b>Email</b></td>
+		 						<td><b>Cidade</b></td>
+		 						<td><b>Estado</b></td>
+		 					</tr>
+		 			   </thead>
 		   <tbody>
 		      <tr>
-		        <td><h6>Nome: <?= $pe->name_people;?></h6></td>
-		        <td>Email: <?= $pe->email;?></td>
+		        <td><?= $pe->name_people;?></td>
+		        <td><?= $pe->email;?></td>
+		        <td><?=$pe->name_city;?></td>		      
+		        <td><?=$pe->name_state;?></td>
 			  </tr>
-		
-		      <tr>
-		        <td><h6>Cidade: <?=$pe->name_city;?></h6></td>		      
-		        <td><h6>Estado: <?=$pe->name_state;?></h6></td>
-		      </tr>
 		    </tbody>
 		  </table>
 	<?php } ?>

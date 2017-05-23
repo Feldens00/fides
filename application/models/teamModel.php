@@ -38,14 +38,7 @@ class teamModel extends CI_Model {
 		return $this->db->get('teams');
 	}
 
-	function getNotEV($id_event) {
 
-	$sql = "select DISTINCT name_team, id_team from teams where id_team not in (select teams_id_team from events_teams where events_id_event = '".$id_event."')"; 
-			
-			return $this->db->query($sql)->result();
-
-		
-	}	
 
 	public function listET($id_event) {
 

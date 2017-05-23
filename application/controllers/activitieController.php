@@ -116,9 +116,9 @@ class activitieController extends CI_Controller {
 				
 				
 
-			$this->activitieModel->delete_listProduct($id_event,$activitieArray);
+			$this->activitieModel->delete_scheduleActivitie($id_event,$activitieArray);
 		
-			redirect('form-list-product/'.$id_event);
+			redirect('form-event-schedule/'.$id_event);
 		
 		}
 		

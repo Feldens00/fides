@@ -100,7 +100,7 @@ foreach ($events as $ev) {
                         <form action="<?= base_url('create-list-product/'.$id_event)?>" method="POST">
                             
                             <div class="form-group">
-                               <label for="date2">*Produto</label>
+                               <label for="date2">* Produto</label>
                               <select name="productId" class="form-control" >
                                    <?php
                                        echo "<option>Seleciona um Produto</option>";
@@ -121,8 +121,17 @@ foreach ($events as $ev) {
                               <label for="money">* Valor Unitario:</label>
                               <input type="text" class="form-control" id="money"  name="productUnitary" required>
                             </div>
-                                    
-                           
+                            
+                            <div class="form-group">
+                              <label for="date1">* Data da Compra:</label>
+                              <input type="date" class="form-control" name="productDate" >
+                            </div>
+
+                            <div class="form-group">
+                              <label for="date1">* Fornecedor:</label>
+                              <input type="text" class="form-control" name="productProvider" >
+                            </div>
+                                                   
                     </div>
                     <div class="modal-footer">
                      

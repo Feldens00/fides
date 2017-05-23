@@ -31,6 +31,7 @@ class eventModel extends CI_Model {
 		
 	}
 
+
 	public function getTE($event){
 
 		$sql = "SELECT tm.name_team FROM teams tm INNER JOIN events_teams et ON tm.id_team = et.teams_id_team INNER JOIN events ev ON et.events_id_event = ev.id_event WHERE tm.id_team IN (SELECT teams_id_team FROM events_teams WHERE events_id_event ='".$event."') AND tm.id_team IN (SELECT teams_id_team FROM peoples_teams)"; 
@@ -44,11 +45,11 @@ class eventModel extends CI_Model {
 		
 		$this->db->select('peoples.name_people, teams.name_team, peoples.email, states.name_state, cities.name_city');        
 		$this->db->join('events_teams', 'events.id_event = events_teams.events_id_event','inner');
-		$this->db->join('states', 'events.id_state = states.id_state','inner');
-		$this->db->join('cities', 'events.id_city = cities.id_city','inner');
 		$this->db->join('teams', 'events_teams.teams_id_team = teams.id_team','inner');
 		$this->db->join('peoples_teams', 'teams.id_team = peoples_teams.teams_id_team','inner');
 		$this->db->join('peoples', 'peoples_teams.peoples_id_people = peoples.id_people','inner');
+		$this->db->join('states', 'peoples.id_state = states.id_state','inner');
+		$this->db->join('cities', 'peoples.id_city = cities.id_city','inner');
 		$this->db->where('id_event', $event);
 		$this->db->order_by('teams.id_team','asc');
 	   return $this->db->get('events');
@@ -58,10 +59,10 @@ class eventModel extends CI_Model {
 	public function getPE($event){
 		
 		$this->db->select('*');   
-		$this->db->join('states', 'events.id_state = states.id_state','inner');
-		$this->db->join('cities', 'events.id_city = cities.id_city','inner'); 
 		$this->db->join('peoples_events', 'events.id_event = peoples_events.events_id_event','inner');
 		$this->db->join('peoples', 'peoples_events.peoples_id_people = peoples.id_people','inner');
+		$this->db->join('states', 'peoples.id_state = states.id_state','inner');
+		$this->db->join('cities', 'peoples.id_city = cities.id_city','inner'); 
 		$this->db->where('id_event', $event);
 	   return $this->db->get('events');
 		

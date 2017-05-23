@@ -55,6 +55,8 @@ class productController extends CI_Controller {
 		$this->form_validation->set_rules('productId','Produto','required');
 		$this->form_validation->set_rules('productQuantity','Quantidade','required');
 		$this->form_validation->set_rules('productUnitary','Valor Unitario','required');
+		$this->form_validation->set_rules('productDate','Data de compra','required');
+		$this->form_validation->set_rules('productProvider','Fornecedor','required');
 
 		$qtd = $this->input->post('productQuantity');
 		$unit = $this->input->post('productUnitary');
@@ -73,13 +75,13 @@ class productController extends CI_Controller {
 
 				$this->template->load('template/templateHeader', 'product/list_productCreateView',$dados);
 			
-		}else{	
-
+		}else{
 			$product = array(
 				
-					
 					'events_id_event' => $id_event,
 					'products_id_product' => $this->input->post('productId'),
+					'purchase_date' => $this->input->post('productDate'),
+					'provider' => $this->input->post('productProvider'),
 					'amount' => $amount,
 					'unitary_value' => $unit,
 					'quantity' => $qtd
@@ -182,6 +184,7 @@ class productController extends CI_Controller {
 
 	public function print_list($id_event){
 	$return = $this->eventModel->getOne($id_event)->result();
+	$dados['maxProduct']=$this->productModel->getMax($id_event)->result();
 	$dados['all']=$this->productModel->getAll($id_event)->result();
 	foreach ($return as $ev) {
 		$name_event = $ev->name_event;

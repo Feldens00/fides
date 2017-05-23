@@ -30,7 +30,7 @@ class eventController extends CI_Controller {
 		$dados['estados'] = $this->eventModel->getEstados();
 
 		$this->db->select('*');
-		$dados['entities'] = $this->db->get('entities')->result();
+		$dados['entities'] = $this->entitieModel->get();
 
 		 $this->template->load('template/templateHeader', 'event/eventCreateView',$dados);
 	}
@@ -51,7 +51,7 @@ class eventController extends CI_Controller {
 				$dados['estados'] = $this->eventModel->getEstados();
 
 				$this->db->select('*');
-				$dados['entities'] = $this->db->get('entities')->result();
+				$dados['entities'] = $this->entitieModel->get();
 
 				 $this->template->load('template/templateHeader', 'event/eventCreateView',$dados);
 			
@@ -97,6 +97,7 @@ class eventController extends CI_Controller {
 		$dados['formerror']=NULL;
 		$dados['estados'] = $this->eventModel->getEstados();
 		$dados['events']=$this->eventModel->getOne($id)->result();
+		$dados['entities'] = $this->entitieModel->get();
 		$this->template->load('template/templateHeader', 'event/eventUpdateView', $dados);
 		
 	}
@@ -254,7 +255,7 @@ class eventController extends CI_Controller {
 		$dados['events'] = $this->eventModel->getOne($id_event)->result();
 
 		$this->db->select('*');
-		$dados['teams'] = $this->teamModel->getNotEv($id_event);
+		$dados['teams'] = $this->teamModel->get()->result();
 
 		 $this->template->load('template/templateHeader', 'event/eventTeamCreateView',$dados);
 	}

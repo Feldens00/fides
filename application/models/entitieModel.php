@@ -28,7 +28,7 @@ class entitieModel extends CI_Model {
 
 	public function get(){
 		$this->db->order_by('name_entitie','asc');
-		return $this->db->get($this->table)->result_array();
+		return $this->db->get($this->table)->result();
 	}
 }
 	

@@ -18,31 +18,41 @@
   </style>
 </head>
 <body>
-	<div class="col-sm-12">
-		<h2>Produtos</h2>
-	</div>
-	 <?php foreach ($all as $pd) { ?>
+
+<?php foreach ($maxProduct as $max) { 
+	$total = $max->total;
+	}?>
+
+	
 		
 		 <table class=" table table-bordered">
+		    <thead>
+		      <tr>
+		        <th colspan="4"><h3>Total da Lista</h3></th>
+		        <th><h3>R$<?=$total;?></h3></th>
+		      </tr>
+		      <tr>
+		        <th>Nome</th>
+		        <th>Tipo</th>
+		        <th>Quantidade</th>
+		        <th>Valor Unitario</th>
+		        <th>Total por Produto</th>
+		      </tr>
+		    </thead>
+		     	<?php foreach ($all as $pd) { ?>
 		    <tbody>
 		      <tr>
-		        <td><h6>Nome: <?= $pd->name_product;?></h6></td>
-		        <td>Tipo: <?= $pd->type;?></td>
+		        <td><h6><?= $pd->name_product;?></h6></td>
+		        <td><?= $pd->type;?></td>
+		        <td><h6><?= $pd->quantity;?></h6></td>
+		        <td><h6>R$<?= $pd->unitary_value;?></h6></td>
+		        <td><h6>R$<?= $pd->amount;?></h6></td>
 			  </tr>
-		
-		      <tr>
-		        <td><h6>Quantidade: <?= $pd->quantity;?></h6></td>
-		        <td><h6>Valor Unitario: <?= $pd->unitary_value;?></h6></td>
-		      </tr>
-
-		      <tr>
-		        <td><h6>Valor Total: <?= $pd->amount;?></h6></td>
-		      </tr>
 		    </tbody>
+		    	<?php } ?>
 		  </table>
 		
 
 	</div>
-	<?php } ?>
 </body>
 </html>

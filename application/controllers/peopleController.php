@@ -37,7 +37,7 @@ class peopleController extends CI_Controller {
 	{	
 
 		$this->db->select('*');
-		$dados['peoples'] = $this->peopleModel->get()->result();
+		$dados['peoples'] = $this->peopleModel->get();
 
 		
 		$this->template->load('template/templateHeader','people/index',$dados);

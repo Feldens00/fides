@@ -34,7 +34,7 @@ class peopleModel extends CI_Model {
 		$this->db->join('states', 'peoples.id_state = states.id_state','inner');
 		$this->db->join('cities', 'peoples.id_city = cities.id_city','inner');
 		$this->db->order_by('name_people','asc');
-		return $this->db->get($this->table);
+		return $this->db->get($this->table)->result();
 	}
 
 	function getEstados() {
@@ -56,7 +56,15 @@ class peopleModel extends CI_Model {
 
 	function getNotEv($id_event) {
 
-	$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_events where events_id_event = '".$id_event."')  and id_people not in (select peoples_id_people from peoples_teams )"; 
+	//$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_events where events_id_event = ".$id_event.")  and id_people not in (select peoples_id_people from peoples_teams )"; 
+		$sql = "SELECT * FROM peoples p
+				WHERE p.id_people NOT IN (SELECT peoples_id_people FROM peoples_events WHERE events_id_event =".$id_event.")
+				and p.id_people NOT IN (SELECT peoples_id_people FROM peoples_teams pt
+				INNER JOIN teams tm 
+				ON pt.teams_id_team = tm.id_team
+				INNER JOIN events_teams et
+				ON et.teams_id_team = tm.id_team
+				WHERE et.events_id_event = ".$id_event.")"; 
 			
 			return $this->db->query($sql)->result();
 
@@ -65,7 +73,9 @@ class peopleModel extends CI_Model {
 	
 	function getNotTm($id_team) {
 
-	$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_teams where teams_id_team = '".$id_team."') and id_people not in (select peoples_id_people from peoples_teams ) "; 
+	$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_teams where teams_id_team = '".$id_team."') and id_people not in (select peoples_id_people from peoples_teams ) ";
+
+	//$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_teams where teams_id_team = '".$id_team."')"; 
 			
 			return $this->db->query($sql)->result();
 

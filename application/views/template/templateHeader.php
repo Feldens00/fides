@@ -102,7 +102,7 @@
           </h4>
         </i>
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="<?= base_url('event'); ?>"><i class="material-icons">account_balance</i> Entidades</a></li>
+          <li class="active"><a href="<?= base_url(''); ?>"><i class="material-icons">account_balance</i> Entidades</a></li>
           <li></li>
           <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown"> 

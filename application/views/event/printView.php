@@ -20,24 +20,28 @@
 <body>
 	<div class="col-sm-12">
 		<h2>Atividades</h2>
-	</div>
-	 <?php foreach ($all as $act) { ?>
-		
-		 <table class=" table table-bordered">
+	
+	
+		<table class=" table table-bordered">
+		    <thead>
+		      <tr>
+		        <th>Nome</th>
+		        <th>Descrição</th>
+		        <th>Horário</th>
+		      </tr>
+		    </thead>
+		     	<?php foreach ($all as $act) { ?>
 		    <tbody>
 		      <tr>
-		        <td><h6>Nome: <?= $act->name_activitie;?></h6></td>
-		        <td>Descrição: <?= $act->description;?></td>
+		        <td><h6><?= $act->name_activitie;?></h6></td>
+		        <td><h6><?= $act->description;?></h6></td>
+		        <td><h6><?= $act->horary;?></h6></td>
 			  </tr>
-		
-		      <tr>
-		        <td><h6>Horário: <?= $act->horary;?></h6></td>
-		      </tr>
 		    </tbody>
+		    	<?php } ?>
 		  </table>
 		
 
 	</div>
-	<?php } ?>
 </body>
 </html>
