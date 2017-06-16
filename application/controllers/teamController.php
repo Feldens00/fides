@@ -9,6 +9,7 @@ class teamController extends CI_Controller {
 		$this->load->model('eventModel');
 		$this->load->model('teamModel');
 		$this->load->model('peopleModel');
+		$this->load->model('loginModel');
 	}
 
 	public function index()
@@ -16,10 +17,18 @@ class teamController extends CI_Controller {
 
 		$this->db->select('*');
 		$dados['teams'] = $this->teamModel->get()->result();
+		$retorno = $this->loginModel->logged();
+		if($retorno == 1){
+				
+				$dados['formerror'] = 'Sem permissão de acesso.';
+				$this->load->view('loginView',$dados);
 
+			}else{
+
+				$this->template->load('template/templateHeader','team/index',$dados);
 		
-		$this->template->load('template/templateHeader','team/index',$dados);
-		
+			}		
+	
 	}
 
 	public function call_createView(){
@@ -35,18 +44,11 @@ class teamController extends CI_Controller {
 	public function create()
 	{	
 		$this->form_validation->set_rules('teamName','Nome','required|min_length[4]');
-		//$this->form_validation->set_rules('teamEvent','Evento','required');
 		
-		
-	
 
 		if($this->form_validation->run()==FALSE){
 
 				$dados['formerror']= validation_errors();
-				
-
-				//$this->db->select('*');
-				//$dados['events'] = $this->db->get('events')->result();
 
 				 $this->template->load('template/templateHeader', 'team/teamCreateView',$dados);
 					
@@ -57,11 +59,8 @@ class teamController extends CI_Controller {
 				
 				$team = array(
 				'name_team' => $this->input->post('teamName'),
-				//'id_event' => $this->input->post('teamEvent'),
-				//'ev_id_city' => $retorno->id_city,
-				//'ev_id_state' => $retorno->id_state,
-				//'id_entitie' => $retorno->id_entitie
-				
+				'description' => $this->input->post('teamDescription'),
+				'id_user' => $this->session->userdata('id_user')
 				);
 
 			$this->teamModel->create($team);
@@ -167,7 +166,6 @@ class teamController extends CI_Controller {
 
 	public function update_form($id){
 		 $dados['formerror']=NULL;
-		 //$dados['events'] = $this->db->get('events')->result();
 		 $dados['teams']=$this->teamModel->getOne($id)->result();
 		 $this->template->load('template/templateHeader', 'team/teamUpdateView', $dados);
 		
@@ -185,24 +183,16 @@ class teamController extends CI_Controller {
 				$id=$this->input->post('updateTeamId');
 				$dados['teams']=$this->teamModel->getOne($id)->result();
 
-				//$this->db->select('*');
-				//$dados['events'] = $this->db->get('events')->result();
 
 				 $this->template->load('template/templateHeader', 'team/teamUpdateView',$dados);
 					
 		}else{	
-				//$event = $this->input->post('updateTeamEvent');
-				//$retorno = $this->eventModel->getOne($event)->row();
-			 
 				
 				$team = array(
 				'id_team' => $this->input->post('updateTeamId'),	
 				'name_team' => $this->input->post('updateTeamName'),
-				//'id_event' => $this->input->post('updateTeamEvent'),
-				//'ev_id_city' => $retorno->id_city,
-				//'ev_id_state' => $retorno->id_state,
-				//'id_entitie' => $retorno->id_entitie
-				
+				'description' => $this->input->post('updateTeamDescription'),
+				'id_user' => $this->session->userdata('id_user')
 				);
 
 			$this->teamModel->update($team);

@@ -16,8 +16,10 @@ class activitieModel extends CI_Model
 	}
 
 	public function get(){
+		$id_user =$this->session->userdata('id_user');
 		
 		$this->db->select('*');
+		$this->db->where('id_user',$id_user);
 		$this->db->order_by("name_activitie", "asc");    
 	  	return $this->db->get('activities');
 		

@@ -8,6 +8,7 @@ class peopleController extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('peopleModel');
 		$this->load->model('teamModel');
+		$this->load->model('loginModel');
 	}
 
 	public function getCidades($id) {
@@ -37,10 +38,18 @@ class peopleController extends CI_Controller {
 	{	
 
 		$this->db->select('*');
-		$dados['peoples'] = $this->peopleModel->get();
+		$dados['peoples'] = $this->peopleModel->get()->result();
+		$retorno = $this->loginModel->logged();
+		if($retorno == 1){
+				
+				$dados['formerror'] = 'Sem permissão de acesso.';
+				$this->load->view('loginView',$dados);
 
+			}else{
+
+				$this->template->load('template/templateHeader','people/index',$dados);
 		
-		$this->template->load('template/templateHeader','people/index',$dados);
+			}		
 		
 	}
 
@@ -48,7 +57,6 @@ class peopleController extends CI_Controller {
 
 		
 		$this->db->select('*');
-		//$dados['teams'] = $this->db->get('teams')->result();
 		$dados['estados'] = $this->peopleModel->getEstados();
 		$dados['formerror']=NULL;
 
@@ -60,7 +68,7 @@ class peopleController extends CI_Controller {
 		$this->form_validation->set_rules('peopleName','Nome','required|min_length[4]');
 		$this->form_validation->set_rules('estado','Estado','required');
 		$this->form_validation->set_rules('cidade','Cidade','required');
-		//$this->form_validation->set_rules('team','Equipe','required');
+
 		
 		
 		if($this->form_validation->run()==FALSE){
@@ -69,13 +77,11 @@ class peopleController extends CI_Controller {
 				
 
 				$this->db->select('*');
-				//$dados['teams'] = $this->db->get('teams')->result();
 				$dados['estados'] = $this->peopleModel->getEstados();
 				$this->template->load('template/templateHeader', 'people/peopleCreateView',$dados);
 					
 		}else{	
-				//$team = $this->input->post('team');
-				//$retorno = $this->teamModel->getOne($team)->row();
+				
 			 
 				
 				$people = array(
@@ -86,15 +92,9 @@ class peopleController extends CI_Controller {
 				'phone' => $this->input->post('peoplePhone'),
 				'email' => $this->input->post('peopleEmail'),
 				'neighborhood' => $this->input->post('peopleNeigh'),
-				//'id_team' => $this->input->post('team'),
 				'id_city' => $this->input->post('cidade'),
 				'id_state' => $this->input->post('estado'),
-				//'t_id_city' => $retorno->id_city,
-				//'t_id_state' => $retorno->id_state,
-				//'t_id_entitie' => $retorno->id_entitie,
-				//'t_id_event' => $retorno->id_event
-
-				
+				'id_user' => $this->session->userdata('id_user')
 				);
 
 			$this->peopleModel->create($people);
@@ -160,15 +160,10 @@ public function update(){
 				'phone' => $this->input->post('updatePeoplePhone'),
 				'email' => $this->input->post('updatePeopleEmail'),
 				'neighborhood' => $this->input->post('updatePeopleNeigh'),
-				//'id_team' => $this->input->post('team'),
 				'id_city' => $this->input->post('cidade'),
 				'id_state' => $this->input->post('estado'),
-				//'t_id_city' => $retorno->id_city,
-				//'t_id_state' => $retorno->id_state,
-				//'t_id_entitie' => $retorno->id_entitie,
-				//'t_id_event' => $retorno->id_event
-
-				
+				'id_user' => $this->session->userdata('id_user')
+			
 				);
 
 			$this->peopleModel->update($people);

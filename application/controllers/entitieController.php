@@ -7,11 +7,24 @@ class entitieController extends CI_Controller {
 		parent:: __construct();
 		$this->load->library('form_validation');
 		$this->load->model('entitieModel');
+		$this->load->model('loginModel');
 	}
 
 	public function index()
 	{	
-		$this->template->load('template/templateHeader','entitieView');
+		
+		$dados['entities'] = $this->entitieModel->get()->result();
+		$retorno = $this->loginModel->logged();
+		if($retorno == 1){
+				
+				$dados['formerror'] = 'Sem permissão de acesso.';
+				$this->load->view('loginView',$dados);
+
+			}else{
+
+				$this->template->load('template/templateHeader','homeView',$dados);
+		
+			}		
 		
 	}
 
@@ -31,16 +44,17 @@ class entitieController extends CI_Controller {
 			$this->template->load('template/templateHeader', 'entitie/entitieCreateView',$dados);
 		}else{
 				
-			    
+			  
+
 				$entitie = array(
 				'name_entitie' => $this->input->post('entitieName'),
-				'phone' => $this->input->post('entitiePhone')
-
+				'phone' => $this->input->post('entitiePhone'),
+				'id_user' => $this->session->userdata('id_user')
 				);
 
 			$this->entitieModel->create($entitie);
 			
-			redirect('');
+			redirect('entitie');
 		}
 		
 	}

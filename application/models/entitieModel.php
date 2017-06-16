@@ -27,8 +27,10 @@ class entitieModel extends CI_Model {
 	}
 
 	public function get(){
+		$id_user =$this->session->userdata('id_user');
+		$this->db->where('id_user',$id_user);
 		$this->db->order_by('name_entitie','asc');
-		return $this->db->get($this->table)->result();
+		return $this->db->get($this->table);
 	}
 }
 	

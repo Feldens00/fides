@@ -1,4 +1,3 @@
-
 <script type="text/javascript"> 
   
 $(document).ready(function(){
@@ -7,7 +6,6 @@ $(document).ready(function(){
       idEvent = $(this).data('id');
        $('#deleteEvent').modal('show');
       });
-
       $("#delete_event").on("click", function(){
         $.ajax({
           url: "<?php echo site_url('/eventController/delete'); ?>",
@@ -21,7 +19,6 @@ $(document).ready(function(){
              
             }else{
               console.log(data);
-
             }
           },
           error: function(data){
@@ -31,7 +28,6 @@ $(document).ready(function(){
         });
       }); 
  }); 
-
 //função do toggle 
 function mostrarA(id){
         div_a ="div_a"+id;
@@ -45,16 +41,13 @@ function mostrarA(id){
             document.getElementById(div_icone_b).style.display = "none";
             document.getElementById(div_icone_c).style.display = "none";
             document.getElementById(div_icone_a).className = 'col-sm-12 text-center';
-
     }else if((document.getElementById(div_a).style.display = "block")&&( document.getElementById(div_icone_b).style.display == "none")&&( document.getElementById(div_icone_c).style.display == "none")) {
-
              document.getElementById(div_a).style.display = "none";
              document.getElementById(div_icone_b).style.display = "block";
              document.getElementById(div_icone_c).style.display = "block";
              document.getElementById(div_icone_a).className = 'col-sm-4 text-center';
        }
 }
-
 function mostrarB(id){
         div_b ="div_b"+id;
         div_icone_b ="div_icone_b"+id;
@@ -63,13 +56,10 @@ function mostrarB(id){
         
       
     if ((document.getElementById(div_b).style.display = "none")&&(  document.getElementById(div_icone_a).style.display == "block")&&(  document.getElementById(div_icone_c).style.display == "block")){
-
             document.getElementById(div_b).style.display = "block";
             document.getElementById(div_icone_a).style.display = "none";
             document.getElementById(div_icone_c).style.display = "none";
             document.getElementById(div_icone_b).className = 'col-sm-12 text-center';
-
-
     }else if((document.getElementById(div_b).style.display = "block")&&( document.getElementById(div_icone_a).style.display == "none")&&(  document.getElementById(div_icone_c).style.display == "none")) {
               
              document.getElementById(div_b).style.display = "none";
@@ -78,7 +68,6 @@ function mostrarB(id){
              document.getElementById(div_icone_b).className = 'col-sm-4 text-center';
         } 
 }
-
 function mostrarC(id){
         div_c ="div_c"+id;
         div_icone_c ="div_icone_c"+id;
@@ -86,21 +75,17 @@ function mostrarC(id){
         div_icone_b ="div_icone_b"+id;
       
     if ((document.getElementById(div_c).style.display = "none")&&(  document.getElementById(div_icone_a).style.display == "block")&&(  document.getElementById(div_icone_b).style.display == "block")){
-
             document.getElementById(div_c).style.display = "block";
             document.getElementById(div_icone_a).style.display = "none";
             document.getElementById(div_icone_b).style.display = "none";
             document.getElementById(div_icone_c).className = 'col-sm-12 text-center';
-
     }else if((document.getElementById(div_c).style.display = "block")&&( document.getElementById(div_icone_a).style.display == "none")&&(  document.getElementById(div_icone_b).style.display == "none")) {
-
              document.getElementById(div_c).style.display = "none";
              document.getElementById(div_icone_a).style.display = "block";
              document.getElementById(div_icone_b).style.display = "block";
              document.getElementById(div_icone_c).className = 'col-sm-4 text-center';
        }
 }
-
 </script>
 
   <div class="row">

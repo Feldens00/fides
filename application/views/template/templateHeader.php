@@ -13,9 +13,7 @@
   <script type="text/javascript" src="<?= base_url('assets/js/utilidade.js');?>"></script>
   
   <script type="text/javascript">
-
     var path = '<?php echo site_url(); ?>'
-
   </script>
 
   <style type="text/css">
@@ -26,7 +24,6 @@
     /* Set gray background color and 100% height */
     .sidenav {
       background-color: #333;
-
       height: 100%;
     }
     .painel-event{
@@ -69,7 +66,6 @@
       border-bottom-color:#333;
       padding-bottom:20px;
     }
-
     .background-dark{
        background-color: #333;
     }
@@ -102,7 +98,7 @@
           </h4>
         </i>
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="<?= base_url(''); ?>"><i class="material-icons">account_balance</i> Entidades</a></li>
+          <li class="active"><a href="<?= base_url('entities'); ?>"><i class="material-icons">account_balance</i> Entidades</a></li>
           <li></li>
           <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown"> 

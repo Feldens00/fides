@@ -8,6 +8,7 @@ class activitieController extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('eventModel');
 		$this->load->model('activitieModel');
+		$this->load->model('loginModel');
 	}
 
 	public function index()
@@ -15,8 +16,17 @@ class activitieController extends CI_Controller {
 		$dados['formerror']= NULL;
 		
 		$dados['activities'] = $this->activitieModel->get()->result();
+		$retorno = $this->loginModel->logged();
+		if($retorno == 1){
+				
+				$dados['formerror'] = 'Sem permissão de acesso.';
+				$this->load->view('loginView',$dados);
+
+			}else{
+
+				$this->template->load('template/templateHeader', 'activitie/index',$dados);
+			}	
 		
-		$this->template->load('template/templateHeader', 'activitie/index',$dados);
 	}
 
 	public function create_activitie(){
@@ -26,8 +36,8 @@ class activitieController extends CI_Controller {
 				
 					'name_activitie' => $this->input->post('activitieName'),
 					'description' => $this->input->post('activitieDescription'),
+					'id_user' => $this->session->userdata('id_user')
 					
-			
 					);
 
 					$this->activitieModel->create_actvitie($activitie);
@@ -79,7 +89,7 @@ class activitieController extends CI_Controller {
 					'activities_id_activitie' => $this->input->post('activitieId'),
 					'events_id_event' => $id_event,
 					'horary' => $horary
-			
+						
 					);
 
 			
@@ -167,7 +177,7 @@ class activitieController extends CI_Controller {
 					'id_activitie'  =>$this->input->post('updateActivitieId'),
 					'name_activitie' => $this->input->post('updateActivitieName'),
 					'description' => $this->input->post('updateActivitieDescription'),
-			
+					'id_user' => $this->session->userdata('id_user')
 					);
 
 					$this->activitieModel->update($activitie);

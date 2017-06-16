@@ -69,10 +69,13 @@ class eventModel extends CI_Model {
 	}
 	
 	public function get(){
+		$id_user =$this->session->userdata('id_user');
+		
 		$this->db->select('*');   
 		$this->db->join('states', 'events.id_state = states.id_state','inner');
 		$this->db->join('cities', 'events.id_city = cities.id_city','inner'); 
 		$this->db->join('entities', 'events.id_entitie = entities.id_entitie','inner');
+		$this->db->where('events.id_user',$id_user);
 		$this->db->order_by('name_event','asc');
 		return $this->db->get($this->table);
 	}

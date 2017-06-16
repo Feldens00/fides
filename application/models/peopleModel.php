@@ -30,11 +30,14 @@ class peopleModel extends CI_Model {
 	}
 
 	public function get(){
+		$id_user =$this->session->userdata('id_user');
+
 		$this->db->select('');    
 		$this->db->join('states', 'peoples.id_state = states.id_state','inner');
 		$this->db->join('cities', 'peoples.id_city = cities.id_city','inner');
+		$this->db->where('id_user',$id_user);
 		$this->db->order_by('name_people','asc');
-		return $this->db->get($this->table)->result();
+		return $this->db->get($this->table);
 	}
 
 	function getEstados() {

@@ -49,11 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'homeController';
+$route['default_controller'] = 'loginController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //rotas das Entidades
+$route['entitie'] = 'entitieController';
 $route['create-entitie-form'] = '/entitieController/call_createView';
 $route['create-entitie'] = 'entitieController/create';
 $route['update-entitie-form/(:num)'] = 'entitieController/update_form/$1';
@@ -113,9 +114,14 @@ $route['create-team-people/(:num)'] = 'teamController/create_teamPeople/$1';
 $route['team-people/(:num)'] = 'teamController/call_teamPeople/$1';
 $route['delete-team-people/(:num)'] = 'teamController/delete_teamPeople/$1';
 
-//rotas des Pessoas
+//rotas das Pessoas
 $route['create-people-form'] = 'peopleController/call_createView';
 $route['create-people'] = 'peopleController/create';
 $route['people'] = 'peopleController';
 $route['update-people-form/(:num)'] = 'peopleController/update_form/$1';
 $route['update-people'] = 'peopleController/update';
+
+
+//rotas de Login
+$route['login'] = 'loginController/login';
+$route['logout'] = 'loginController/logout';

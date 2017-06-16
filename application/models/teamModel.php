@@ -28,12 +28,9 @@ class teamModel extends CI_Model {
 	}
 
 	public function get(){
-
-		//$this->db->from('peoples p');
-		//$this->db->join('peoples_teams pt', 'p.id_people = pt.peoples_id_people','inner');
-		//$this->db->join('teams t', 'pt.teams_id_team = t.id_team','inner');
-		//$this->db->join('events', 'teams.id_event = events.id_event','inner'
-		//$this->db->join('events', 'teams.id_event = events.id_event','inner');
+		$id_user =$this->session->userdata('id_user');
+		
+		$this->db->where('id_user',$id_user);
 		$this->db->order_by('name_team','asc');
 		return $this->db->get('teams');
 	}

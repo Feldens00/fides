@@ -8,14 +8,24 @@ class productController extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('productModel');
 		$this->load->model('eventModel');
+		$this->load->model('loginModel');
 	}
 
 	public function index(){
 		$dados['formerror']= NULL;
 		
 		$dados['products'] = $this->productModel->get()->result();
+		$retorno = $this->loginModel->logged();
+		if($retorno == 1){
+				
+				$dados['formerror'] = 'Sem permissão de acesso.';
+				$this->load->view('loginView',$dados);
+
+			}else{
+
+				$this->template->load('template/templateHeader', 'product/index',$dados);
 		
-		$this->template->load('template/templateHeader', 'product/index',$dados);
+			}		
 	}
 
 	public function create_product(){
@@ -25,7 +35,7 @@ class productController extends CI_Controller {
 				
 					'name_product' => $this->input->post('productName'),
 					'type' => $this->input->post('productType'),
-					
+					'id_user' => $this->session->userdata('id_user')
 			
 					);
 
@@ -172,7 +182,7 @@ class productController extends CI_Controller {
 					'id_product'  =>$this->input->post('updateProductId'),
 					'name_product' => $this->input->post('updateProductName'),
 					'type' => $this->input->post('updateProductType'),
-			
+					'id_user' => $this->session->userdata('id_user')
 					);
 
 					$this->productModel->update($product);

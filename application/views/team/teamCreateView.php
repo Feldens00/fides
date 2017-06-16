@@ -12,6 +12,11 @@
             <label for="name"><font color="#d9d9d9">* Nome:</font></label>
             <input type="text" class="form-control" name="teamName" placeholder="Digite o nome da Equipe">
           </div>
+
+          <div class="form-group">
+            <label for="description"><font color="#d9d9d9">Descrição:</font></label>
+            <input type="text" class="form-control" name="teamDescription" placeholder="Digite a descrição">
+          </div>
           <!--<div class="form-group">
              <label><font color="#d9d9d9">* Evento</font></label>
                              <select name="teamEvent" class="form-control" >

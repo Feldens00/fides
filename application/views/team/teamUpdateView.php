@@ -17,6 +17,11 @@
       <label for="name"><font color='#d9d9d9'>* Nome:</font></label>
       <input type="text" class="form-control" name="updateTeamName" placeholder="Digite o nome da Equipe" value="<?= $tm->name_team; ?>">
     </div>
+
+     <div class="form-group">
+            <label for="description"><font color="#d9d9d9">Descrição:</font></label>
+            <input type="text" class="form-control" name="updateTeamDescription" placeholder="Digite a descrição" value="<?= $tm->description; ?>">
+          </div>
     <!--<div class="form-group">
        <label><font color='#d9d9d9'>* Evento</font></label>
                        <select name="updateTeamEvent" class="form-control" >

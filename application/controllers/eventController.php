@@ -11,6 +11,7 @@ class eventController extends CI_Controller {
 		$this->load->model('entitieModel');
 		$this->load->model('teamModel');
 		$this->load->model('activitieModel');
+		$this->load->model('loginModel');
 	}
 
 	public function index()
@@ -18,10 +19,18 @@ class eventController extends CI_Controller {
 
 		
 		$dados['events'] = $this->eventModel->get()->result();
+		$retorno = $this->loginModel->logged();
 
+			if($retorno == 1){
+				
+				$dados['formerror'] = 'Sem permissão de acesso.';
+				$this->load->view('loginView',$dados);
+
+			}else{
+
+				$this->template->load('template/templateHeader','event/index',$dados);
 		
-		$this->template->load('template/templateHeader','event/index',$dados);
-		
+			}		
 	}
 
 	public function call_createView(){
@@ -29,8 +38,8 @@ class eventController extends CI_Controller {
 		$dados['formerror']= NULL;
 		$dados['estados'] = $this->eventModel->getEstados();
 
-		$this->db->select('*');
-		$dados['entities'] = $this->entitieModel->get();
+		
+		$dados['entities'] = $this->entitieModel->get()->result();
 
 		 $this->template->load('template/templateHeader', 'event/eventCreateView',$dados);
 	}
@@ -68,7 +77,7 @@ class eventController extends CI_Controller {
 				'id_city' => $this->input->post('cidade'),
 				'id_state' => $this->input->post('estado'),
 				'id_entitie' => $this->input->post('entitie'),
-				
+				'id_user' => $this->session->userdata('id_user')
 		
 				);
 
@@ -128,7 +137,7 @@ class eventController extends CI_Controller {
 				'id_city' => $this->input->post('cidade'),
 				'id_state' => $this->input->post('estado'),
 				'id_entitie' => $this->input->post('entitie'),
-				
+				'id_user' => $this->session->userdata('id_user')
 		
 				);
 
