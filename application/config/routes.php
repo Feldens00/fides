@@ -109,10 +109,10 @@ $route['create-team'] = 'teamController/create';
 $route['team'] = 'teamController';
 $route['update-team-form/(:num)'] = 'teamController/update_form/$1';
 $route['update-team'] = 'teamController/update';
-$route['form-team-people/(:num)'] = 'teamController/call_teamPeopleCreateView/$1';
-$route['create-team-people/(:num)'] = 'teamController/create_teamPeople/$1';
-$route['team-people/(:num)'] = 'teamController/call_teamPeople/$1';
-$route['delete-team-people/(:num)'] = 'teamController/delete_teamPeople/$1';
+$route['form-team-people'] = 'teamController/call_teamPeopleCreateView';
+$route['create-team-people/(:num)/(:any)'] = 'teamController/create_teamPeople/$1/$2';
+$route['team-people'] = 'teamController/call_teamPeople';
+$route['delete-team-people/(:num)/(:any)'] = 'teamController/delete_teamPeople/$1/$2';
 
 //rotas das Pessoas
 $route['create-people-form'] = 'peopleController/call_createView';

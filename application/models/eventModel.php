@@ -41,8 +41,10 @@ class eventModel extends CI_Model {
 		
 	}
 
+	
+
 	public function getPT($event){
-		
+		$id_user = $this->session->userdata('id_user');
 		$this->db->select('peoples.name_people, teams.name_team, peoples.email, states.name_state, cities.name_city');        
 		$this->db->join('events_teams', 'events.id_event = events_teams.events_id_event','inner');
 		$this->db->join('teams', 'events_teams.teams_id_team = teams.id_team','inner');
@@ -51,19 +53,23 @@ class eventModel extends CI_Model {
 		$this->db->join('states', 'peoples.id_state = states.id_state','inner');
 		$this->db->join('cities', 'peoples.id_city = cities.id_city','inner');
 		$this->db->where('id_event', $event);
+		$this->db->where('peoples_teams.events_id_event', $event);
+		$this->db->where('events.id_user', $id_user);
 		$this->db->order_by('teams.id_team','asc');
 	   return $this->db->get('events');
 		
 	}
 
 	public function getPE($event){
-		
+		$id_user = $this->session->userdata('id_user');
+
 		$this->db->select('*');   
 		$this->db->join('peoples_events', 'events.id_event = peoples_events.events_id_event','inner');
 		$this->db->join('peoples', 'peoples_events.peoples_id_people = peoples.id_people','inner');
 		$this->db->join('states', 'peoples.id_state = states.id_state','inner');
 		$this->db->join('cities', 'peoples.id_city = cities.id_city','inner'); 
 		$this->db->where('id_event', $event);
+		$this->db->where('events.id_user', $id_user);
 	   return $this->db->get('events');
 		
 	}
@@ -97,14 +103,17 @@ class eventModel extends CI_Model {
 		
 	}
 
-	function getNotET($id_team) {
+	/*function getNotET($id_team) {
 
 	$sql = "select DISTINCT name_event, id_event from events where id_event not in (select teams_id_team from events_teams where teams_id_team = '".$id_team."')"; 
 			
 			return $this->db->query($sql);
 
 		
-	}	
+	}
+
+
+	}*/	
 
 	 public function listTE($id_team) {
 

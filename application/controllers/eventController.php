@@ -73,6 +73,7 @@ class eventController extends CI_Controller {
 				'adress' => $this->input->post('eventAdress'),
 				'cep' => $this->input->post('eventCep'),
 				'phone' => $this->input->post('eventPhone'),
+				'inscription' => $this->input->post('eventInscription'),
 				'neighborhood' => $this->input->post('eventNeigh'),
 				'id_city' => $this->input->post('cidade'),
 				'id_state' => $this->input->post('estado'),
@@ -194,7 +195,7 @@ class eventController extends CI_Controller {
 
 				$dados['events'] = $this->eventModel->getOne($id_event)->result();
 				
-				$dados['peoples'] = $this->peopleModel->listEP($id_event);
+				$dados['peoples'] = $this->peopleModel->getNotEv($id_event);
 
 				 $this->template->load('template/templateHeader', 'event/eventPeopleCreateView',$dados);
 			
@@ -264,7 +265,7 @@ class eventController extends CI_Controller {
 		$dados['events'] = $this->eventModel->getOne($id_event)->result();
 
 		$this->db->select('*');
-		$dados['teams'] = $this->teamModel->get()->result();
+		$dados['teams'] = $this->teamModel->getNotEv($id_event);
 
 		 $this->template->load('template/templateHeader', 'event/eventTeamCreateView',$dados);
 	}

@@ -44,6 +44,11 @@
     </div>
 
     <div class="form-group">
+       <label for="phone"><font color="#d9d9d9">Valor da Inscrição:</font></label>
+        <input type="text" class="form-control" id="money"  name="eventInscription" required>
+    </div>
+
+    <div class="form-group">
       <label><font color="#d9d9d9">* Estado</font></label>
                        <select name="estado" class="form-control" >
                                <?php

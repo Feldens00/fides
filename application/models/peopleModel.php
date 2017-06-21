@@ -58,8 +58,8 @@ class peopleModel extends CI_Model {
 	}
 
 	function getNotEv($id_event) {
+		$id_user = $this->session->userdata('id_user');
 
-	//$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_events where events_id_event = ".$id_event.")  and id_people not in (select peoples_id_people from peoples_teams )"; 
 		$sql = "SELECT * FROM peoples p
 				WHERE p.id_people NOT IN (SELECT peoples_id_people FROM peoples_events WHERE events_id_event =".$id_event.")
 				and p.id_people NOT IN (SELECT peoples_id_people FROM peoples_teams pt
@@ -67,37 +67,38 @@ class peopleModel extends CI_Model {
 				ON pt.teams_id_team = tm.id_team
 				INNER JOIN events_teams et
 				ON et.teams_id_team = tm.id_team
-				WHERE et.events_id_event = ".$id_event.")"; 
+				WHERE et.events_id_event = ".$id_event.") AND p.id_user = '".$id_user."';"; 
 			
 			return $this->db->query($sql)->result();
 
 		
 	}	
 	
-	function getNotTm($id_team) {
+	
+	public function getPeopleNotTE($id_team, $id_event){
 
-	$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_teams where teams_id_team = '".$id_team."') and id_people not in (select peoples_id_people from peoples_teams ) ";
+		$id_user =$this->session->userdata('id_user');
+		$sql = "SELECT * FROM peoples p
+				INNER JOIN peoples_teams 
+				ON p.id_people = peoples_teams.peoples_id_people
+				WHERE p.id_people NOT IN 
+				(SELECT peoples_id_people 
+				FROM peoples_teams 
+				WHERE events_id_event =".$id_team."
+				AND teams_id_team =".$id_team.")
+				 AND id_user =".$id_user." AND events_id_event =".$id_event.";";
 
-	//$sql = "select DISTINCT name_people, id_people from peoples where id_people not in (select peoples_id_people from peoples_teams where teams_id_team = '".$id_team."')"; 
-			
-			return $this->db->query($sql)->result();
+		return $this->db->query($sql)->result();
+	}
 
-		
-	}	
-	 public function listEP($id_event) {
+    public function listTP($id_team,$id_event) {
 
-       	$this->db->select('');    
-		$this->db->join('peoples_events', 'peoples.id_people = peoples_events.peoples_id_people','inner');
-		$this->db->where('events_id_event', $id_event);
-	   	return $this->db->get('peoples')->result();
-    }
-
-     public function listTP($id_team) {
-
-       	$this->db->select('');    
 		$this->db->join('peoples_teams', 'peoples.id_people = peoples_teams.peoples_id_people','inner');
 		$this->db->where('teams_id_team', $id_team);
+		$this->db->where('events_id_event', $id_event);
 	   	return $this->db->get('peoples')->result();
+
+	  
     }
 
 }

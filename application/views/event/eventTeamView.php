@@ -8,47 +8,45 @@
     }
 
   ?>
-    
-  <div class="row">
-    <div class="col-sm-10 text-center div-barra">
-   
-        <div class="col-sm-10" >
-           <h2>
-                <font color="#d9d9d9">Equipes do Evento <?= $name_event;?> 
-                </font>
-           </h2> 
-        </div>
-
-    </div>
-      <div class="col-sm-10 div-mold" style="margin-top:50px;">
-     
-       <form action="<?= base_url('delete-event-team/'.$id_event)?>" method="POST">
-          <div class="table-responsive">
-             <table class="table table-condesed">
-              <thead>
-                <tr>
-                  <th><font color="#d9d9d9">Id</font></th>
-                  <th><font color="#d9d9d9">Nome</font></th>
-                   <th><font color="#d9d9d9">Remover</font></th>
-                </tr>
-              </thead>
-              <tbody>
-               <?php foreach ($teams as $tm) { ?> 
-                <tr>
-                  <td><font color="#d9d9d9"><?= $tm->id_team;?></font></td>
-                  <td><font color="#d9d9d9"><?= $tm->name_team;?></font></td>
-                  <td align="center" width="70">
-                          <input type="checkbox" name="selecao[]" value="<?=$tm->id_team;?>"/>
-                  </td>
-                </tr>
-                <?php } ?>
-              </tbody>
-            </table>  
-          </div>
-          <div class="col-sm-12 text-center">
-                <button type="submit" class="btn btn-default">remover <span class="glyphicon glyphicon-floppy-disk"></span></button>
-          </div>
-        </form>
-      </div> 
-   </div>
-
+  
+  <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title"><?= $name_event; ?></h4>
+                                <p class="category">Remova equipes do evento.</p>
+                            </div>
+                            <form action="<?= base_url('delete-event-team/'.$id_event)?>" method="POST">
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <th>id</th>
+                                      <th>nome</th>
+                                      <th><?= $id_event;?></th>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($teams as $tm) { ?> 
+                                      <tr>
+                                        <td><?= $tm->id_team;?></td>
+                                        <td><?= $tm->name_team;?></td>
+                                        <td align="center" width="70">
+                                                <input type="checkbox" name="selecao[]" value="<?=$tm->id_team;?>"/>
+                                        </td>
+                                      </tr>
+                                    <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                             <div class="col-sm-12 text-center">
+                                  <button type="submit" class="btn btn-default">Remover
+                                     <span class="glyphicon glyphicon-floppy-disk"></span>
+                                  </button>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>

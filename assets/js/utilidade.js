@@ -49,3 +49,59 @@ function resetaCombo( el ) {
    $( option ).append( 'Escolha' );
    $("select[name='"+el+"']").append( option );
 }
+
+$(document).ready( function() {
+    
+   $('.selectEventDel').click(function(){
+
+      id_team = $(this).data('id');
+      $('#selectEventDel').modal('show');
+
+            document.getElementById('idTeam').value = id_team;
+
+            $.getJSON( path + '/teamController/getEventTeam/' + id_team, function (data){
+            //  console.log(data);
+            var option = new Array();
+                    $("#events").empty();
+                    $('#events').html('<option value="">Selecione um evento para filtrar as pessoas da equipe</option>');
+                    $.each(data, function(i, obj){
+
+                        option[i] = document.createElement('option');
+
+                        $( option[i] ).attr( {value : obj.id} );
+                      $( option[i] ).append( obj.nome );
+                      
+                       $("select[name='events']").append( option[i] );
+                  
+                    });
+             });
+    });
+});
+
+$(document).ready( function() {
+    
+   $('.selectEventAdd').click(function(){
+
+      id_team = $(this).data('id');
+      $('#selectEventAdd').modal('show');
+
+            document.getElementById('idTeam1').value = id_team;
+
+            $.getJSON( path + '/teamController/getEventTeam/' + id_team, function (data){
+            //  console.log(data);
+            var option = new Array();
+                    $("#events1").empty();
+                    $('#events1').html('<option value="">Selecione um evento para filtrar as pessoas da equipe</option>');
+                    $.each(data, function(i, obj){
+
+                        option[i] = document.createElement('option');
+
+                        $( option[i] ).attr( {value : obj.id} );
+                      $( option[i] ).append( obj.nome );
+                      
+                       $("select[name='events1']").append( option[i] );
+                  
+                    });
+             });
+    });
+});

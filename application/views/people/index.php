@@ -14,7 +14,7 @@ function mostrar(id){
     <div class="col-sm-10 text-center div-barra">
 
         <div class="col-md-11" >
-           <h2><font color="#d9d9d9">Pessoas</font></h2> 
+           <h2>Pessoas</h2> 
         </div>
 
         <div class="col-md-1">
@@ -22,61 +22,82 @@ function mostrar(id){
         </div>
 
     </div>
-      <div class="col-sm-12" style="margin-top:50px;">
-        <?php foreach($peoples as $pp) { ?>
-            <div id=divPeoples class="col-md-3 div-mold"> 
-              <h2><font color="#d9d9d9"><?= $pp->name_people; ?></font></h2>
-
-                     <a href="<?= base_url('update-people-form/'.$pp->id_people)?>">
-                          <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-pencil">
-                          </button>
-                      </a>
-                    <button type="button" class="btn btn-primary delPeople" data-id="<?php echo $pp->id_people; ?>" >  
-                       <span class="glyphicon glyphicon-trash">
-                    </button>
 
 
-                   <?php 
- 
-                    echo (" <div class='col-sm-12 text-center'><i class='material-icons'   onclick='mostrar(".$pp->id_people.")' >keyboard_arrow_down</i></div>");
-                    echo (" <div class='col-sm-12' id='a".$pp->id_people."' style='display: none; margin-top:5px;'>");
-                    ?>
-                 
-                        <div class="col-sm-6">
-                          <h6><font color="#d9d9d9">Data de Nascimento: <?= $pp->birth; ?></font></h6>
+
+              <div class="container-fluid">
+         <div class="row">
+           <?php foreach($peoples as $pp) { ?>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                            <h4><?= $pp->name_people; ?></h4>
+                                        </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <hr /> 
+                                      <div class="row" >
+                                        <div class="col-xs-12"  style="margin-bottom: 5px;">
+                                               
+                                                <a href="<?= base_url('update-event-form/'.$pp->id_people)?>">
+                                                    <button type="button" class="btn btn-default">
+                                                          <span class="glyphicon glyphicon-pencil"></span>
+                                                    </button>
+                                                </a>
+                                             
+                                                <button type="button" class="btn btn-primary delEvent" data-id="<?php echo $pp->id_people; ?>" >  
+                                                  <span class="glyphicon glyphicon-trash">
+                                                </button>  
+                                            </div>
+                                           
+                                      
+                                          <?php 
+                     
+                                        echo (" <div class='col-xs-12 text-center'><i class='ti-angle-down'   onclick='mostrar(".$pp->id_people.")' ></i></div>");
+                                        echo (" <div class='col-sm-12' id='a".$pp->id_people."' style='display: none; margin-top:5px;'>");
+                                        ?>
+                                     
+                                            <div class="col-sm-6">
+                                              <h6><font color="#d9d9d9">Data de Nascimento: <?= $pp->birth; ?></font></h6>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                              <h6><font color="#d9d9d9">Endereço: <?= $pp->adress; ?></font></h6>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                              <h6><font color="#d9d9d9">CEP: <?= $pp->cep; ?></font></h6>
+                                            </div>
+
+                                             
+                                            <div class="col-sm-6">
+                                              <h6><font color="#d9d9d9">Telefone: <?= $pp->phone; ?></font></h6>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                              <h6><font color="#d9d9d9">Bairro: <?= $pp->neighborhood; ?></font></h6>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                              <h6><font color="#d9d9d9">Cidade: <?= $pp->name_city; ?></font></h6>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                              <h6><font color="#d9d9d9">Estado: <?= $pp->name_state; ?></font></h6>
+                                            </div>
+                                       
+                                        <?php echo('</div>'); ?>
+                                      </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="col-sm-6">
-                          <h6><font color="#d9d9d9">Endereço: <?= $pp->adress; ?></font></h6>
-                        </div>
-
-                        <div class="col-sm-6">
-                          <h6><font color="#d9d9d9">CEP: <?= $pp->cep; ?></font></h6>
-                        </div>
-
-                         
-                        <div class="col-sm-6">
-                          <h6><font color="#d9d9d9">Telefone: <?= $pp->phone; ?></font></h6>
-                        </div>
-
-                        <div class="col-sm-6">
-                          <h6><font color="#d9d9d9">Bairro: <?= $pp->neighborhood; ?></font></h6>
-                        </div>
-
-                        <div class="col-sm-6">
-                          <h6><font color="#d9d9d9">Cidade: <?= $pp->name_city; ?></font></h6>
-                        </div>
-
-                        <div class="col-sm-6">
-                          <h6><font color="#d9d9d9">Estado: <?= $pp->name_state; ?></font></h6>
-                        </div>
-                   
-                    <?php echo('</div>'); ?>
-            </div>
-        <?php } ?>  
-      </div>
-      
+                    </div>
+                  <?php } ?>
+                </div>
+              </div>
+        
    </div>
 
 

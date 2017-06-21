@@ -15,7 +15,8 @@ class teamController extends CI_Controller {
 	public function index()
 	{	
 
-		$this->db->select('*');
+		$dados['formerror']= NULL;
+
 		$dados['teams'] = $this->teamModel->get()->result();
 		$retorno = $this->loginModel->logged();
 		if($retorno == 1){
@@ -73,28 +74,44 @@ class teamController extends CI_Controller {
 
 
 
-	public function call_teamPeopleCreateView($id_team){
+	public function call_teamPeopleCreateView(){
+		$id_team = $this->input->post('idTeam1');
+		$id_event = $this->input->post('events1');
+		$retorno = $this->teamModel->verificationTeamEvent($id_team);
+		if ($retorno == true) {
 
-		$dados['formerror']= NULL;
+			$dados['formerror']= NULL;
+			
+			$dados['teams'] = $this->teamModel->getOne($id_team)->result();
+
+			$dados['peoples'] = $this->peopleModel->getPeopleNotTE($id_team,$id_event);	
+
+			$dados['events'] = $this->eventModel->getOne($id_event)->result();
+
+			$this->template->load('template/templateHeader', 'team/teamPeopleCreateView',$dados);
+		} else {
+
 		
-		$dados['teams'] = $this->teamModel->getOne($id_team)->result();
 
-		$dados['peoples'] = $this->peopleModel->getNotTm($id_team);
+			$dados['formerror']= 'Adicione a equipe a um evento';
+			$dados['teams'] = $this->teamModel->get()->result();
+			$this->template->load('template/templateHeader', 'team/index',$dados);
+		}
 
-		 $this->template->load('template/templateHeader', 'team/teamPeopleCreateView',$dados);
+		
 	}
 
-	public function create_teamPeople($id_team){
+	public function create_teamPeople($id_team, $id_event){
 		$this->form_validation->set_rules('selecao[]', 'Pessoas', 'required');
 		$peopleArray = $this->input->post('selecao');
 
 		if($this->form_validation->run()==FALSE){
 
 				$dados['formerror']= validation_errors();
-				$dados['teams'] = $this->teamModel->getOne($id_team)->result();
 
+				$dados['teams'] = $this->teamModel->getOne($id_team)->result();
 			
-				$dados['peoples'] = $this->peopleModel->getNotTm($id_team);
+				$dados['peoples'] = $this->peopleModel->getPeopleNotTE($id_team,$id_event);
 
 				 $this->template->load('template/templateHeader', 'team/teamPeopleCreateView',$dados);
 			
@@ -102,7 +119,7 @@ class teamController extends CI_Controller {
 				
 			
 
-			$this->teamModel->create_teamPeople($id_team ,$peopleArray);
+			$this->teamModel->create_teamPeople($id_team , $id_event, $peopleArray);
 
 		
 			redirect('team');
@@ -112,17 +129,69 @@ class teamController extends CI_Controller {
 		 
 	}
 
-		public function call_teamPeople($id_team){
-
-		$dados['formerror']= NULL;
+	public function getEventTeam($id_team) {
 		
-		$dados['teams'] = $this->teamModel->getOne($id_team)->result();
+		
+		
+		$events = $this->eventModel->listTE($id_team)->result();
+		
+		if( empty ( $events) ) 
+			return '{ "nome": "Nenhum evento encontrado" }';
+			
+		$arr_events = array();
 
-		$dados['events'] = $this->eventModel->listTE($id_team)->result();
+		foreach ($events as $ev) {
+			
+			$arr_events[] = '{"id":' . $ev->id_event . ',"nome":"' . $ev->name_event . '"}';
+				
+		}
+		
+		echo '[ ' . implode(",",$arr_events) . ']';
+		
+		return;
+		
+	}
 
-		$dados['peoples'] = $this->peopleModel->listTP($id_team);
 
-		 $this->template->load('template/templateHeader', 'team/teamPeopleView',$dados);
+	public function call_teamPeople(){
+		$this->form_validation->set_rules('events', 'Evento', 'required');
+
+		$id_team = $this->input->post('idTeam');
+		$id_event = $this->input->post('events');
+		$retorno = $this->teamModel->verificationPeopleTeam($id_team,$id_event);
+		if ($retorno == false) {
+
+			$dados['formerror']= 'Esta equipe do evento que você escolheu precisa ter pessoas participantes';
+
+			$dados['teams'] = $this->teamModel->get()->result();
+
+			$this->template->load('template/templateHeader', 'team/index',$dados);
+
+		}else{
+
+				if($this->form_validation->run()==FALSE){
+
+						$dados['formerror']= 'Selecione um evento para filtrar as pessoas participantes';
+						
+						$dados['teams'] = $this->teamModel->get()->result();
+
+						$this->template->load('template/templateHeader', 'team/index',$dados);
+					
+				}else{	
+					
+
+					$dados['formerror']= NULL;
+
+					$dados['teams'] = $this->teamModel->getOne($id_team)->result();
+
+					$dados['events'] = $this->eventModel->listTE($id_team)->result();
+
+					$dados['peoples'] = $this->peopleModel->listTP($id_team, $id_event);
+
+					$this->template->load('template/templateHeader', 'team/teamPeopleView',$dados);
+				}
+		
+		}
 	}
 
 	public function delete(){
@@ -137,7 +206,7 @@ class teamController extends CI_Controller {
 		
 	}
 
-	public function delete_teamPeople($id_team){
+	public function delete_teamPeople($id_team,$id_event){
 
 		$this->form_validation->set_rules('selecao[]', 'Pessoas', 'required');
 		$peopleArray = $this->input->post('selecao');
@@ -145,19 +214,23 @@ class teamController extends CI_Controller {
 		if($this->form_validation->run()==FALSE){
 
 				$dados['formerror']= validation_errors();
+				$retorno = $this->teamModel->getIdEventPT($id_team)->row();
+
 				$dados['teams'] = $this->teamModel->getOne($id_team)->result();
 
-				$dados['peoples'] = $this->peopleModel->listTP($id_team);
+				$dados['events'] = $this->eventModel->listTE($id_team)->result();
 
-				 $this->template->load('template/templateHeader', 'team/teamPeopleCreateView',$dados);
+				$dados['peoples'] = $this->peopleModel->listTP($id_team,$retorno->events_id_event);
+
+				 $this->template->load('template/templateHeader', 'team/teamPeopleView',$dados);
 			
 		}else{	
 				
 				
 
-			$this->teamModel->delete_teamPeople($id_team,$peopleArray);
+			$this->teamModel->delete_teamPeople($id_team,$id_event,$peopleArray);
 		
-			redirect('team-people/'.$id_team);
+			redirect('team');
 		
 		}
 

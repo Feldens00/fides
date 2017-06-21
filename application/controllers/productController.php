@@ -195,6 +195,7 @@ class productController extends CI_Controller {
 	public function print_list($id_event){
 	$return = $this->eventModel->getOne($id_event)->result();
 	$dados['maxProduct']=$this->productModel->getMax($id_event)->result();
+	$dados['total']=$this->productModel->sumPTE($id_event)->result();
 	$dados['all']=$this->productModel->getAll($id_event)->result();
 	foreach ($return as $ev) {
 		$name_event = $ev->name_event;

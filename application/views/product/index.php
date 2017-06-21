@@ -50,10 +50,10 @@ $(document).ready(function(){
 
 
 
-              <div class="col-sm-10 text-center div-barra">
+              <div class="col-sm-10 text-center">
 
                   <div class="col-md-10" >
-                     <h2><font color="#d9d9d9">Produtos</font></h2> 
+                     <h2>Produtos</h2> 
                   </div>
 
                   <div class="col-md-1" title="Crie um Produto" data-toggle="tooltip">
@@ -62,39 +62,43 @@ $(document).ready(function(){
 
               </div>
 
+        <div class="container-fluid">
+         <div class="row">
+           <?php foreach($products as $pd) { ?>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                        <div class="col-sm-12"> 
+                                          <h2><?= $pd->name_product;?></h2>
+                                        </div>
 
-              <div class="col-sm-12" style="margin-top:50px; ">   
+                                         <div class="col-sm-12">
+                                            <h4><?= $pd->type;?></h4>
+                                          </div>
+                                </div>  
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <div class="col-sm-12">
+                                                    <a href="<?= base_url('update-product-form/'.$pd->id_product)?>">
+                                                        <button type="button" class="btn btn-default">
+                                                              <span class="glyphicon glyphicon-pencil">
+                                                        </button>
+                                                    </a>
 
-               
-                <div class="col-sm-12" style="overflow: auto;  height: 350px;">
-                  <?php foreach ($products as $pd) { ?> 
-                    
-                    <div class="col-sm-3 div-mold">
-                          <div class="col-sm-10">
-                            <h2><font color="#d9d9d9"><?= $pd->name_product;?></font></h2>
-                          </div>
-
-                          <div class="col-sm-10">
-                            <h4><font color="#d9d9d9"><?= $pd->type;?></font></h4>
-                          </div>
-                          
-                          <div class="col-sm-6">
-                                      <a href="<?= base_url('update-product-form/'.$pd->id_product)?>">
-                                          <button type="button" class="btn btn-default">
-                                                <span class="glyphicon glyphicon-pencil">
-                                          </button>
-                                      </a>
-
-                                      <button type="button" class="btn btn-primary delProduct" data-id="<?php echo $pd->id_product; ?>" >  
-                                        <span class="glyphicon glyphicon-trash">
-                                      </button>  
-                          </div>
+                                                    <button type="button" class="btn btn-primary delProduct" data-id="<?php echo $pd->id_product; ?>" >  
+                                                      <span class="glyphicon glyphicon-trash">
+                                                    </button>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
                   <?php } ?>
-                  </div>
-              </div> 
-
+                </div>
+              </div>
       </div>
 </div>
 

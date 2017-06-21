@@ -19,10 +19,10 @@
   </style>
 </head>
 <body>
-
 	
 		 <table class=" table table-bordered">
-		  <?php foreach ($peoplesTeams as $pt) { ?>
+		  <?php
+		  		foreach ($peoplesTeams as $pt) { ?>
 
 
 		<?php
@@ -31,17 +31,18 @@
 		 	if ($name_team != $pt->name_team) {
 		 		$name_team = $pt->name_team;
 		 		echo("<thead>
+		 					
 		 					<tr>
-		 						<td style='padding-bottom: 5px; padding-top: 5px;' align=center colspan='4' >
+		 						<th style='padding-bottom: 5px; padding-top: 5px;' align=center colspan='4' >
 		 							<h2>".$name_team."</h2>
-		 						</td>
+		 						</th>
 		 					</tr>
 		 					
 		 					<tr>
-		 						<td><b>Nome</b></td>
-		 						<td><b>Email</b></td>
-		 						<td><b>Cidade</b></td>
-		 						<td><b>Estado</b></td>
+		 						<th><b>Nome</b></td>
+		 						<th><b>Email</b></td>
+		 						<th><b>Cidade</b></td>
+		 						<th><b>Estado</b></td>
 		 					</tr>
 		 			   </thead>");
 		 	}

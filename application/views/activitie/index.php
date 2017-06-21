@@ -60,7 +60,7 @@ $(document).ready(function(){
               <div class="col-sm-10 text-center div-barra">
 
                   <div class="col-md-10" >
-                     <h2><font color="#d9d9d9">Atividades</font></h2> 
+                     <h2>Atividades</h2> 
                   </div>
 
                   <div class="col-md-1" title="Crie uma Atividade" data-toggle="tooltip">
@@ -69,48 +69,52 @@ $(document).ready(function(){
 
               </div>
 
+              <div class="container-fluid">
+               <div class="row">
+                 <?php foreach($activities as $ac) { ?>
+                          <div class="col-lg-3">
+                              <div class="card">
+                                  <div class="content">
+                                      <div class="row">
+                                              <div class="col-sm-12 text-center"> 
+                                                <h4><?= $ac->name_activitie;?></h4>
+                                              </div>
+                                      </div>
+                                      <div class="container-fluid">
+                                          <hr />
+                                          <div class="row">
+                                                <div class="col-xs-12">
+                                                            <a href="<?= base_url('update-activitie-form/'.$ac->id_activitie)?>">
+                                                                <button type="button" class="btn btn-default">
+                                                                      <span class="glyphicon glyphicon-pencil">
+                                                                </button>
+                                                            </a>
 
-              <div class="col-sm-12" style="margin-top:50px; ">   
+                                                            <button type="button" class="btn btn-primary delActivitie" data-id="<?php echo $ac->id_activitie; ?>" >  
+                                                              <span class="glyphicon glyphicon-trash">
+                                                            </button>  
+                                                </div>
 
-               
-                <div class="col-sm-12" style="overflow: auto;  height: 350px;">
-                  <?php foreach ($activities as $ac) { ?> 
-                    
-                    <div class="col-sm-3 div-mold">
-                          <div class="col-sm-10">
-                            <h2><font color="#d9d9d9"><?= $ac->name_activitie;?></font></h2>
+
+                                               <?php 
+                             
+                                                echo (" <div class='col-xs-12 text-center'><i class='ti-angle-down'  id='b".$ac->id_activitie."'  onclick='mostrar(".$ac->id_activitie.")' ></i></div>");
+                                                echo (" <div class='col-sm-12' id='a".$ac->id_activitie."' style='display: none; margin-top:5px;'>");
+                                                ?>
+                                                
+                                                      <div class="col-sm-12">
+                                                        <h4><font color="#d9d9d9"><?= $ac->description;?></font></h4>
+                                                      </div>
+
+                                                <?php echo('</div>'); ?>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
                           </div>
-                          
-                          <div class="col-sm-6">
-                                      <a href="<?= base_url('update-activitie-form/'.$ac->id_activitie)?>">
-                                          <button type="button" class="btn btn-default">
-                                                <span class="glyphicon glyphicon-pencil">
-                                          </button>
-                                      </a>
-
-                                      <button type="button" class="btn btn-primary delActivitie" data-id="<?php echo $ac->id_activitie; ?>" >  
-                                        <span class="glyphicon glyphicon-trash">
-                                      </button>  
-                          </div>
-
-
-                         <?php 
-       
-                          echo (" <div class='col-sm-12 text-center'><font color='#d9d9d9'><i class='material-icons'  id='b".$ac->id_activitie."'  onclick='mostrar(".$ac->id_activitie.")' >keyboard_arrow_down</i></font></div>");
-                          echo (" <div class='col-sm-12' id='a".$ac->id_activitie."' style='display: none; margin-top:5px;'>");
-                          ?>
-                          
-                                <div class="col-sm-12">
-                                  <h4><font color="#d9d9d9"><?= $ac->description;?></font></h4>
-                                </div>
-
-                          <?php echo('</div>'); ?>
+                        <?php } ?>
+                      </div>
                     </div>
-                    
-                  <?php } ?>
-                  </div>
-              </div> 
-
       </div>
 </div>
 

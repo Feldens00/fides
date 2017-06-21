@@ -20,16 +20,25 @@
 <body>
 
 <?php foreach ($maxProduct as $max) { 
-	$total = $max->total;
-	}?>
+	$totalProduct = $max->total;
+	}
+
+	foreach ($total as $tt) {
+		  			$totalInscription = $tt->amount_inscription;
+	}
+?>
 
 	
 		
 		 <table class=" table table-bordered">
 		    <thead>
 		      <tr>
-		        <th colspan="4"><h3>Total da Lista</h3></th>
-		        <th><h3>R$<?=$total;?></h3></th>
+		      	<th colspan="4"><h5>Total arrecadado com inscrições</h5></th>
+		        <th><h4>R$<?=$totalInscription;?></h4></th>
+		      </tr>
+		      <tr>
+		        <th colspan="4"><h5>Total da Lista</h5></th>
+		        <th><h4>R$<?=$totalProduct;?></h4></th>
 		      </tr>
 		      <tr>
 		        <th>Nome</th>

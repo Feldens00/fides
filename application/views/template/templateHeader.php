@@ -1,140 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
   <title>Fides</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-  <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css');?>">
-  <script src="<?= base_url('assets/js/jquery-3.1.0.js');?>"></script>
-  <script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
-  <script type="text/javascript" src="<?= base_url('assets/js/jquery.maskedinput.js');?>"></script>
-  <script type="text/javascript" src="<?= base_url('assets/js/utilidade.js');?>"></script>
-  
+
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+ 
+
+    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css');?>">
+    <link href="<?= base_url('assets/css/paper-dashboard.css');?>" rel="stylesheet"/>
+    <script src="<?= base_url('assets/js/jquery-3.1.0.js');?>"></script>
+    <script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/jquery.maskedinput.js');?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/utilidade.js');?>"></script>
+
+     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+    <script   type="text/javascript" src="assets/js/paper-dashboard.js"></script>
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="<?= base_url('assets/css/themify-icons.css');?>" rel="stylesheet">
+
   <script type="text/javascript">
     var path = '<?php echo site_url(); ?>'
   </script>
 
-  <style type="text/css">
- 
-  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 1500px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #333;
-      height: 100%;
-    }
-    .painel-event{
-      margin-top: 20px;
-      background:white;
-      
-      padding:10px;
-      -moz-border-radius:7px;
-      -webkit-border-radius:7px;
-    }
-    .div-mold{
-      background:#555;
-      margin:10px;  
-      
-      padding:10px;
-      -moz-border-radius:7px;
-      -webkit-border-radius:7px;
-    }
-    
-    .div-mold2{
-      background:#333;
-      margin:10px;  
-      
-      padding:10px;
-      -moz-border-radius:7px;
-      -webkit-border-radius:7px;
-    }
-    .div-barra {
-      
-      border-bottom-width: 2px; 
-      border-bottom-style: solid; 
-      border-bottom-color:#555;
-      padding-bottom:20px;
-    }
-    
-    .div-barra2 {
-      
-      border-bottom-width: 2px; 
-      border-bottom-style: solid; 
-      border-bottom-color:#333;
-      padding-bottom:20px;
-    }
-    .background-dark{
-       background-color: #333;
-    }
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;} 
-    }
-  </style>
 </head>
-<body class="background-dark">
+<body>
 
-<div class="container-fluid" style="margin-top:50px">
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <div class="col-sm-12 div-barra">
-        <i>
-          <h4>
-            <font color="#d9d9d9">Fides</font>
-          </h4>
-        </i>
-        <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="<?= base_url('entities'); ?>"><i class="material-icons">account_balance</i> Entidades</a></li>
-          <li></li>
-          <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown"> 
-                <i class="material-icons">event</i> 
-                Eventos  <span class="caret"></span>
-              </a> 
-                        
-            <ul class="dropdown-menu">
-              <li> <a  href="<?= base_url('event'); ?>">Home Eventos</a></li>
-              <li><a href="<?= base_url('activitie'); ?>">Atividades</a></li>
-              <li><a href="<?= base_url('product'); ?>">Produtos</a></li>
+<div class="wrapper">
+  <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+    Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+    Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+  -->
+
+      <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="entitie" class="simple-text">
+                    Fides
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="<?= base_url('entitie');?>">
+                        <i class="ti-pie-chart"></i>
+                        <p>Entidade</p>
+                    </a>
+                </li>
+            
+                <li class="active">
+                    <a href="<?= base_url('event');?>">
+                        <i class="ti-calendar"></i>
+                        <p>Evento</p>
+                    </a>
+                </li>
+            
+                <li class="active">
+                    <a href="<?= base_url('team');?>">
+                        <i class="ti-user">*</i>
+                        <p>Equipe</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="<?= base_url('people');?>">
+                        <i class="ti-user"></i>
+                        <p>Pessoa</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="<?= base_url('product');?>">
+                        <i class="ti-shopping-cart"></i>
+                        <p>Produto</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="<?= base_url('activitie');?>">
+                        <i class="ti-time"></i>
+                        <p>Atividade</p>
+                    </a>
+                </li>
+
             </ul>
-          </li>
-          <li><a href="<?= base_url('team'); ?>"> <i class="material-icons">group</i> Equipes</a></li>
-          <li><a href="<?= base_url('people'); ?>"> <i class="material-icons">person</i> Pessoas</a></li>
-        </ul><br>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search Blog..">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>
-        </div>
       </div>
     </div>
 
-    <div id="contents" class="col-sm-10">
-        <?php echo $contents ?>
+    <div class="main-panel">
+    <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                      <a class="navbar-brand" href="#"> <?= $this->session->userdata('email')?></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="<?=base_url('logout');?>">
+                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                <p>Sair</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row" id="content">
+                  <?php echo $contents ?>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+        <div class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+                </div>
+            </div>
+        </footer>
+
     </div>
-  </div>
 </div>
 
-<footer class="container-fluid">
-  <p>Footer Text</p>
-</footer>
 
-</body>
+</body>  
 </html>

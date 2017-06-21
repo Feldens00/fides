@@ -86,7 +86,7 @@ class productModel extends CI_Model
 	}
 
 	
-	 public function listPE($id_event) {
+	public function listPE($id_event) {
 
        	$this->db->select('');    
 		$this->db->join('products', 'list_products.products_id_product= products.id_product','inner');
@@ -102,38 +102,20 @@ class productModel extends CI_Model
 	public function create_listProduct($product){
 		return $this->db->insert('list_products', $product);
 
-		/*$where = "events_id_event=".$product['events_id_event']." AND products_id_product = ".$product['products_id_product']." ";
+	}
 
-		$this->db->select('*');   
-		$this->db->from('list_products');  
-		$this->db->where($where);
-		$this->db->limit(1);
-	   	$retorno = $this->db->get()->result();
+	public function sumPTE($event){
+		$id_user = $this->session->userdata('id_user');
+		$this->db->select('sum(events.inscription) as amount_inscription'); 
+		$this->db->join('peoples_teams', 'peoples_teams.peoples_id_people = peoples.id_people','inner');
+		$this->db->join('teams', 'teams.id_team = peoples_teams.teams_id_team','inner');       
+		$this->db->join('events_teams', 'events_teams.teams_id_team = teams.id_team','inner');
+		$this->db->join('events', 'events.id_event = events_teams.events_id_event','inner');
+		$this->db->where('id_event', $event);
+		$this->db->where('events_teams.events_id_event', $event);
+		$this->db->where('events.id_user', $id_user);
+	   return $this->db->get('peoples');
 		
-		if (empty($retorno)){
-			return $this->db->insert('list_products', $product);
-			
-		}else{
-			
-			foreach ($retorno as $r) {
-			$id_event = $r->events_id_event;
-			$id_product = $r->products_id_product;
-			$amount = $r->amount;
-			$unitary = $r->unitary_value;
-			$quantity = $r->quantity;
-			}
-
-			if (($product['events_id_event'] == $id_event) AND ($product['products_id_product'] == $id_product)) {
-
-					if (($product['unitary_value'] != $unitary) OR ($product['quantity'] != $quantity)){
-						
-
-						$this->db->where($where);
-						return $this->db->update('list_products', $product);
-					}
-
-			}
-		}*/
 	}
 
 	public function delete_listProduct($id_event,$productArray){

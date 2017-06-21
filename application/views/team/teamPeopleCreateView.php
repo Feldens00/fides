@@ -3,50 +3,58 @@
   $name_team = $tm->name_team;
 }
 
+  foreach ($events as $ev) { 
+    $id_event = $ev->id_event;
+}
+ 
+
    if ($formerror) {
       echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
     }
 
 ?> 
 
-  <div class="row">
-    <div class="col-sm-10 text-center div-barra">
+              <div class="content">
+               <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title"><?= $name_team; ?></h4>
+                                <p class="category">Adicione pessoas ao evento.</p>
+                            </div>
+                            <form action="<?= base_url('create-team-people/'.$id_team."/".$id_event)?>" method="POST">
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <th>id</th>
+                                      <th>nome</th>
+                                    </thead>
+                                    <tbody>
+                                      <?php foreach ($peoples as $p) { ?> 
+                                        <tr>
+                                          <td><?= $p->id_people;?></td>
+                                          <td><?= $p->name_people;?></td>
+                                          <td><?= $id_team; ?></td>
+                                          <td align="center" width="70">
+                                                  <input type="checkbox" name="selecao[]" value="<?= $p->id_people;?>"/>
+                                          </td>
+                                        </tr>
+                                      <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                             <div class="col-sm-12 text-center">
+                                  <button type="submit" class="btn btn-default">Salvar
+                                     <span class="glyphicon glyphicon-floppy-disk"></span>
+                                  </button>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        <div class="col-md-11" >
-           <h2><font color="#d9d9d9">Adicione Pessoas a Equipe <?= $name_team; ?></font></h2> 
-        </div>
-
-
-    </div>
-      <div class="col-sm-10 div-mold" style="margin-top:50px;">
-        
-       <form action="<?= base_url('create-team-people/'.$id_team)?>" method="POST">
-          <div class="table-responsive">
-             <table class="table table-condesed">
-              <thead>
-                <tr>
-                  <th><font color="#d9d9d9">id</font></th>
-                  <th><font color="#d9d9d9">nome</font></th>
-                </tr>
-              </thead>
-              <tbody>
-               <?php foreach ($peoples as $p) { ?> 
-                <tr>
-                  <td><font color="#d9d9d9"><?= $p->id_people;?></font></td>
-                  <td><font color="#d9d9d9"><?= $p->name_people;?></font></td>
-                  <td><font color="#d9d9d9"><?= $id_team; ?></font></td>
-                  <td align="center" width="70">
-                          <input type="checkbox" name="selecao[]" value="<?= $p->id_people;?>"/>
-                  </td>
-                </tr>
-                <?php } ?>
-              </tbody>
-            </table>  
-          </div>
-          <div class="col-sm-12 text-center">
-                <button type="submit" class="btn btn-default">Salvar <span class="glyphicon glyphicon-floppy-disk"></span></button>
-          </div>
-        </form>
-      </div> 
-   </div>
+     
 
