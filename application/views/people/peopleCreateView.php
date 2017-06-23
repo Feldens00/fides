@@ -3,70 +3,73 @@
       echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
     }
   ?>  
-<div class="row">
-  <div class="col-sm-10">
-      <h2><font color="#d9d9d9">Adicionar Pessoa</h2>
-     
-    <form action="create-people" method="POST">
-      <div class="form-group">
-        <label for="name"><font color="#d9d9d9">* Nome:</font></label>
-        <input type="text" class="form-control" name="peopleName" placeholder="Digite o nome da Pessoa">
-      </div>
-      <div class="form-group">
-        <label for="name"><font color="#d9d9d9">Data de Nascimento:</font></label>
-        <input type="date" class="form-control" name="peopleBirth" >
-      </div>
-      
-      <div class="form-group">
-        <label for="date2"><font color="#d9d9d9">Telefone:</font></label>
-        <input type="text" class="form-control" id="fone" name="peoplePhone" >
-      </div>
-
-       <div class="form-group">
-        <label for="adress"><font color="#d9d9d9">Endereço:</font></label>
-        <input type="text" class="form-control"  name="peopleAdress" >
-      </div>
 
 
-       <div class="form-group">
-        <label for="cep"><font color="#d9d9d9">Cep:</font></label>
-        <input type="text" class="form-control" id="cep" name="peopleCep" >
-      </div>
 
-       <div class="form-group">
-        <label for="negh"><font color="#d9d9d9">Bairro:</font></label>
-        <input type="text" class="form-control"  name="peopleNeigh" >
-      </div>
-        <div class="form-group">
-           <label><font color="#d9d9d9">* Estado</font></label>
-                           <select name="estado" class="form-control" >
-                                   <?php
-                                       foreach($estados as $estado)
-                                       
-                                      echo "<option value='{$estado->id_state}'>{$estado->name_state}</option>";
-                                   ?>
-                               </select>
 
-                             <label><font color="#d9d9d9">* Cidade</font></label>
-                              <select name="cidade" id="cidade" class="form-control">
-                                     <option value="">Escolha um estado</option>
-                              </select>
-        </div>
-        
-        <!--<div class="form-group">
-          <label><font color="#d9d9d9">* Entidade</font></label>
-                         <select name="team" class="form-control" >
-                                  <option value=''>Selecione uma Equipe</option>
-                                 <?php
-                                     foreach($teams as $tm)
-                                     
-                                    echo "<option value='{$tm->id_team}'>{$tm->name_team}</option>";
-                                 ?>
-                             </select>
 
-        </div>-->
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Adicionar Pessoa</h4>
+                               
+                            </div>
+                            <div class="content">
+                                <form action="create-people" method="POST">
+                                <div class="form-group">
+                                  <label for="name">* Nome:</label>
+                                  <input type="text" class="form-control border-input" name="peopleName" placeholder="Digite o nome da Pessoa">
+                                </div>
+                                <div class="form-group">
+                                  <label for="name">Data de Nascimento:</label>
+                                  <input type="date" class="form-control border-input" name="peopleBirth" >
+                                </div>
                                 
-      <button type="submit" class="btn btn-default">Enviar</button>
-    </form>
-  </div>
-</div>
+                                <div class="form-group">
+                                  <label for="date2">Telefone:</label>
+                                  <input type="text" class="form-control border-input" id="fone" name="peoplePhone" >
+                                </div>
+
+                                 <div class="form-group">
+                                  <label for="adress">Endereço:</label>
+                                  <input type="text" class="form-control border-input"  name="peopleAdress" >
+                                </div>
+
+
+                                 <div class="form-group">
+                                  <label for="cep">Cep:</label> 
+                                  <input type="text" class="form-control border-input" id="cep" name="peopleCep" >
+                                </div>
+
+                                 <div class="form-group">
+                                  <label for="negh">Bairro:</label>
+                                  <input type="text" class="form-control border-input"  name="peopleNeigh" >
+                                </div>
+                                  <div class="form-group">
+                                     <label>* Estado</label>
+                                                     <select name="estado" class="form-control border-input" >
+                                                             <?php
+                                                                 foreach($estados as $estado)
+                                                                 
+                                                                echo "<option value='{$estado->id_state}'>{$estado->name_state}</option>";
+                                                             ?>
+                                                         </select>
+
+                                                       <label>* Cidade</label>
+                                                        <select name="cidade" id="cidade" class="form-control border-input">
+                                                               <option value="">Escolha um estado</option>
+                                                        </select>
+                                  </div>
+                                <div class="form-group text-center">
+                                  <button type="submit" class="btn btn-default">Enviar</button>
+                                </div>
+                              </form>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>

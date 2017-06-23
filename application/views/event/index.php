@@ -192,6 +192,11 @@ function mostrarC(id){
                                                    <a  href="<?= base_url('print-quadrante/'.$ev->id_event)?>">Quadrante</a>
                                                 </div>
 
+                                                 <div style="margin-top:10px;" class="col-sm-6">
+                                                   <a  href="#" data-toggle="modal" data-target="#sendQuadrante">enviar</a>
+                                                </div>
+
+
                                                 <div style="margin-top:10px;" class="col-sm-6">
                                                       <a href="<?= base_url('print/'.$ev->id_event);?>" >Cronograma</a>
                                                 </div>
@@ -293,7 +298,4 @@ function mostrarC(id){
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
-<script type="text/javascript">
- 
-   
-</script>
+

@@ -1,133 +1,293 @@
-<!DOCTYPE html>
-<html >
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login Form</title>
-  
-  
-  
-      <link rel="stylesheet" href="css/style.css">
-<style type="text/css">
-  @charset "utf-8";
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+    <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-[class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
-}
+  <title>Fides</title>
 
-body {
-  background: #2c3338;
-  color: #606468;
-  font: 87.5%/1.5em 'Open Sans', sans-serif;
-  margin: 0;
-}
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+ 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css');?>">
+    <link href="<?= base_url('assets/css/paper-dashboard.css');?>" rel="stylesheet"/>
+    <script src="<?= base_url('assets/js/jquery-3.1.0.js');?>"></script>
+    <script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/jquery.maskedinput.js');?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/utilidade.js');?>"></script>
 
-input {
-  border: none;
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5em;
-  padding: 0;
-  -webkit-appearance: none;
-}
+     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+    <script   type="text/javascript" src="<?= base_url('assets/js/paper-dashboard.js');?>"></script>
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="<?= base_url('assets/css/themify-icons.css');?>" rel="stylesheet">
 
-p {
-  line-height: 1.5em;
-}
 
-after { clear: both; }
+    <style type="text/css">
+      .bg-3 { 
+      background-color: #ffffff; /* White */
+      color: #555555;
+      }
 
-#login {
-  margin: 50px auto;
-  width: 320px;
-}
-
-#login form {
-  margin: auto;
-  padding: 22px 22px 22px 22px;
-  width: 100%;
-  border-radius: 5px;
-  background: #282e33;
-  border-top: 3px solid #434a52;
-  border-bottom: 3px solid #434a52;
-}
-
-#login form span {
-  background-color: #363b41;
-  border-radius: 3px 0px 0px 3px;
-  border-right: 3px solid #434a52;
-  color: #606468;
-  display: block;
-  float: left;
-  line-height: 50px;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-}
-
-#login form input[type="text"] {
-  background-color: #3b4148;
-  border-radius: 0px 3px 3px 0px;
-  color: #a9a9a9;
-  margin-bottom: 1em;
-  padding: 0 16px;
-  width: 235px;
-  height: 50px;
-}
-
-#login form input[type="password"] {
-  background-color: #3b4148;
-  border-radius: 0px 3px 3px 0px;
-  color: #a9a9a9;
-  margin-bottom: 1em;
-  padding: 0 16px;
-  width: 235px;
-  height: 50px;
-}
-
-#login form input[type="submit"] {
-  background: #b5cd60;
-  border: 0;
-  width: 100%;
-  height: 40px;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-#login form input[type="submit"]:hover {
-  background: #16aa56;
-}
-</style>
-  
+      .bg-1{
+        background-color: #FB8C00;
+        /*background-color: #f4f3ef;*/
+      }
+      .material-icons.md-200 { font-size: 200px; }
+      .material-icons.orange600 { color: #FB8C00; }
+    </style>
 </head>
-
 <body>
-  <html lang="en-US">
-<head>
-  <meta charset="utf-8">
-    <title>Login</title>
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+     <?php 
 
-</head>
-  <?php 
    if ($formerror) {
-      echo ("<div  id='login' class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div>");
     }
-  ?>  
-    <div id="login">
-      <form name='form-login' action="login" method="POST">
-        <span class="fontawesome-user"></span>
-          <input type="text" id="user" name="email">
-       
-        <span class="fontawesome-lock"></span>
-          <input type="password" id="pass"  name="password" placeholder="Password">
-        
-        <input type="submit" value="Login">
 
-</form>
-  
-  
+?>     
+
+
+                    <div class="col-sm-12 bg-1">
+
+                    <div class="jumbotron bg-3">
+                      <div class="container text-center">
+                        <h1>Fides</h1>      
+                        <p>Software gerenciador de eventos religiosos </p>
+                      </div>
+                    </div>
+
+                      <div class="container-fluid bg-3 text-center">    
+                          <div class="col-sm-3" style="margin-top:20px; margin-bottom: 20px;">
+                            <img src="<?=base_url('assets/images/fe1.jpg');?>" class="img-rounded responsivo" alt="Cinque Terre" style= 'width:250px; height:250px;'>
+                          </div>
+                          <div class="col-sm-4 col-sm-offset-5"><br><br>
+                            <h5>O Fides é um programa para gerenciamentos de eventos religiosos, tem como principal objetivo auxiliar as pessoas a documentar e gerenciar informações destes eventos.</h5>
+                          </div>
+                      </div>
+
+                      <div class="container-fluid bg-3 text-center" style="margin-top:30px;"> 
+                        <div class="col-sm-4"><br><br>
+                            <h5>Totalmente responsivo, o Fides pode ser utilizao em qualquer plataforma, entre elas smartphones, tablets, notebooks e computadores.</h5>
+                          </div>   
+                          <div class="col-sm-3 col-sm-offset-4" style="margin-top:20px; margin-bottom: 20px;" >
+                            <img src="<?=base_url('assets/images/responsive.png');?>" class="img-rounded" alt="Cinque Terre" style= 'width:250px; height:250px;'>
+                          </div>
+                      </div>
+
+                     
+                      <div class="container-fluid bg-3 text-center" style="margin-top:30px;">    
+                          <div class="col-sm-3" style="margin-top:20px; margin-bottom: 20px;">
+                            <img src="<?=base_url('assets/images/gratuito.png');?>" class="img-rounded" alt="Cinque Terre" style= 'width:250px; height:250px;'>
+                          </div>
+                          <div class="col-sm-4 col-sm-offset-5"><br><br>
+                            <h5>Sem propagandas, taxas de inscrição ou outras cobranças o Fides é 100% gratuito.</h5>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-12 bg-3 text-center" style="margin-top:30px;">    
+                          <div class="col-sm-12" style="margin-top:10px; margin-bottom: 10px;">
+                            <h3>Com Fides é possivel:</h3>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-4" style="margin-top:30px;" >
+                        <div class="card">
+                            <div class="content">
+                              <div class=" text-center">
+                                  <p>Controlar e gerenciar entidades e eventos</p>
+                                  <i class="material-icons md-200 orange600">event</i>
+                              </div>
+                            </div>
+                        </div>
+                      </div> 
+
+                       <div class="col-sm-4" style="margin-top:30px;" >
+                        <div class="card">
+                            <div class="content">
+                              <div class=" text-center">
+                                  <p>Controlar e gerenciar equipes</p>
+                                  <i class="material-icons md-200 orange600">people</i>
+                              </div>
+                            </div>
+                        </div>
+                      </div> 
+
+                      <div class="col-sm-4" style="margin-top:30px;" >
+                        <div class="card">
+                            <div class="content">
+                              <div class=" text-center">
+                                  <p>Controlar e gerenciar pessoas</p>
+                                  <i class="material-icons md-200 orange600">account_circle</i>
+                              </div>
+                            </div>
+                        </div>
+                      </div> 
+                   
+                      <div class="col-sm-4" style="margin-top:30px;" >
+                        <div class="card">
+                            <div class="content">
+                              <div class=" text-center">
+                                  <p>Controlar e gerenciar despesas</p>
+                                  <i class="material-icons md-200 orange600">shopping_cart</i>
+                              </div>
+                            </div>
+                        </div>
+                      </div> 
+
+                       <div class="col-sm-4" style="margin-top:30px;" >
+                        <div class="card">
+                            <div class="content">
+                              <div class=" text-center">
+                                  <p>Controlar e gerenciar atividades</p>
+                                  <i class="material-icons md-200 orange600">query_builder</i>
+                              </div>
+                            </div>
+                        </div>
+                      </div> 
+
+                       <div class="col-sm-4" style="margin-top:30px;" >
+                        <div class="card">
+                            <div class="content">
+                              <div class=" text-center">
+                                  <p>Documentar dados de um evento</p>
+                                  <i class="material-icons md-200 orange600">print</i>
+                              </div>
+                            </div>
+                        </div>
+                      </div> 
+                     
+
+                       <div class="col-sm-4 col-sm-offset-4" >
+                        <div class="card">
+                            <div class="header">
+                                
+                            </div>
+                            <div class="content">
+                                <form>
+                                    <div class="col-sm-12 text-center">
+                                      <div class="col-sm-6">
+                                        <h4>Realize o login:</h4>
+                                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Logar</button>
+                                      </div>
+                                       <div class="col-sm-6">
+                                        <h4>Cadastra-se:</h4>
+                                        <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-default">Cadastrar</button>
+                                      </div>
+                                      <div class="col-sm-12">
+                                        <h4>Realize o login pelo Facebook</h4>
+                                        <a href="<?=base_url('login-facebook');?> ">
+                                          <button type="button" class="btn btn-default"><i class="ti-facebook"></i></button>
+                                        </a>
+                                      </div>               
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                      </div> 
+                    </div>
+         
+
+              
+         
+                  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Realizar Login</h4>
+        </div>
+        <div class="modal-body">
+           <form action="<?=base_url('login');?>" method="POST">
+              
+                  <div class="form-group">
+                      <label>Email</label>
+                      <input type="email" class="form-control border-input" name="email" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                      <label>Senha</label>
+                      <input type="password" name="password" class="form-control border-input">
+                  </div>
+                                        
+               
+        </div>
+        <div class="modal-footer">
+                  <div class="col-sm-12">
+                      <button type="submit" class="btn btn-default">logar</button>
+                  </div>
+              
+            </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cadastrar-se</h4>
+        </div>
+        <div class="modal-body">
+           <form action="<?=base_url('create-user');?>" method="POST">
+                  <div class="form-group">
+                      <label>Nome</label>
+                      <input type="text" class="form-control border-input" name="nameUser" placeholder="Nome">
+                  </div>
+                  <div class="form-group">
+                      <label>Email</label>
+                      <input type="email" class="form-control border-input" name="emailUser" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                      <label>Senha</label>
+                      <input type="password"  name="passwordUser" class="form-control border-input">
+                  </div>
+                                        
+               
+        </div>
+        <div class="modal-footer">
+                  <div class="col-sm-12">
+                      <button type="submit" class="btn btn-default">Cadastrar</button>
+                  </div>
+              
+            </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+             
+             
+         
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+        <div class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+                </div>
+            </div>
+        </footer>
+
 </body>
 </html>

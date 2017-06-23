@@ -7,16 +7,6 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css');?>">
   <script src="<?= base_url('assets/js/jquery-3.1.0.js');?>"></script>
   <script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
-  <style type="text/css">
-  	.div-barra {
-      
-      border-bottom-width: 1px; 
-      border-bottom-style: solid; 
-      border-bottom-color:#333;
-      padding-bottom:20px;
-
-    }
-  </style>
 </head>
 <body>
 	
@@ -60,32 +50,5 @@
 		
 
 	</div>
-	
-
-	<?php foreach ($peoplesEvents as $pe) { ?>
-	<div class="col-sm-12">
-		<h2>Pessoas sem Equipe definida</h2>
-	</div>
-
-		 <table class=" table table-bordered">
-		 	<thead>
-		 					
-		 					<tr>
-		 						<td><b>Nome</b></td>
-		 						<td><b>Email</b></td>
-		 						<td><b>Cidade</b></td>
-		 						<td><b>Estado</b></td>
-		 					</tr>
-		 			   </thead>
-		   <tbody>
-		      <tr>
-		        <td><?= $pe->name_people;?></td>
-		        <td><?= $pe->email;?></td>
-		        <td><?=$pe->name_city;?></td>		      
-		        <td><?=$pe->name_state;?></td>
-			  </tr>
-		    </tbody>
-		  </table>
-	<?php } ?>
 </body>
 </html>

@@ -75,6 +75,7 @@ $route['create-event-team/(:num)'] = 'eventController/create_eventTeam/$1';
 $route['event-team/(:num)'] = 'eventController/call_eventTeam/$1';
 $route['delete-event-team/(:num)'] = 'eventController/delete_eventTeam/$1';
 $route['print-quadrante/(:num)'] = 'eventController/print_quadrante/$1';
+$route['send-quadrante'] = 'eventController/send_quadrante';
 
 
 
@@ -125,3 +126,5 @@ $route['update-people'] = 'peopleController/update';
 //rotas de Login
 $route['login'] = 'loginController/login';
 $route['logout'] = 'loginController/logout';
+$route['login-facebook'] = 'User_authentication';
+$route['create-user'] = 'loginController/create_user';

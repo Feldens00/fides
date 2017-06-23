@@ -48,6 +48,7 @@ class entitieController extends CI_Controller {
 
 				$entitie = array(
 				'name_entitie' => $this->input->post('entitieName'),
+				'responsible' => $this->input->post('entitieResponsible'),
 				'phone' => $this->input->post('entitiePhone'),
 				'id_user' => $this->session->userdata('id_user')
 				);
@@ -95,9 +96,10 @@ class entitieController extends CI_Controller {
 					$entitie = array(
 						'id_entitie' => $this->input->post('updateEntitieId'),
 						'name_entitie' => $this->input->post('updateEntitieName'),
+						'responsible' => $this->input->post('updateEntitieResponsible'),
 						'phone' => $this->input->post('updateEntitiePhone'),
 							
-						);
+					);
 
 					$this->entitieModel->update($entitie);
 					redirect();

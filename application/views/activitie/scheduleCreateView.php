@@ -28,50 +28,56 @@ foreach ($events as $ev) {
 ?>
    
 
+<div class="row">
+    <div class="col-sm-10 text-center">
+       <div class="col-md-11" >
+            <h2>Atividades do Cronograma do Evento <?= $name_event; ?></h2> 
+        </div>
+        <div class="col-md-1" title="Adicione uma Atividade ao Cronograma" data-toggle="tooltip">
+            <a  class="#" data-toggle="modal" data-target="#addSchedule"><span class="glyphicon glyphicon-schedule"><span class="glyphicon glyphicon-plus"></a>
+        </div>     
+    </div>     
 
-  <div class="row">
-    <div class="col-sm-12" style="padding-bottom: 100px;">
 
-           <div class="col-sm-10 text-center div-barra">
 
-                  <div class="col-md-10" >
-                     <h2><font color="#d9d9d9"> Atividades do Cronograma do Evento <?= $name_event; ?></font></h2> 
-                  </div>
-
-                
-
-                  <div class="col-md-1" title="Adicione uma Atividade ao Cronograma" data-toggle="tooltip">
-                        <a  class="#" data-toggle="modal" data-target="#addSchedule"><span class="glyphicon glyphicon-schedule"><span class="glyphicon glyphicon-plus"></a>
-                  </div>
-                   
-              </div>
-          <div class="col-sm-12" style="margin-top:50px;">
-             
-                <form action="<?= base_url('delete-schedule-activitie/'.$id_event)?>" method="POST">
-                  <div class="col-sm-12"  style="overflow: auto;  height: 350px;">
-                  <?php foreach ($acEvents as $ae) { ?> 
-                    <div class="col-sm-3 div-mold">
-                          <div class="col-sm-10">
-                            <h2><font color="#d9d9d9"><?= $ae->name_activitie;?></font></h2>
-                          </div>
-                          <div class="col-sm-2">
-                            <input type="checkbox" name="selecao[]" onclick="mostraBtn()" value="<?=$ae->id_activitie;?>"/>
-                          </div>
-                           
-                            <div class="col-sm-4">
-                                  <h4><font color="#d9d9d9"><?= $ae->horary;?></font></h4>
-                           </div>
+      <div class="container-fluid">
+        <div class="row">
+         <form action="<?= base_url('delete-schedule-activitie/'.$id_event)?>" method="POST">
+           <?php foreach($acEvents as $ae) { ?>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-sm-10 text-center"> 
+                                      <h4><?= $ae->name_activitie; ?></h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                      <input type="checkbox" name="selecao[]" onclick="mostraBtn()" value="<?=$ae->id_activitie;?>"/>
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <hr />
+                                      <div class="row">
+                                          <div class="col-sm-12">                                               
+                                                    <div class="col-sm-4">
+                                                          <h4><?= $ae->horary;?></h4>
+                                                   </div>
+                                          </div>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                   <?php } ?>
-                  </div>
-                  <div class="col-sm-10 text-center"  id="btn_del"  style="margin-top:50px; display: none;">
+
+                     <div class="col-sm-10 text-center"  id="btn_del"  style="margin-top:50px; display: none;">
                         <button type="submit"  class="btn btn-default">Remover<span class="glyphicon glyphicon-floppy-disk"></span></button>
                   </div>
                 </form>
-          </div> 
-    </div>
-  </div>
+                </div>
+              </div>
 
+</div>
 
 
 

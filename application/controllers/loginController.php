@@ -8,6 +8,10 @@ class loginController extends CI_Controller {
         parent::__construct();
         $this->load->model('loginModel');
         $this->load->library('form_validation');
+
+        // Load facebook library
+        $this->load->library('facebook');
+        
     }
 
     public function index()
@@ -70,8 +74,47 @@ class loginController extends CI_Controller {
      * será direcionado novamente para a tela de login.
      */
     public function logout(){
+
+            // Remove local Facebook session
+            $this->facebook->destroy_session();
+            // Remove user data from session
+            $this->session->unset_userdata('userData');
             session_start(); // Inicia a sessão
             session_destroy(); // Destrói a sessão limpando todos os valores salvos
             redirect('');
     }
+
+    public function Create_user(){
+
+        $this->input->post('nameUser');
+        $this->input->post('emailUser');
+        $this->input->post('passwordUser');
+
+        $this->form_validation->set_rules('nameUser','Nome','required|min_length[5]');
+        $this->form_validation->set_rules('emailUser','Email','required');
+        $this->form_validation->set_rules('passwordUser','Senha','required|min_length[5]');
+
+        if($this->form_validation->run()==FALSE){
+            $dados['formerror']= validation_errors();
+         
+             $this->load->view('loginView',$dados);
+        }else{
+
+            $user = array(
+                'name_user' => $this->input->post('nameUser'),
+                'email' => $this->input->post('emailUser'),
+                'password' => $this->input->post('passwordUser'),
+                'nivel' => 1,
+                'active' => 1,
+                'day_register' => date('Y-m-d H:i:s')
+        
+                );
+
+            $this->loginModel->create($user);
+            redirect('entitie');
+        }
+
+    }
+
+   
 }

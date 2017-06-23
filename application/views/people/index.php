@@ -41,7 +41,7 @@ function mostrar(id){
                                       <div class="row" >
                                         <div class="col-xs-12"  style="margin-bottom: 5px;">
                                                
-                                                <a href="<?= base_url('update-event-form/'.$pp->id_people)?>">
+                                                <a href="<?= base_url('update-people-form/'.$pp->id_people)?>">
                                                     <button type="button" class="btn btn-default">
                                                           <span class="glyphicon glyphicon-pencil"></span>
                                                     </button>

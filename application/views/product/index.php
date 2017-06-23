@@ -117,11 +117,11 @@ $(document).ready(function(){
                         <form action="<?= base_url('create-product');?>" method="POST">
                             <div class="form-group">
                               <label for="name">* Nome:</label>
-                              <input type="text" class="form-control" name="productName" placeholder="Digite o nome do Produto" required>
+                              <input type="text" class="form-control border-input" name="productName" placeholder="Digite o nome do Produto" required>
                             </div>
                             <div class="form-group">
                               <label for="name">* Tipo:</label>
-                              <input type="text" class="form-control" name="productType" placeholder="Digite o tipo do Produto" required>
+                              <input type="text" class="form-control border-input" name="productType" placeholder="Digite o tipo do Produto" required>
                             </div>                           
                     </div>
                     <div class="modal-footer">
