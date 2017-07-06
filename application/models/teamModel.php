@@ -43,6 +43,26 @@ class teamModel extends CI_Model {
 		return $this->db->get($this->table);
 	}
 
+	function search_teamCreate($id_event,$search) {
+  		
+  		$id_user = $this->session->userdata('id_user');
+ 		$sql = "select DISTINCT name_team, id_team from teams where id_team not in (select teams_id_team from events_teams where events_id_event = '".$id_event."') and teams.id_user = '".$id_user."' and name_team LIKE '%".$search."%';"; 
+ 			
+ 			return $this->db->query($sql)->result();
+ 
+ 		
+ 	}	
+
+ 	public function search_teamDelete($id_event,$search) {
+
+       	$this->db->select('');    
+		$this->db->join('events_teams', 'teams.id_team = events_teams.teams_id_team','inner');
+		$this->db->where('events_id_event', $id_event);
+		$this->db->like('name_team', $search);
+	   	return $this->db->get($this->table)->result();
+    }
+	
+
 	function getNotEV($id_event) {
   		
   		$id_user = $this->session->userdata('id_user');

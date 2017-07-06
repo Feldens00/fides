@@ -15,26 +15,35 @@ foreach ($events as $ev) {
   $name_event = $ev->name_event; 
 }
 
-
-
- if ($formerror) {
-      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
-    }
-
-
 ?>
    
 <div class="row">
-    <div class="col-sm-10 text-center">
-       <div class="col-md-11" >
-            <h2> Lista de Produtos do Evento <?= $name_event; ?></h2> 
-        </div>
-        <div class="col-md-1" title="Adicione uma Atividade ao Cronograma" data-toggle="tooltip">
-             <a  class="#" data-toggle="modal" data-target="#addProduct"><span class="glyphicon glyphicon-schedule"><span class="glyphicon glyphicon-plus"></a>
-        </div>     
-    </div>     
+  <div class="container-fluid text-center">
+      <div class="card">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="col-sm-4 col-sm-offset-4" >
+             <h3>Lista de Despesas do Evento <?= $name_event; ?></h3> 
+          </div>
 
+          <div class="col-sm-1" style="margin: 25px;">
+                <a  class="#" data-toggle="modal" data-target="#addProduct">
+                <button type="button" class=" btn btn-primary">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+               </a>
+          </div>
+            </div>
+          </div> 
+      </div>  
+    </div>      
+  <?php 
 
+   if ($formerror) {
+      echo ("<div class='row'><div class='wow bounceInUp col-sm-6 col-sm-offset-3 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div></div>");
+    }
+
+  ?>   
 
       <div class="container-fluid">
         <div class="row">
@@ -110,7 +119,7 @@ foreach ($events as $ev) {
                                <label for="date2">* Produto</label>
                               <select name="productId" class="form-control" >
                                    <?php
-                                       echo "<option>Seleciona um Produto</option>";
+                                       echo "<option value=''>Seleciona um Produto</option>";
                                        foreach($products as $pd)
                                          
                                           echo "<option value='{$pd->id_product}'>{$pd->name_product}</option>";

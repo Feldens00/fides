@@ -40,6 +40,33 @@ class peopleModel extends CI_Model {
 		return $this->db->get($this->table);
 	}
 
+	public function search_delete($id_team, $id_event, $search){
+
+		$this->db->join('peoples_teams', 'peoples.id_people = peoples_teams.peoples_id_people','inner');
+		$this->db->where('teams_id_team', $id_team);
+		$this->db->where('events_id_event', $id_event);
+		$this->db->like('peoples.name_people', $search);
+	   	return $this->db->get('peoples')->result();
+	}
+
+	public function search_create($id_team, $id_event, $search){
+
+		$id_user =$this->session->userdata('id_user');
+		$sql = "SELECT * FROM peoples p 
+			WHERE p.id_people NOT IN
+			(SELECT peoples_id_people FROM peoples_teams 
+			 WHERE events_id_event = ".$id_event." 
+			 AND teams_id_team =".$id_team.")
+			and p.id_people not in 
+			(SELECT peoples_id_people FROM peoples_teams 
+			 WHERE events_id_event = ".$id_event."
+			 AND teams_id_team <>".$id_team.")
+			 AND id_user = ".$id_user." AND p.name_people LIKE '%".$search."%';";
+
+		return $this->db->query($sql)->result();
+
+	}
+
 	function getEstados() {
 		
 		return $this->db->get('states')->result();
@@ -78,15 +105,16 @@ class peopleModel extends CI_Model {
 	public function getPeopleNotTE($id_team, $id_event){
 
 		$id_user =$this->session->userdata('id_user');
-		$sql = "SELECT * FROM peoples p
-				INNER JOIN peoples_teams 
-				ON p.id_people = peoples_teams.peoples_id_people
-				WHERE p.id_people NOT IN 
-				(SELECT peoples_id_people 
-				FROM peoples_teams 
-				WHERE events_id_event =".$id_team."
-				AND teams_id_team =".$id_team.")
-				 AND id_user =".$id_user." AND events_id_event =".$id_event.";";
+		$sql = "SELECT * FROM peoples p 
+			WHERE p.id_people NOT IN
+			(SELECT peoples_id_people FROM peoples_teams 
+			 WHERE events_id_event = ".$id_event." 
+			 AND teams_id_team =".$id_team.")
+			and p.id_people not in 
+			(SELECT peoples_id_people FROM peoples_teams 
+			 WHERE events_id_event = ".$id_event."
+			 AND teams_id_team <>".$id_team.")
+			 AND id_user = ".$id_user.";";
 
 		return $this->db->query($sql)->result();
 	}

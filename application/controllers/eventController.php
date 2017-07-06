@@ -270,6 +270,36 @@ class eventController extends CI_Controller {
 		 $this->template->load('template/templateHeader', 'event/eventTeamCreateView',$dados);
 	}
 
+
+
+	public function search_teamCreate($id_event){
+
+		$search = $this->input->post('search');
+
+		$dados['formerror']= NULL;
+		
+		$dados['events'] = $this->eventModel->getOne($id_event)->result();
+
+		$this->db->select('*');
+		$dados['teams'] = $this->teamModel->search_teamCreate($id_event,$search);
+
+		 $this->template->load('template/templateHeader', 'event/eventTeamCreateView',$dados);
+	}
+
+	public function search_teamDelete($id_event){
+
+		$search = $this->input->post('search');
+
+		$dados['formerror']= NULL;
+		
+		$dados['events'] = $this->eventModel->getOne($id_event)->result();
+
+		
+		$dados['teams'] = $this->teamModel->search_teamDelete($id_event,$search);
+
+		 $this->template->load('template/templateHeader', 'event/eventTeamView',$dados);
+	}
+
 	public function create_eventTeam($id_event){
 
 		$this->form_validation->set_rules('selecao[]', 'Equipes', 'required');

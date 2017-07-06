@@ -4,7 +4,12 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 
-
+function mostrar(id){
+ 
+    
+        $("#a"+id).toggle();
+    
+}
 $(document).ready(function(){
        var idProduct;
    $('.delProduct').click(function(){
@@ -36,32 +41,27 @@ $(document).ready(function(){
     }); 
 });
 </script>
-<?php 
-
- if ($formerror) {
-      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
-    }
-
-
-?>
    
 <div class="row">
-	    <div class="col-sm-12">
+    <div class="container-fluid text-center">
+      <div class="card">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="col-sm-4 col-sm-offset-4" >
+             <h2>Produtos</h2> 
+          </div>
 
-
-
-              <div class="col-sm-10 text-center">
-
-                  <div class="col-md-10" >
-                     <h2>Produtos</h2> 
-                  </div>
-
-                  <div class="col-md-1" title="Crie um Produto" data-toggle="tooltip">
-                       <a href="#" title="Hooray!" data-toggle="modal" data-target="#addProduct"><span class="glyphicon glyphicon-plus"></a>
-                  </div>
-
-              </div>
-
+          <div class="col-sm-1" style="margin: 25px;">
+               <a href="#" title="Hooray!" data-toggle="modal" data-target="#addProduct">
+                <button type="button" class=" btn btn-primary">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+               </a>
+          </div>
+            </div>
+          </div> 
+      </div>  
+    </div>
         <div class="container-fluid">
          <div class="row">
            <?php foreach($products as $pd) { ?>
@@ -69,18 +69,14 @@ $(document).ready(function(){
                         <div class="card">
                             <div class="content">
                                 <div class="row">
-                                        <div class="col-sm-12"> 
-                                          <h2><?= $pd->name_product;?></h2>
+                                        <div class="col-sm-12 text-center"> 
+                                          <h4><?= $pd->name_product;?></h4>
                                         </div>
-
-                                         <div class="col-sm-12">
-                                            <h4><?= $pd->type;?></h4>
-                                          </div>
                                 </div>  
-                                <div class="footer">
+                                <div class="container-fluid">
                                     <hr />
-                                    <div class="stats">
-                                        <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-xs-12">
                                                     <a href="<?= base_url('update-product-form/'.$pd->id_product)?>">
                                                         <button type="button" class="btn btn-default">
                                                               <span class="glyphicon glyphicon-pencil">
@@ -91,6 +87,20 @@ $(document).ready(function(){
                                                       <span class="glyphicon glyphicon-trash">
                                                     </button>  
                                         </div>
+
+                                               <?php 
+                             
+                                                echo (" <div class='col-xs-12 text-center'><i class='ti-info'  id='b".$pd->id_product."'  onclick='mostrar(".$pd->id_product.")' ></i></div>");
+                                                echo (" <div class='col-sm-12' id='a".$pd->id_product."' style='display: none; margin-top:5px;'>");
+                                                ?>
+                                                      
+                                                        <div class="col-sm-12">
+                                                          <p>Tipo: <?=$pd->type;?></p>
+                                                        </div>
+                                                        
+                                                     
+
+                                                <?php echo('</div>'); ?>
                                     </div>
                                 </div>
                             </div>

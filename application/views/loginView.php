@@ -11,11 +11,13 @@
  
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css');?>">
+    <link rel="stylesheet" href="<?=base_url("assets/css/animate.css");?>">
     <link href="<?= base_url('assets/css/paper-dashboard.css');?>" rel="stylesheet"/>
     <script src="<?= base_url('assets/js/jquery-3.1.0.js');?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/jquery.maskedinput.js');?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/utilidade.js');?>"></script>
+    <script src="<?=base_url('assets/wow/dist/wow.min.js');?>"></script>
 
      <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
     <script   type="text/javascript" src="<?= base_url('assets/js/paper-dashboard.js');?>"></script>
@@ -24,6 +26,10 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="<?= base_url('assets/css/themify-icons.css');?>" rel="stylesheet">
 
+
+    <script>
+        new WOW().init();
+    </script>
 
     <style type="text/css">
       .bg-3 { 
@@ -39,49 +45,75 @@
       .material-icons.orange600 { color: #FB8C00; }
     </style>
 </head>
-<body>
-     <?php 
+<body class="bg-1">
+
+            <nav class="navbar navbar-default">
+                          <div class="container-fluid">
+                                <div class="row">
+                                <div class="col-xs-7">
+                                  <img src="<?=base_url('assets/images/logo.png');?>" style="width:100px; height:50px;" class=" img-responsive" alt="Cinque Terre">
+                                </div>
+                                <div class="col-xs-5">
+                                   <ul class="nav navbar-nav navbar-right">
+                                      <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                                            <p>Entrar</p>
+                                            <b class="caret"></b>
+                                          </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#" data-toggle="modal" data-target="#myModal">Logar</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#myModal2" >Cadastrar</a></li>
+                                            <li><a href="<?=base_url('login-facebook');?>">Logar com <i class="ti-facebook"></i></a></li>
+                                          </ul>
+                                      </li>
+                                  </ul>
+                                </div>
+                                </div>
+                          </div>
+                          <div class="jumbotron bg-3">
+                            <div class="container text-center">
+                              <div class="col-sm-offset-4" style="margin-top:20px; margin-bottom: 20px;">
+                                <img src="<?=base_url('assets/images/logo.png');?>" class=" img-responsive" alt="Cinque Terre">
+                              </div>   
+                              <p>Software gerenciador de eventos religiosos </p>
+                            </div>
+                          </div>
+                      </nav>
+
+<?php 
 
    if ($formerror) {
-      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div>");
+      echo ("<div class=' wow bounceInLeft col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div>");
     }
 
-?>     
-
-
-                    <div class="col-sm-12 bg-1">
-
-                    <div class="jumbotron bg-3">
-                      <div class="container text-center">
-                        <h1>Fides</h1>      
-                        <p>Software gerenciador de eventos religiosos </p>
-                      </div>
-                    </div>
+?>   
+                  <div class="col-sm-12">
 
                       <div class="container-fluid bg-3 text-center">    
-                          <div class="col-sm-3" style="margin-top:20px; margin-bottom: 20px;">
-                            <img src="<?=base_url('assets/images/fe1.jpg');?>" class="img-rounded responsivo" alt="Cinque Terre" style= 'width:250px; height:250px;'>
+                          <div class="col-sm-3 wow fadeInLeft" data-wow-duration="3s"  style="margin-top:20px; margin-bottom: 20px;">
+                            <img src="<?=base_url('assets/images/fe1.jpg');?>" class=" img-rounded img-responsive" alt="Cinque Terre" widht="250px" height="250px">
                           </div>
-                          <div class="col-sm-4 col-sm-offset-5"><br><br>
+                          <div class="col-sm-4 col-sm-offset-5 wow fadeInDown"><br><br>
                             <h5>O Fides é um programa para gerenciamentos de eventos religiosos, tem como principal objetivo auxiliar as pessoas a documentar e gerenciar informações destes eventos.</h5>
                           </div>
                       </div>
 
                       <div class="container-fluid bg-3 text-center" style="margin-top:30px;"> 
-                        <div class="col-sm-4"><br><br>
+                        <div class="col-sm-4 wow fadeInDown" data-wow-duration="3s"><br><br>
                             <h5>Totalmente responsivo, o Fides pode ser utilizao em qualquer plataforma, entre elas smartphones, tablets, notebooks e computadores.</h5>
                           </div>   
-                          <div class="col-sm-3 col-sm-offset-4" style="margin-top:20px; margin-bottom: 20px;" >
-                            <img src="<?=base_url('assets/images/responsive.png');?>" class="img-rounded" alt="Cinque Terre" style= 'width:250px; height:250px;'>
+                          <div class="col-sm-3 col-sm-offset-4 wow fadeInLeft"  data-wow-duration="3s" style="margin-top:20px; margin-bottom: 20px;" >
+                            <img src="<?=base_url('assets/images/responsive.png');?>" class="img-rounded img-responsive" alt="Cinque Terre" widht="250px" height="250px">
                           </div>
                       </div>
 
                      
                       <div class="container-fluid bg-3 text-center" style="margin-top:30px;">    
-                          <div class="col-sm-3" style="margin-top:20px; margin-bottom: 20px;">
-                            <img src="<?=base_url('assets/images/gratuito.png');?>" class="img-rounded" alt="Cinque Terre" style= 'width:250px; height:250px;'>
+                          <div class="col-sm-3 wow fadeInLeft"  data-wow-duration="3s" style="margin-top:20px; margin-bottom: 20px;">
+                            <img src="<?=base_url('assets/images/gratuito.png');?>" class="img-rounded img-responsive" alt="Cinque Terre" widht="250px" height="250px">
                           </div>
-                          <div class="col-sm-4 col-sm-offset-5"><br><br>
+                          <div class="col-sm-4 col-sm-offset-5 wow fadeInDown" data-wow-duration="3s" ><br><br>
                             <h5>Sem propagandas, taxas de inscrição ou outras cobranças o Fides é 100% gratuito.</h5>
                           </div>
                       </div>
@@ -95,7 +127,7 @@
                       <div class="col-sm-4" style="margin-top:30px;" >
                         <div class="card">
                             <div class="content">
-                              <div class=" text-center">
+                              <div class=" text-center wow zoomIn" data-wow-duration="3s" >
                                   <p>Controlar e gerenciar entidades e eventos</p>
                                   <i class="material-icons md-200 orange600">event</i>
                               </div>
@@ -106,7 +138,7 @@
                        <div class="col-sm-4" style="margin-top:30px;" >
                         <div class="card">
                             <div class="content">
-                              <div class=" text-center">
+                              <div class=" text-center wow zoomIn" data-wow-duration="3s" >
                                   <p>Controlar e gerenciar equipes</p>
                                   <i class="material-icons md-200 orange600">people</i>
                               </div>
@@ -117,7 +149,7 @@
                       <div class="col-sm-4" style="margin-top:30px;" >
                         <div class="card">
                             <div class="content">
-                              <div class=" text-center">
+                              <div class=" text-center wow zoomIn" data-wow-duration="3s" >
                                   <p>Controlar e gerenciar pessoas</p>
                                   <i class="material-icons md-200 orange600">account_circle</i>
                               </div>
@@ -128,7 +160,7 @@
                       <div class="col-sm-4" style="margin-top:30px;" >
                         <div class="card">
                             <div class="content">
-                              <div class=" text-center">
+                              <div class=" text-center wow zoomIn" data-wow-duration="3s" >
                                   <p>Controlar e gerenciar despesas</p>
                                   <i class="material-icons md-200 orange600">shopping_cart</i>
                               </div>
@@ -139,7 +171,7 @@
                        <div class="col-sm-4" style="margin-top:30px;" >
                         <div class="card">
                             <div class="content">
-                              <div class=" text-center">
+                              <div class=" text-center wow zoomIn" data-wow-duration="3s" >
                                   <p>Controlar e gerenciar atividades</p>
                                   <i class="material-icons md-200 orange600">query_builder</i>
                               </div>
@@ -150,43 +182,14 @@
                        <div class="col-sm-4" style="margin-top:30px;" >
                         <div class="card">
                             <div class="content">
-                              <div class=" text-center">
+                              <div class=" text-center wow zoomIn" data-wow-duration="3s" >
                                   <p>Documentar dados de um evento</p>
                                   <i class="material-icons md-200 orange600">print</i>
                               </div>
                             </div>
                         </div>
                       </div> 
-                     
 
-                       <div class="col-sm-4 col-sm-offset-4" >
-                        <div class="card">
-                            <div class="header">
-                                
-                            </div>
-                            <div class="content">
-                                <form>
-                                    <div class="col-sm-12 text-center">
-                                      <div class="col-sm-6">
-                                        <h4>Realize o login:</h4>
-                                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Logar</button>
-                                      </div>
-                                       <div class="col-sm-6">
-                                        <h4>Cadastra-se:</h4>
-                                        <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-default">Cadastrar</button>
-                                      </div>
-                                      <div class="col-sm-12">
-                                        <h4>Realize o login pelo Facebook</h4>
-                                        <a href="<?=base_url('login-facebook');?> ">
-                                          <button type="button" class="btn btn-default"><i class="ti-facebook"></i></button>
-                                        </a>
-                                      </div>               
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div>
-                        </div>
-                      </div> 
                     </div>
          
 
@@ -268,26 +271,6 @@
     </div>
   </div>
              
-             
-         
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-        <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                </div>
-            </div>
-        </footer>
 
 </body>
 </html>

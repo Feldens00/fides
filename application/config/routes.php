@@ -76,6 +76,8 @@ $route['event-team/(:num)'] = 'eventController/call_eventTeam/$1';
 $route['delete-event-team/(:num)'] = 'eventController/delete_eventTeam/$1';
 $route['print-quadrante/(:num)'] = 'eventController/print_quadrante/$1';
 $route['send-quadrante'] = 'eventController/send_quadrante';
+$route['search-team-create/(:num)'] = 'eventController/search_teamCreate/$1';
+$route['search-team-delete/(:num)'] = 'eventController/search_teamDelete/$1';
 
 
 
@@ -114,6 +116,9 @@ $route['form-team-people'] = 'teamController/call_teamPeopleCreateView';
 $route['create-team-people/(:num)/(:any)'] = 'teamController/create_teamPeople/$1/$2';
 $route['team-people'] = 'teamController/call_teamPeople';
 $route['delete-team-people/(:num)/(:any)'] = 'teamController/delete_teamPeople/$1/$2';
+$route['search-people-create/(:num)/(:any)'] = 'teamController/search_peopleCreate/$1/$2';
+$route['search-people-delete/(:num)/(:any)'] = 'teamController/search_peopleDelete/$1/$2';
+
 
 //rotas das Pessoas
 $route['create-people-form'] = 'peopleController/call_createView';

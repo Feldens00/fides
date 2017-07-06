@@ -43,32 +43,29 @@ $(document).ready(function(){
     }); 
 });
 </script>
-<?php 
-
- if ($formerror) {
-      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
-    }
-
-
-?>
-   
 <div class="row">
-	    <div class="col-sm-12">
+  <div class="container-fluid text-center">
+      <div class="card">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="col-sm-4 col-sm-offset-4" >
+             <h2>Atividades</h2> 
+          </div>
+
+          <div class="col-sm-1" style="margin: 25px;">
+               <a href="#" title="Hooray!" data-toggle="modal" data-target="#addActivitie">
+                <button type="button" class=" btn btn-primary">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+               </a>
+          </div>
+            </div>
+          </div> 
+      </div>  
+    </div>
 
 
-
-              <div class="col-sm-10 text-center div-barra">
-
-                  <div class="col-md-10" >
-                     <h2>Atividades</h2> 
-                  </div>
-
-                  <div class="col-md-1" title="Crie uma Atividade" data-toggle="tooltip">
-                       <a href="#" title="Hooray!" data-toggle="modal" data-target="#addActivitie"><span class="glyphicon glyphicon-plus"></a>
-                  </div>
-
-              </div>
-
+	
               <div class="container-fluid">
                <div class="row">
                  <?php foreach($activities as $ac) { ?>
@@ -98,12 +95,12 @@ $(document).ready(function(){
 
                                                <?php 
                              
-                                                echo (" <div class='col-xs-12 text-center'><i class='ti-angle-down'  id='b".$ac->id_activitie."'  onclick='mostrar(".$ac->id_activitie.")' ></i></div>");
+                                                echo (" <div class='col-xs-12 text-center'><i class='ti-info'  id='b".$ac->id_activitie."'  onclick='mostrar(".$ac->id_activitie.")' ></i></div>");
                                                 echo (" <div class='col-sm-12' id='a".$ac->id_activitie."' style='display: none; margin-top:5px;'>");
                                                 ?>
                                                 
                                                       <div class="col-sm-12">
-                                                        <h4><font color="#d9d9d9"><?= $ac->description;?></font></h4>
+                                                        <p>Horário: <?= $ac->description;?></p>
                                                       </div>
 
                                                 <?php echo('</div>'); ?>
@@ -115,7 +112,6 @@ $(document).ready(function(){
                         <?php } ?>
                       </div>
                     </div>
-      </div>
 </div>
 
 <div id="addActivitie" class="modal fade">

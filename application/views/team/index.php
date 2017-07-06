@@ -8,61 +8,36 @@ function mostrar(id){
         $("#a"+id).toggle();
     
 }
-var idTeam;
-   $('.delTeam').click(function(){
-    idTeam = $(this).data('id');
-     $('#deleteTeam').modal('show');
-    });
-
-    $("#delete_team").on("click", function(){
-      $.ajax({
-        url: "<?php echo site_url('/teamController/delete'); ?>",
-        type: "POST",
-        data: {id_team: idTeam},
-        success: function(data){
-          window.location.reload();
-          if(!data){
-           console.log(data);
-           
-           
-          }else{
-            console.log(data);
-
-          }
-        },
-        error: function(data){
-          console.log(data);
-         
-        }
-      });
-    }); 
-
-
-
 </script>
 
-<?php 
-
-   if ($formerror) {
-      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div>");
-    }
-
-?> 
   <div class="row">
-    <div class="col-sm-10 text-center">
+    <div class="container-fluid text-center">
+      <div class="card">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="col-sm-4 col-sm-offset-4" >
+             <h2>Equipes</h2> 
+          </div>
 
-
-
-        <div class="col-md-11" >
-           <h2>Equipes</h2> 
-        </div>
-
-        <div class="col-md-1">
-             <a href="<?= site_url('create-team-form'); ?>"><span class="glyphicon glyphicon-plus"></a>
-        </div>
-
+          <div class="col-sm-1" style="margin: 25px;">
+               <a href="<?= site_url('create-team-form'); ?>">
+                <button type="button" class=" btn btn-primary">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+               </a>
+          </div>
+            </div>
+          </div> 
+      </div>  
     </div>
 
+  <?php 
+
+   if ($formerror) {
+      echo ("<div class='row'><div class='wow bounceInUp col-sm-6 col-sm-offset-3 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div></div>");
+    }
+
+  ?> 
     <div class="container-fluid">
          <div class="row">
            <?php foreach($teams as $tm) { ?>
@@ -99,13 +74,17 @@ var idTeam;
                                              <?php 
                            
                                               echo (" <div class='col-xs-12 text-center'><i class='ti-angle-down' onclick='mostrar(".$tm->id_team.")' ></i></div>");
-                                              echo (" <div class='col-sm-12 text-center' id='a".$tm->id_team."' style='display: none; margin-top:5px;'>");
+                                              echo (" <div class='col-sm-12' id='a".$tm->id_team."' style='display: none; margin-top:5px;'>");
                                               ?>
                                            
-                                               <div class="col-sm-12 text-center">
-                                                  <a href="#"  class='selectEventDel'  data-id="<?php echo $tm->id_team; ?>" >Visualizar Pessoas e Eventos</a>
-                                                </div>
+                                              <div class="col-sm-12 text-center">
+                                                  <a href="#"  class='selectEventDel'  data-id="<?php echo $tm->id_team; ?>" >Visualizar Pessoas</a>
+                                              </div>
 
+                                              <div class="col-sm-12" style="margin-top: 5px;">
+                                                <p>Descrição: <?= $tm->description; ?></p>
+                                              </div>
+                                          
                                             <?php echo('</div>'); ?>
                                       </div>
                                 </div>

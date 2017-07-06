@@ -102,20 +102,27 @@ function mostrarC(id){
 }
 
 </script>
+<div class="row">
+  <div class="container-fluid text-center">
+      <div class="card">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="col-sm-4 col-sm-offset-4" >
+             <h2>Eventos</h2> 
+          </div>
 
-  <div class="row">
-    <div class="col-sm-10 text-center div-barra">
-
-        <div class="col-md-11" >
-           <h2>Eventos</h2> 
-        </div>
-
-        <div class="col-md-1">
-             <a href="<?= site_url('create-event-form'); ?>"><span class="glyphicon glyphicon-plus"></a>
-        </div>
-
+          <div class="col-sm-1" style="margin: 25px;">
+               <a href="<?= site_url('create-event-form'); ?>">
+                <button type="button" class=" btn btn-primary">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+               </a>
+          </div>
+            </div>
+          </div> 
+      </div>  
     </div>
-
+    
      <div class="container-fluid">
          <div class="row">
            <?php foreach($events as $ev) { ?>
@@ -176,7 +183,7 @@ function mostrarC(id){
 
                                                  
                                               <div style="margin-top:10px;" class="col-sm-6">
-                                                   <a  href="<?= base_url('form-list-product/'.$ev->id_event)?>">Lista de produtos</a>
+                                                   <a  href="<?= base_url('form-list-product/'.$ev->id_event)?>">Lista de Despesas</a>
                                                 </div>  
                                               
                                            
@@ -192,17 +199,12 @@ function mostrarC(id){
                                                    <a  href="<?= base_url('print-quadrante/'.$ev->id_event)?>">Quadrante</a>
                                                 </div>
 
-                                                 <div style="margin-top:10px;" class="col-sm-6">
-                                                   <a  href="#" data-toggle="modal" data-target="#sendQuadrante">enviar</a>
-                                                </div>
-
-
                                                 <div style="margin-top:10px;" class="col-sm-6">
                                                       <a href="<?= base_url('print/'.$ev->id_event);?>" >Cronograma</a>
                                                 </div>
                                                 
                                                 <div style="margin-top:10px;" class="col-sm-12">
-                                                      <a href="<?= base_url('print-list/'.$ev->id_event);?>" >Lista de Produtos</a>
+                                                      <a href="<?= base_url('print-list/'.$ev->id_event);?>" >Lista de Despesas</a>
                                                 </div>
                                           <?php echo('</div>'); ?>
 
@@ -211,51 +213,30 @@ function mostrarC(id){
                                             echo (" <div id='div_icone_c".$ev->id_event."' onclick='mostrarC(".$ev->id_event.")' class='col-xs-4 text-center' style='display: block;'><i class='ti-info' style='margin-top:5px;'></i></div>");
                                             echo (" <div class='col-sm-12 text-center'id='div_c".$ev->id_event."'  style='display: none; margin-top:5px;'>");
                                             ?>
-                                         
-                                                <div class="col-sm-12">
-                                                  <div class="col-sm-6">
-                                                    <h6>Data de Inicio: <?= $ev->start_date; ?></h6>
+                                                   <div class="col-sm-12">
+                                                    <p><font size="2"> Inicio: <?= $ev->start_date; ?> / Final: <?= $ev->end_date; ?></font></p>
                                                   </div>
 
-                                                  <div class="col-sm-6">
-                                                    <h6>Data de Encerramento: <?= $ev->end_date; ?></h6>
+                                                  <div class="col-sm-12">
+                                                    <p><font size="2">CEP: <?= $ev->cep; ?></font></p>
                                                   </div>
-                                                </div>
-                                                
-                                                <div class="col-sm-12">
-                                                  <div class="col-sm-6">
-                                                    <h6>Endereço: <?= $ev->adress; ?></h6>
+                                                   
+
+                                                  <div class="col-sm-12">
+                                                    <p><font size="2">Telefone: <?= $ev->phone; ?></font></p>
                                                   </div>
 
-                                                  <div class="col-sm-6">
-                                                    <h6>CEP: <?= $ev->cep; ?></h6>
-                                                  </div>
-                                                </div>
-                                                
-                                                <div class="col-sm-12">
-                                                  <div class="col-sm-6">
-                                                    <h6>Telefone: <?= $ev->phone; ?></h6>
+                                                  <div class="col-sm-12">
+                                                    <p><font size="2"> Bairro: <?= $ev->neighborhood; ?> / Endereço: <?= $ev->adress; ?></font></p>
                                                   </div>
 
-                                                  <div class="col-sm-6">
-                                                    <h6>Bairro: <?= $ev->neighborhood; ?></h6>
+                                                  <div class="col-sm-12">
+                                                    <p><font size="2">Cidade: <?= $ev->name_city; ?> / <?= $ev->name_state; ?></font></p>
                                                   </div>
-                                                </div>
-                                               
-                                                <div class="col-sm-12">
-                                                  <div class="col-sm-4">
-                                                    <h6>Cidade: <?= $ev->name_city; ?></h6>
+                                            
+                                                  <div class="col-sm-12">
+                                                    <p><font size="2">Entidade: <?= $ev->name_entitie; ?></font></p>
                                                   </div>
-
-                                                  <div class="col-sm-4">
-                                                    <h6>Estado: <?= $ev->name_state; ?></h6>
-                                                  </div>
-
-                                                  <div class="col-sm-4">
-                                                    <h6>Entidade: <?= $ev->name_entitie; ?></h6>
-                                                  </div>
-                                                </div>
-                                                
                                               
                                                 
 

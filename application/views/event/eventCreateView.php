@@ -1,13 +1,10 @@
  <?php 
+
    if ($formerror) {
-      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+      echo ("<div class='row'><div class='wow bounceInUp col-sm-6 col-sm-offset-3 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div></div>");
     }
-  ?>  
 
-
-
-
-
+  ?>   
 
 <div class="content">
             <div class="container-fluid">
@@ -57,7 +54,7 @@
 
                                   <div class="form-group">
                                      <label for="phone">Valor da Inscrição:</label>
-                                      <input type="text" class="form-control border-input" id="money"  name="eventInscription" required>
+                                      <input type="text" class="form-control border-input" id="money"  name="eventInscription">
                                   </div>
 
                                   <div class="form-group">

@@ -1,10 +1,12 @@
 
 
 <?php 
-      if ($formerror) {
-      echo ("<div class=' col-sm-3 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+
+   if ($formerror) {
+      echo ("<div class='row'><div class='wow bounceInUp col-sm-6 col-sm-offset-3 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div></div>");
     }
-    ?>    
+
+?>     
 
           <div class="container-fluid">
                 <div class="row">
@@ -43,21 +45,27 @@
                                         <input type="text" class="form-control border-input" id="fone" name="updateEventPhone" value="<?= $ev->phone; ?>">
                                       </div>
 
-                                       <div class="form-group">
+                                      <div class="form-group">
                                         <label for="adress">Endereço:</label>
                                         <input type="text" class="form-control border-input"  name="updateEventAdress" value="<?= $ev->adress; ?>">
                                       </div>
 
 
-                                       <div class="form-group">
+                                      <div class="form-group">
                                         <label for="phone">Cep:</label>
                                         <input type="text" class="form-control border-input" id="cep" name="updateEventCep" value="<?= $ev->cep; ?>">
                                       </div>
 
-                                       <div class="form-group">
+                                      <div class="form-group">
                                         <label for="phone">Bairro:</label> 
                                         <input type="text" class="form-control border-input"  name="updateEventNeigh" value="<?= $ev->neighborhood; ?>">
                                       </div>
+
+                                    <div class="form-group">
+                                     <label for="phone">Valor da Inscrição:</label>
+                                      <input type="text" class="form-control border-input" id="money"  name="eventInscription" value="<?= $ev->inscription; ?>">
+                                    </div>
+
                                         <div class="form-group">
                                           <label>* Estado</label>      
                                                          <select name="estado" class="form-control border-input" >

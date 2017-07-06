@@ -9,9 +9,10 @@
  
 
    if ($formerror) {
-      echo ("<div class=' col-sm-4 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!</strong>".$formerror."</div>");
+      echo ("<div class='row'><div class='wow bounceInUp col-sm-6 col-sm-offset-3 alert alert-warning'> <a href='#'' class='close' data-dismiss='alert' aria-label='close'>×</a><strong>Atenção!   </strong>".$formerror."</div></div>");
     }
 
+  ?>   
 ?> 
 
               <div class="content">
@@ -20,11 +21,25 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title"><?= $name_team; ?></h4>
-                                <p class="category">Adicione pessoas ao evento.</p>
+                               <div class="col-sm-12">
+                                  <h4 class="title"><?= $name_team; ?></h4>
+                                </div>
+                                <div class="col-sm-8">
+                                  <p class="category">Adicionar pessoas a equipe.</p>
+                                </div>
+                                <div class="col-sm-4 ">
+                                  <form action="<?= base_url('search-people-create/'.$id_team.'/'.$id_event)?>" method="POST">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-input" name="search" placeholder="Pesquisar..." required>
+                                        <span class="input-group-btn">
+                                          <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                        </span>
+                                    </div>
+                                  </form>
+                                </div>
                             </div>
                             <form action="<?= base_url('create-team-people/'.$id_team."/".$id_event)?>" method="POST">
-                            <div class="content table-responsive table-full-width">
+                            <div class="content table-responsive table-full-width" style="overflow: auto; height: 500px;">
                                 <table class="table table-striped">
                                     <thead>
                                       <th>id</th>

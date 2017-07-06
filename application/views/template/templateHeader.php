@@ -11,22 +11,29 @@
  
 
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css');?>">
+    <link rel="stylesheet" href="<?=base_url("assets/css/animate.css");?>">
     <link href="<?= base_url('assets/css/paper-dashboard.css');?>" rel="stylesheet"/>
     <script src="<?= base_url('assets/js/jquery-3.1.0.js');?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/jquery.maskedinput.js');?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/utilidade.js');?>"></script>
-
-     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+    <script src="<?=base_url('assets/wow/dist/wow.min.js');?>"></script>
+ 
+    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
     <script   type="text/javascript" src="<?= base_url('assets/js/paper-dashboard.js');?>"></script>
+    
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="<?= base_url('assets/css/themify-icons.css');?>" rel="stylesheet">
+     
+    <script>
+        new WOW().init();
+    </script>
 
-  <script type="text/javascript">
-    var path = '<?php echo site_url(); ?>'
-  </script>
+    <script type="text/javascript">
+        var path = '<?php echo site_url(); ?>'
+    </script>
 
 </head>
 <body>
@@ -42,7 +49,7 @@
       <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="entitie" class="simple-text">
-                    Fides
+                    <img src="<?=base_url('assets/images/logo.png');?>" style="width:100px; height:50px;" class=" img-responsive" alt="Cinque Terre">
                 </a>
             </div>
 
@@ -50,42 +57,42 @@
                 <li class="active">
                     <a href="<?= base_url('entitie');?>">
                         <i class="ti-pie-chart"></i>
-                        <p>Entidade</p>
+                        <p>Entidades</p>
                     </a>
                 </li>
             
                 <li class="active">
                     <a href="<?= base_url('event');?>">
                         <i class="ti-calendar"></i>
-                        <p>Evento</p>
+                        <p>Eventos</p>
                     </a>
                 </li>
             
                 <li class="active">
                     <a href="<?= base_url('team');?>">
                         <i class="ti-user">*</i>
-                        <p>Equipe</p>
+                        <p>Equipes</p>
                     </a>
                 </li>
 
                 <li class="active">
                     <a href="<?= base_url('people');?>">
                         <i class="ti-user"></i>
-                        <p>Pessoa</p>
+                        <p>Pessoas</p>
                     </a>
                 </li>
 
                 <li class="active">
                     <a href="<?= base_url('product');?>">
                         <i class="ti-shopping-cart"></i>
-                        <p>Produto</p>
+                        <p>Produtos</p>
                     </a>
                 </li>
 
                 <li class="active">
                     <a href="<?= base_url('activitie');?>">
                         <i class="ti-time"></i>
-                        <p>Atividade</p>
+                        <p>Atividades</p>
                     </a>
                 </li>
 

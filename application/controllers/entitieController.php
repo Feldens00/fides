@@ -83,18 +83,18 @@ class entitieController extends CI_Controller {
 	
 
    		$this->form_validation->set_rules('updateEntitieName','Nome','required|min_length[5]');
-
+   		$id = $this->input->post('updateEntitieId');
 		if($this->form_validation->run()==FALSE){
 				$dados['formerror']=validation_errors();
 				$id=$this->input->post('updateEntitieId');
-				$dados['entities'] = $this->db->getOne($id)->result();
-			    $this->template->load('template/templateHeader', 'homeView', $dados);
+				$dados['entities'] = $this->entitieModel->getOne($id)->result();
+			    $this->template->load('template/templateHeader', 'entitie/entitieUpdateView', $dados);
 
 			
 		}else{
 				
 					$entitie = array(
-						'id_entitie' => $this->input->post('updateEntitieId'),
+						'id_entitie' => $id,
 						'name_entitie' => $this->input->post('updateEntitieName'),
 						'responsible' => $this->input->post('updateEntitieResponsible'),
 						'phone' => $this->input->post('updateEntitiePhone'),

@@ -1,16 +1,35 @@
+<script type="text/javascript"> 
+
+//função do toggle 
+function mostrar(id){
+ 
+    
+        $("#a"+id).toggle();
+    
+}
+</script>
 
 
 <div class="row">
-	<div class="col-sm-10 text-center div-barra">
-      
-        <div class="col-md-11" >
-           <h2>Entidades</h2> 
-        </div>
+    <div class="container-fluid text-center">
+      <div class="card">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="col-sm-4 col-sm-offset-4" >
+             <h2>Entidades</h2> 
+          </div>
 
-        <div class="col-md-1">
-             <a href="<?= site_url('create-entitie-form'); ?>"><span class="glyphicon glyphicon-plus"></a>
-        </div>
-	</div>
+          <div class="col-sm-1" style="margin: 25px;">
+               <a href="<?= site_url('create-entitie-form'); ?>">
+                <button type="button" class=" btn btn-primary">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+               </a>
+          </div>
+            </div>
+          </div> 
+      </div>  
+    </div>
         <div class="container-fluid">
          <div class="row">
            <?php foreach($entities as $et) { ?>
@@ -18,14 +37,14 @@
                         <div class="card">
                             <div class="content">
                                 <div class="row">
-                                        <div class="col-sm-12"> 
-                                          <h2><?= $et->name_entitie; ?></h2>
-                                          <h4><?=$et->phone;?></h4>
+                                        <div class="col-sm-12 text-center"> 
+                                          <h4><?= $et->name_entitie; ?></h4>
                                         </div>
                                 </div>
-                                <div class="footer">
+                                <div class="container-fluid">
                                     <hr />
-                                    <div class="stats">
+                                    <div class="row">
+                                      <div class="col-sm-12">
                                         <a href="<?= base_url('update-entitie-form/'.$et->id_entitie)?>">
                                               <button type="button" class="btn btn-default">
                                                 <span class="glyphicon glyphicon-pencil">
@@ -35,6 +54,22 @@
                                           <button type="button" class="btn btn-primary delEntitie" data-id="<?php echo $et->id_entitie ?>" >  
                                                 <span class="glyphicon glyphicon-trash">
                                           </button>
+                                      </div>
+                                      <?php 
+                           
+                                              echo (" <div class='col-xs-12 text-center'><i class='ti-info' onclick='mostrar(".$et->id_entitie.")' ></i></div>");
+                                              echo (" <div class='col-sm-12' id='a".$et->id_entitie."' style='display: none; margin-top:5px;'>");
+                                              ?>
+                                           
+                                                <div class="col-sm-12"> 
+                                                  <p>Telefone: <?= $et->phone; ?></p>
+                                                </div>
+
+                                                <div class="col-sm-12" style="margin-top: 5px;">
+                                                  <p>Responsavel: <?= $et->responsible; ?></p>
+                                                </div>
+                                          
+                                            <?php echo('</div>'); ?>
                                     </div>
                                 </div>
                             </div>
