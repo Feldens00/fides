@@ -129,11 +129,11 @@ $(document).ready(function(){
                         <form action="<?= base_url('create-activitie');?>" method="POST">
                             <div class="form-group">
                               <label for="name">* Nome:</label>
-                              <input type="text" class="form-control" name="activitieName" placeholder="Digite o nome da atividade" required>
+                              <input type="text" class="form-control border-input" name="activitieName" placeholder="Digite o nome da atividade" required>
                             </div>
                             <div class="form-group">
                               <label for="name">Descrição:</label>
-                              <textarea class="form-control" name="activitieDescription"></textarea> 
+                              <textarea class="form-control border-input" name="activitieDescription"></textarea> 
                             </div>                           
                     </div>
                     <div class="modal-footer">

@@ -60,7 +60,7 @@ class eventController extends CI_Controller {
 				$dados['estados'] = $this->eventModel->getEstados();
 
 				$this->db->select('*');
-				$dados['entities'] = $this->entitieModel->get();
+				$dados['entities'] = $this->entitieModel->get()->result();
 
 				 $this->template->load('template/templateHeader', 'event/eventCreateView',$dados);
 			
@@ -402,71 +402,6 @@ class eventController extends CI_Controller {
 	$mpdf->Output();
 
 	}
-	
-	public function send_quadrante(){
-	$event = $this->input->post('idQuadrante');
-	$dados['teams']=$this->eventModel->getTE($event)->result();
-	$return = $this->eventModel->getOne($event)->result();
-	$dados['peoplesTeams']=$this->eventModel->getPT($event)->result();
-
-	foreach ($return as $ev) {
-		$name_event = $ev->name_event;
-	}
-
-	// Instancia a classe mPDF
-	$mpdf = new mPDF();
-	// Ao invés de imprimir a view 'welcome_message' na tela, passa o código
-	// HTML dela para a variável $html
-	$html = $this->load->view('event/printQuadranteView',$dados,true);
-	// Define um Cabeçalho para o arquivo PDF
-	$mpdf->SetHeader('Quadrante do Evento '.$name_event);
-	// Define um rodapé para o arquivo PDF, nesse caso inserindo o número da
-	// página através da pseudo-variável PAGENO
-	$mpdf->SetFooter('{PAGENO}');
-	// Insere o conteúdo da variável $html no arquivo PDF
-	$mpdf->writeHTML($html);
-	// Cria uma nova página no arquivo
-	//$mpdf->AddPage();
-	// Insere o conteúdo na nova página do arquivo PDF
-	//$mpdf->WriteHTML('<p><b>Minha nova página no arquivo PDF</b></p>');
-	// Gera o arquivo PDF
-	$caminho = 'assets/pdf/Quadrante_do_Evento_'.$name_event.'.pdf';
-	$mpdf->Output($caminho,'F');
-
-				 $nome 	    = $this->input->post('name');
-				 $email     = $this->input->post('email');
-				 $assunto	= "Documentação FIDES";
-				 $corpoMSG 	= "Mensagem enviada por arturfeldens@gmail.com";
-				 // chamada da classe		
-				 //require_once('class.phpmailer.php');
-				 // instanciando a classe
-
-				 $mail->IsSMTP(); 
-
-				 
-				 $mail   = new PHPMailer();
-				 // email do remetente
-				 $mail->SetFrom('arturfeldens@hotmail.com', 'remetente');
-				 
-				 $mail->AddAddress($email, "destinatario");
-				 // assunto da mensagem
-				 $mail->Subject = $assunto;
-				 // corpo da mensagem
-				 $mail->MsgHTML($corpoMSG);
-				 // anexar arquivo
-				 $mail->AddAttachment($caminho);
-				 
-				 if(!$mail->Send()) {
-				   echo "Erro: " . $mail->ErrorInfo;
-				  } else {
-				   echo "Mensagem enviada com sucesso!";
-				  }
-			
-
-
-	}
-	
-	
 	
 
 	

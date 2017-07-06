@@ -52,7 +52,7 @@ function mostrar(id){
                                                     </button>
                                                 </a>
                                              
-                                                <button type="button" class="btn btn-primary delEvent" data-id="<?php echo $pp->id_people; ?>" >  
+                                                <button type="button" class="btn btn-primary delPeople" data-id="<?php echo $pp->id_people; ?>" >  
                                                   <span class="glyphicon glyphicon-trash">
                                                 </button>  
                                             </div>

@@ -47,7 +47,7 @@ foreach ($events as $ev) {
 
       <div class="container-fluid">
         <div class="row">
-         <form action="<?= base_url('delete-schedule-activitie/'.$id_event)?>" method="POST">
+         <form action="<?= base_url('delete-list-product/'.$id_event)?>" method="POST">
            <?php foreach($productEvent as $pe) { ?>
                     <div class="col-lg-3">
                         <div class="card">
@@ -108,7 +108,7 @@ foreach ($events as $ev) {
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                      <label class="modal-title">Adicionar Produto ao Cronograma</label>
+                      <label class="modal-title">Adicionar Produto a lista de despesas</label>
                     </div>
                     <div class="modal-body">
                        
@@ -117,7 +117,7 @@ foreach ($events as $ev) {
                             
                             <div class="form-group">
                                <label for="date2">* Produto</label>
-                              <select name="productId" class="form-control" >
+                              <select name="productId" class="form-control border-input" >
                                    <?php
                                        echo "<option value=''>Seleciona um Produto</option>";
                                        foreach($products as $pd)

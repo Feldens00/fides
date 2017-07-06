@@ -18,15 +18,19 @@
                             </div>
                             <div class="content">
                              <form action="create-team" method="POST">
-                                <div class="form-group">
-                                  <label for="name">* Nome:</label>
-                                  <input type="text" class="form-control border-input" name="teamName" placeholder="Digite o nome da Equipe">
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="description">Descrição:</label>
-                                  <input type="text" class="form-control border-input" name="teamDescription" placeholder="Digite a descrição">
-                                </div>
+                              
+                                     <div class="form-group">
+                                        <label for="name">* Nome:</label>
+                                        <input type="text" class="form-control border-input" name="teamName" placeholder="Digite o nome da Equipe">
+                                      </div>
+                                
+                                  
+                                      <div class="form-group">
+                                        <label for="description">Descrição:</label>
+                                       <textarea class="form-control border-input" placeholder="Digite a descrição da equipe" name="teamDescription"></textarea>
+                                      </div>
+                                
+                               
             
                                 <div class="form-group text-center">
                                   <button type="submit" class="btn btn-default">Enviar</button>

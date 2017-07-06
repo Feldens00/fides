@@ -30,7 +30,18 @@
     <script>
         new WOW().init();
     </script>
-
+    <script type="text/javascript">
+      function validarSenha(){
+         NovaSenha = document.getElementById('password').value;
+         CNovaSenha = document.getElementById('confirm').value;
+         if (NovaSenha != CNovaSenha) {
+            alert("SENHAS DIFERENTES!\nFAVOR DIGITAR SENHAS IGUAIS"); 
+            return false;
+         }else{
+            return true;
+         }
+      }
+    </script>
     <style type="text/css">
       .bg-3 { 
       background-color: #ffffff; /* White */
@@ -206,7 +217,7 @@
           <h4 class="modal-title">Realizar Login</h4>
         </div>
         <div class="modal-body">
-           <form action="<?=base_url('login');?>" method="POST">
+           <form action="<?=base_url('login');?>" method="POST" ;>
               
                   <div class="form-group">
                       <label>Email</label>
@@ -216,7 +227,7 @@
                       <label>Senha</label>
                       <input type="password" name="password" class="form-control border-input">
                   </div>
-                                        
+                          
                
         </div>
         <div class="modal-footer">
@@ -243,10 +254,14 @@
           <h4 class="modal-title">Cadastrar-se</h4>
         </div>
         <div class="modal-body">
-           <form action="<?=base_url('create-user');?>" method="POST">
+           <form action="<?=base_url('create-user');?>" method="POST" id="form_create" onsubmit="return validarSenha();">
                   <div class="form-group">
                       <label>Nome</label>
-                      <input type="text" class="form-control border-input" name="nameUser" placeholder="Nome">
+                      <input type="text" class="form-control border-input" name="first_name" placeholder="Nome">
+                  </div>
+                  <div class="form-group">
+                      <label>Sobrenome</label>
+                      <input type="text" class="form-control border-input" name="last_name" placeholder="Sobrenome">
                   </div>
                   <div class="form-group">
                       <label>Email</label>
@@ -254,14 +269,19 @@
                   </div>
                   <div class="form-group">
                       <label>Senha</label>
-                      <input type="password"  name="passwordUser" class="form-control border-input">
+                      <input type="password"  name="passwordUser" class="form-control border-input" id="password">
                   </div>
+                  <div class="form-group">
+                      <label>Confirme a senha</label>
+                      <input id="confirm" name="repetir_senha" type="password" class="form-control border-input" required  title="Repetir Senha"/> 
+                  </div>
+                              
                                         
                
         </div>
         <div class="modal-footer">
                   <div class="col-sm-12">
-                      <button type="submit" class="btn btn-default">Cadastrar</button>
+                      <button type="submit" class="btn btn-default"  >Cadastrar</button>
                   </div>
               
             </form>

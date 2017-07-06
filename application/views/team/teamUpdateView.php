@@ -30,8 +30,8 @@
 
                                  <div class="form-group">
                                         <label for="description">Descrição:</label>
-                                        <input type="text" class="form-control border-input" name="updateTeamDescription" placeholder="Digite a descrição" value="<?= $tm->description; ?>">
-                                      </div>                           
+                                        <textarea class="form-control border-input" placeholder="Digite a descrição da equipe" name="updateTeamDescription" ><?=$tm->description;?></textarea>
+                                  </div>                           
                                 <?php } ?>
                                 <div class="form-group text-center">
                                   <button type="submit" class="btn btn-default">Enviar</button>

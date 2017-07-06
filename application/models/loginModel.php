@@ -19,9 +19,6 @@ class loginModel extends CI_Model {
 
          return $this->db->get('users')->result(); 
 
-        if ($query->num_rows == 1) { 
-            return true; // RETORNA VERDADEIRO
-        }
     }
 
 

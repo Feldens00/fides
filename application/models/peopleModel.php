@@ -114,7 +114,8 @@ class peopleModel extends CI_Model {
 			(SELECT peoples_id_people FROM peoples_teams 
 			 WHERE events_id_event = ".$id_event."
 			 AND teams_id_team <>".$id_team.")
-			 AND id_user = ".$id_user.";";
+			 AND id_user = ".$id_user."
+			 ORDER BY p.name_people ASC ;";
 
 		return $this->db->query($sql)->result();
 	}
@@ -124,6 +125,7 @@ class peopleModel extends CI_Model {
 		$this->db->join('peoples_teams', 'peoples.id_people = peoples_teams.peoples_id_people','inner');
 		$this->db->where('teams_id_team', $id_team);
 		$this->db->where('events_id_event', $id_event);
+		$this->db->order_by('name_people','asc');
 	   	return $this->db->get('peoples')->result();
 
 	  

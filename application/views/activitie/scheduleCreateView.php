@@ -108,7 +108,7 @@ foreach ($events as $ev) {
                             
                             <div class="form-group">
                                <label for="date2">*Atividade:</label>
-                              <select name="activitieId" class="form-control" >
+                              <select name="activitieId" class="form-control border-input" >
                                    <?php
                                        echo "<option value=''>Selecione uma Atividade</option>";
                                        foreach($activities as $ac)
@@ -121,7 +121,7 @@ foreach ($events as $ev) {
 
                             <div class="form-group">
                               <label for="date2">*Hora:</label>
-                              <input type="time" class="form-control"  name="activitieHorary" required>
+                              <input type="time" class="form-control border-input"  name="activitieHorary" required>
                             </div>
                                     
                            

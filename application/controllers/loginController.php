@@ -51,10 +51,12 @@ class loginController extends CI_Controller {
                                     $id = $us->id_user;
                                     $email = $us->email;
                                     $nivel = $us->nivel;
+                                    $name = $us->first_name;
                             }
 
                             $user2 = array( 
                                 'id_user' => $id,
+                                'name' => $name,
                                 'email' => $email,
                                 'nivel' => $nivel,
                                 'logged'=> true, 
@@ -90,7 +92,7 @@ class loginController extends CI_Controller {
         $this->input->post('emailUser');
         $this->input->post('passwordUser');
 
-        $this->form_validation->set_rules('nameUser','Nome','required|min_length[5]');
+        $this->form_validation->set_rules('first_name','Nome','required|min_length[5]');
         $this->form_validation->set_rules('emailUser','Email','required');
         $this->form_validation->set_rules('passwordUser','Senha','required|min_length[5]');
 
@@ -101,9 +103,10 @@ class loginController extends CI_Controller {
         }else{
 
             $user = array(
-                'name_user' => $this->input->post('nameUser'),
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
                 'email' => $this->input->post('emailUser'),
-                'password' => $this->input->post('passwordUser'),
+                'password' => sha1($this->input->post('passwordUser')),
                 'nivel' => 1,
                 'active' => 1,
                 'day_register' => date('Y-m-d H:i:s')
@@ -111,6 +114,22 @@ class loginController extends CI_Controller {
                 );
 
             $this->loginModel->create($user);
+            $retorno = $this->loginModel->validate($user);
+                 foreach ($retorno as $us) {
+                                    $id = $us->id_user;
+                                    $email = $us->email;
+                                    $nivel = $us->nivel;
+                            }
+
+                            $user2 = array( 
+                                'id_user' => $id,
+                                'email' => $email,
+                                'nivel' => $nivel,
+                                'logged'=> true, 
+                                'active' => 1
+                            );
+
+            $this->session->set_userdata($user2);
             redirect('entitie');
         }
 

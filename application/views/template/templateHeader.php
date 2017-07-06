@@ -110,7 +110,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                      <a class="navbar-brand" href="#"> <?= $this->session->userdata('email')?></a>
+                      <a class="navbar-brand" href="#"> <?= $this->session->userdata('name')?></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -143,13 +143,13 @@
 
                         <li>
                             <a href="#">
-                                Home
+                                PDS
                             </a>
                         </li>
                     </ul>
                 </nav>
         <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, Desenvolvido por <a href="https://github.com/Feldens00">Artur Feldens</a>
                 </div>
             </div>
         </footer>

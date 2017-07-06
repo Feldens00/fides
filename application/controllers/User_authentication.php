@@ -39,12 +39,14 @@ class User_Authentication extends CI_Controller
 
                  foreach ($retorno as $us) {
                                     $id = $us->id_user;
+                                    $name = $us->first_name;
                                     $email = $us->email;
                                     $nivel = $us->nivel;
                             }
 
                 $user2 = array( 
                                 'id_user' => $id,
+                                'name' => $name,
                                 'email' => $email,
                                 'nivel' => $nivel,
                                 'logged'=> true, 

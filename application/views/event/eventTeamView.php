@@ -32,7 +32,7 @@
                                         </span>
                                     </div>
                                   </form>
-                                </div>s
+                                </div>
                             </div>
                             <form action="<?= base_url('delete-event-team/'.$id_event)?>" method="POST">
                             <div class="content table-responsive table-full-width" style="overflow: auto; height: 500px;">

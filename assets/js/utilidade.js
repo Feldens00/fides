@@ -63,18 +63,19 @@ $(document).ready( function() {
             //  console.log(data);
             var option = new Array();
   
-                    $("#events").empty();             
+                    $("#events").empty();
+                    $('#events').html('<option value="">Selecione um evento</option>');             
                     $.each(data, function(i, obj){
 
                       option[i] = document.createElement('option');
                        if (obj.id == 0) {
-                        
+                          $("#events").empty();
                           $('#events').html('<option value="">Adicione esta equipe a um evento</option>');
 
                       }else{
                         $( option[i] ).attr( {value : obj.id} );
                         $( option[i] ).append( obj.nome );
-                        $('#events').html('<option value="">Selecione um evento para filtrar as pessoas da equipe</option>');
+                        
                         $("select[name='events']").append( option[i] );
                       }
                      
@@ -99,18 +100,19 @@ $(document).ready( function() {
             //  console.log(data);
             var option = new Array();
                     $("#events1").empty();
+                    $('#events1').html('<option value="">Selecione um evento</option>');
                     $.each(data, function(i, obj){
 
                         option[i] = document.createElement('option');
                         
                       if (obj.id == 0) {
-                        
+                        $("#events1").empty();
                         $('#events1').html('<option value="">Adicione esta equipe a um evento</option>');
 
                       }else{
                         $( option[i] ).attr( {value : obj.id} );
                         $( option[i] ).append( obj.nome );
-                        $('#events1').html('<option value="">Selecione um evento para filtrar as pessoas da equipe</option>');
+                       
                         $("select[name='events1']").append( option[i] );
                       }
                      

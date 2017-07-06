@@ -102,7 +102,7 @@ class entitieController extends CI_Controller {
 					);
 
 					$this->entitieModel->update($entitie);
-					redirect();
+					redirect('entitie');
 		}
 	}
 }

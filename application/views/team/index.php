@@ -108,13 +108,12 @@ function mostrar(id){
                     <div class="modal-body">
                     <form action="<?= base_url('team-people');?>" method="POST">
                                  <input type="hidden" class="form-control" id="idTeam" name="idTeam" value="">
-                                <div class="col-sm-12">
-                                  <h6>*Evento:</h6>
+                                <div class="form-group">
+                                      <h6>*Evento:</h6>
+                                      <select name="events" class="form-control border-input" id="events">
+                                      </select>
                                 </div>
-                                <div class="form-control">
-                                  <select name="events" id="events">
-                                  </select>
-                                </div>
+
                     </div>
                     <div class="modal-footer">
                      
@@ -139,11 +138,9 @@ function mostrar(id){
                     <form action="<?= base_url('form-team-people');?>" method="POST">
                        
                                  <input type="hidden" class="form-control" id="idTeam1" name="idTeam1" value="">
-                                <div class="col-sm-12">
-                                  <h6>*Evento:</h6>
-                                </div>
-                                <div class="form-control">
-                                  <select name="events1" id="events1">
+                                <div class="form-group">
+                                <label>*Evento:</label>
+                                  <select name="events1" id="events1" class="form-control border-input">
                                   </select>
                                 </div>
                         
